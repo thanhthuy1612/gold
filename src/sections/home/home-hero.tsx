@@ -6,23 +6,19 @@ import { useRef, useState } from 'react';
 import { m, useScroll, useSpring, useTransform, useMotionValueEvent } from 'framer-motion';
 
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { Logo } from 'src/components/logo';
-import { Label } from 'src/components/label';
-import { Iconify } from 'src/components/iconify';
 import { varFade, MotionContainer } from 'src/components/animate';
 
+import { HomePrice } from './components/home-price';
 import { HeroBackground } from './components/hero-background';
 
 // ----------------------------------------------------------------------
 
-const smKey: Breakpoint = 'sm';
+// const smKey: Breakpoint = 'sm';
 const mdKey: Breakpoint = 'md';
-const lgKey: Breakpoint = 'lg';
+// const lgKey: Breakpoint = 'lg';
 
 const motionProps: MotionProps = {
   variants: varFade('inUp', { distance: 24 }),
@@ -37,100 +33,11 @@ export function HomeHero({ sx, ...other }: BoxProps) {
 
   const y1 = useTransformY(scrollProgress.scrollY, distance * -7);
   const y2 = useTransformY(scrollProgress.scrollY, distance * -6);
-  const y3 = useTransformY(scrollProgress.scrollY, distance * -5);
-  const y4 = useTransformY(scrollProgress.scrollY, distance * -4);
-  const y5 = useTransformY(scrollProgress.scrollY, distance * -3);
 
   const opacity: MotionValue<number> = useTransform(
     scrollProgress.scrollY,
     [0, 1],
     [1, mdUp ? Number((1 - scrollProgress.percent / 100).toFixed(1)) : 1]
-  );
-
-  const renderHeading = () => (
-    <m.div {...motionProps}>
-      <Box
-        component="h1"
-        sx={[
-          (theme) => ({
-            my: 0,
-            mx: 'auto',
-            maxWidth: 680,
-            display: 'flex',
-            flexWrap: 'wrap',
-            typography: 'h3',
-            justifyContent: 'center',
-            fontFamily: theme.typography.fontSecondaryFamily,
-            [theme.breakpoints.up(lgKey)]: {
-              fontSize: theme.typography.pxToRem(40),
-              lineHeight: '70px',
-            },
-            color: 'transparent',
-            backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-          }),
-        ]}
-      >
-        <Box
-          component="span"
-          sx={[
-            (theme) => ({
-              my: 0,
-              mx: 'auto',
-              width: 1,
-              display: 'flex',
-              flexWrap: 'wrap',
-              typography: 'h2',
-              justifyContent: 'center',
-              fontFamily: theme.typography.fontSecondaryFamily,
-              [theme.breakpoints.up(lgKey)]: {
-                fontSize: theme.typography.pxToRem(50),
-                lineHeight: '70px',
-              },
-              color: 'transparent',
-              backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-            }),
-          ]}
-        >
-          VÀNG BẠC TÀI LỘC
-        </Box>
-        Đại lý uỷ quyền chính hãng
-        <Box
-          component={m.span}
-          animate={{ backgroundPosition: '200% center' }}
-          transition={{
-            duration: 20,
-            ease: 'linear',
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
-          sx={[
-            (theme) => ({
-              ...theme.mixins.textGradient(
-                `300deg, ${theme.vars.palette.primary.main} 0%, ${theme.vars.palette.warning.main} 25%, ${theme.vars.palette.primary.main} 50%, ${theme.vars.palette.warning.main} 75%, ${theme.vars.palette.primary.main} 100%`
-              ),
-              backgroundSize: '400%',
-              ml: { xs: 0.75, md: 1, xl: 1.5 },
-              color: 'transparent',
-              backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-            }),
-          ]}
-        >
-          PHÚ QUÝ
-        </Box>
-      </Box>
-    </m.div>
-  );
-
-  const renderText = () => (
-    <m.div {...motionProps}>
-      <img src="/assets/background/home.PNG" height="280" />
-    </m.div>
   );
 
   return (
@@ -144,7 +51,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           [theme.breakpoints.up(mdKey)]: {
             minHeight: 760,
             height: '100vh',
-            maxHeight: 1440,
+            maxHeight: 2000,
             display: 'block',
             willChange: 'opacity',
             mt: 'calc(var(--layout-header-desktop-height) * -1)',
@@ -169,6 +76,8 @@ export function HomeHero({ sx, ...other }: BoxProps) {
               position: 'fixed',
               maxHeight: 'inherit',
             },
+            p: 0,
+            m: 0,
           }),
         ]}
       >
@@ -177,65 +86,31 @@ export function HomeHero({ sx, ...other }: BoxProps) {
           maxWidth={false}
           sx={[
             (theme) => ({
-              py: 3,
+              pt: 7,
               gap: 5,
               zIndex: 9,
+              px: '0 !important',
+              m: 0,
               display: 'flex',
               alignItems: 'center',
               flexDirection: 'column',
               [theme.breakpoints.up(mdKey)]: {
                 flex: '1 1 auto',
                 justifyContent: 'center',
-                py: 'var(--layout-header-desktop-height)',
               },
-              background: '#901011',
             }),
           ]}
         >
-          <Stack
-            display="flex"
-            flexDirection="row"
-            alignItems="flex-start"
-            spacing={3}
-            sx={{ textAlign: 'center' }}
-            justifyContent="space-around"
-            gap={{ sx: 1, md: 2, lg: 20 }}
-          >
-            <m.div style={{ y: y3 }}>
-              <Stack display="flex" gap={2} flexDirection="column" alignItems="center">
-                <Logo />
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: 'transparent',
-                    backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    fontWeight: '700',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
-                >
-                  TÀI LỘC
-                </Typography>
-                <Label
-                  sx={{
-                    background: 'linear-gradient(-90deg,#f0b05c 0%, #fff9b8 50%, #f0b05c 100%)',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-                    color: '#901011',
-                  }}
-                >
-                  <Iconify icon="solar:point-on-map-bold" />
-                  187 Xã Đàn - Hà Nội
-                </Label>
-              </Stack>
+          <m.div style={{ y: y1 }}>
+            <m.div {...motionProps}>
+              <img src="/assets/background/landing1.jpg" width="100%" height="auto" />
             </m.div>
-            <Stack>
-              <m.div style={{ y: y1 }}>{renderHeading()}</m.div>
-              <m.div style={{ y: y2 }}>{renderText()}</m.div>
-            </Stack>
-          </Stack>
+          </m.div>
+          <m.div style={{ y: y2 }}>
+            <m.div {...motionProps}>
+              <HomePrice />
+            </m.div>
+          </m.div>
         </Container>
 
         <HeroBackground />
