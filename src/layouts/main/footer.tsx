@@ -233,6 +233,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
               </Typography>
               {listInfo.map((item) => (
                 <Typography
+                  key={item.name}
                   sx={{
                     color: 'transparent',
                     backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
