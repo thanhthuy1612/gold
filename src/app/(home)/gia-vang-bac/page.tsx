@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 
+import { PriceView } from 'src/sections/price/view';
+
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: 'Minimals UI: The starting point for your next project',
-  description:
-    'The starting point for your next project with Minimal UI Kit, built on the newest version of Material-UI ©, ready to be customized to your style',
+  title: 'Giá vàng bạc',
+  description: 'Vàng bạc Tài Lộc',
 };
 
 export default function Page() {
-  return <>1</>;
+  return <PriceView />;
 }

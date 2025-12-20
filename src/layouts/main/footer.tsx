@@ -197,12 +197,12 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
           sx={{
             background: 'linear-gradient(90deg,#d8a45b 0%, #fcf0ad 50%, #d8a45b 100%)',
             color: '#901011',
-            py: 2,
+            py: 1,
           }}
         >
           <Stack
             sx={{
-              py: 4,
+              py: 1,
               borderTop: '2px solid #901011',
               borderBottom: '2px solid #901011',
             }}
@@ -234,7 +234,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
               </Box>
             </m.div>
             <m.div variants={varFade('inUp')}>
-              <Typography variant="h5">Hotline của chúng tôi luôn đón chào quý khách!</Typography>
+              <Typography variant="h6">Hotline của chúng tôi luôn đón chào quý khách!</Typography>
               <Typography variant="h2">0383.599.995</Typography>
             </m.div>
           </Stack>
