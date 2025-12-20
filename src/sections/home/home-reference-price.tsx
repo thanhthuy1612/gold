@@ -83,10 +83,10 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
         <Container sx={{ textAlign: 'center', background: '#8c0302' }}>
           <m.div variants={varFade('inUp')}>
             <Grid container spacing={3}>
-              <Grid size={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <TablePrice title="Giá bạc tham chiếu" data={TABLE_DATA} href="/" />
               </Grid>
-              <Grid size={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <TablePrice title="Giá bạc tham chiếu" data={TABLE_DATA} href="/" />
               </Grid>
             </Grid>

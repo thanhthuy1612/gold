@@ -41,7 +41,13 @@ type Props = {
 export function TablePrice({ title, href, data }: Props) {
   return (
     <Stack sx={{ my: 8 }}>
-      <Stack display="flex" flexDirection="row" alignItems="center" justifyContent="space-between">
+      <Stack
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <Typography variant="h5" sx={{ color: 'white', display: 'flex' }}>
           {title}
         </Typography>

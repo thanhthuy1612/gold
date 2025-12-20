@@ -24,7 +24,7 @@ export function updateCoreWithSettings(
     direction,
     fontFamily,
     contrast = 'default',
-    primaryColor = 'default',
+    primaryColor = 'preset3',
   } = settingsState ?? {};
 
   const isDefaultContrast = contrast === 'default';
