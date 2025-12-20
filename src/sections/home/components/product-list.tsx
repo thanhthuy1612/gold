@@ -21,14 +21,26 @@ export function ProductList({ data }: Props) {
   });
 
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box sx={{ position: 'relative', my: 5 }}>
       <Carousel carousel={carousel}>
         {data.map((product) => (
           <ProductItem key={product.id} product={product} detailsHref="" />
         ))}
       </Carousel>
 
-      <CarouselArrowFloatButtons {...carousel.arrows} options={carousel.options} />
+      <CarouselArrowFloatButtons
+        {...carousel.arrows}
+        options={carousel.options}
+        sx={{
+          color: '#98130f',
+          backgroundColor: '#fff',
+          border: '1px solid #98130f',
+          '&:hover': {
+            backgroundColor: '#98130f',
+            color: '#fff',
+          },
+        }}
+      />
     </Box>
   );
 }

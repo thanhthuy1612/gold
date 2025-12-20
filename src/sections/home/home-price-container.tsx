@@ -1,5 +1,7 @@
 import type { BoxProps } from '@mui/material/Box';
 
+import { m } from 'framer-motion';
+
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
@@ -35,10 +37,14 @@ export function HomePriceContainer({ sx, ...other }: BoxProps) {
     >
       <MotionViewport>
         {renderLines()}
-        <img src="/assets/background/landing1.jpg" width="100%" height="auto" />
+        <m.div variants={varFade('inUp')}>
+          <img src="/assets/background/landing1.jpg" width="100%" height="auto" />
+        </m.div>
         <Container sx={{ position: 'relative' }}>
           <CircleSvg variants={varFade('in')} sx={{ display: { xs: 'none', md: 'block' } }} />
-          <HomePrice />
+          <m.div variants={varFade('inUp')}>
+            <HomePrice />
+          </m.div>
         </Container>
       </MotionViewport>
     </Box>

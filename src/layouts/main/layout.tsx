@@ -11,6 +11,8 @@ import { Stack, Typography } from '@mui/material';
 import { usePathname } from 'src/routes/hooks';
 
 import { Logo } from 'src/components/logo';
+import { Label } from 'src/components/label';
+import { Iconify } from 'src/components/iconify';
 
 import { NavMobile } from './nav/mobile';
 import { NavDesktop } from './nav/desktop';
@@ -62,8 +64,8 @@ export function MainLayout({
   const renderHeader = () => {
     const headerSlots: HeaderSectionProps['slots'] = {
       topArea: (
-        <Alert severity="info" sx={{ display: 'none', borderRadius: 0 }}>
-          This is an info Alert.
+        <Alert severity="warning" sx={{ display: 'none', borderRadius: 0 }}>
+          VÀNG BẠC TÀI LỘC
         </Alert>
       ),
       leftArea: (
@@ -75,25 +77,39 @@ export function MainLayout({
               mr: 1,
               ml: -1,
               [theme.breakpoints.up(layoutQuery)]: { display: 'none' },
+              color: '#d8a45b',
             })}
           />
-          <NavMobile data={navData} open={open} onClose={onClose} />
+          <NavMobile sx={{ color: '#901011' }} data={navData} open={open} onClose={onClose} />
 
           {/** @slot Logo */}
           <Stack display="flex" gap={2} flexDirection="row" alignItems="center">
             <Logo />
             <Typography
               variant="h6"
-              sx={{
+              sx={(theme) => ({
                 color: 'transparent',
                 backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
                 fontSize: '700',
-              }}
+                display: 'none',
+                [theme.breakpoints.up(layoutQuery)]: { display: 'block' },
+              })}
             >
               TÀI LỘC
             </Typography>
+            <Label
+              sx={(theme) => ({
+                display: 'none',
+                [theme.breakpoints.up('lg')]: { display: 'flex' },
+                background: 'linear-gradient(90deg,#901011 0%, #cf2a2a 50%, #901011 100%)',
+                color: '#f0b05c',
+              })}
+            >
+              <Iconify icon="solar:point-on-map-bold" />
+              187 Xã Đàn - Hà Nội
+            </Label>
           </Stack>
         </>
       ),

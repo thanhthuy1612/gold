@@ -3,6 +3,7 @@ import type { Breakpoint } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
+import { Stack } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
@@ -18,6 +19,12 @@ import { Logo } from 'src/components/logo';
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
+
+const listInfo = [
+  { name: 'Mã số doanh nghiệp', value: '0111262522', href: '/' },
+  { name: 'Điện thoại', value: '0961228888', href: '/' },
+  { name: 'Thư điện tử', value: 'tdtailoc@gmail.com', href: '/' },
+];
 
 const LINKS = [
   {
@@ -162,20 +169,103 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
     <FooterRoot
       sx={[
         {
-          py: 5,
+          pt: 5,
           textAlign: 'center',
         },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
       {...other}
     >
-      <Container>
-        <Logo />
-        <Box sx={{ mt: 1, typography: 'caption' }}>
-          © All rights reserved.
-          <br /> made by
-          <Link href="https://minimals.cc/"> minimals.cc </Link>
+      <Container maxWidth={false} sx={{ p: '0 !important', m: '0 !important' }}>
+        <Box
+          sx={{
+            background: 'linear-gradient(90deg,#d8a45b 0%, #fcf0ad 50%, #d8a45b 100%)',
+            color: '#901011',
+            py: 2,
+          }}
+        >
+          <Stack
+            sx={{
+              py: 4,
+              borderTop: '2px solid #901011',
+              borderBottom: '2px solid #901011',
+            }}
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Iconify sx={{ height: 120, width: 120, mr: -5, pt: 2 }} icon="solar:phone-bold" />
+            <Stack>
+              <Typography variant="h5">Hotline của chúng tôi luôn đón chào quý khách!</Typography>
+              <Typography variant="h2">0383.599.995</Typography>
+            </Stack>
+          </Stack>
         </Box>
+        <Stack
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ backgroundColor: '#901011' }}
+        >
+          <Grid
+            container
+            sx={{
+              py: 8,
+              px: 'calc(3 * var(--spacing))',
+              width: '100%',
+              maxWidth: '1200px',
+            }}
+          >
+            <Grid size={{ xs: 12, md: 8 }} justifyItems="start">
+              <Typography
+                sx={{
+                  color: 'transparent',
+                  backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  fontSize: '700',
+                  mb: 3,
+                }}
+                variant="h4"
+              >
+                CÔNG TY TNHH VÀNG BẠC ĐÁ QUÝ TÀI LỘC
+              </Typography>
+              {listInfo.map((item) => (
+                <Typography
+                  sx={{
+                    color: 'transparent',
+                    backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    fontSize: '700',
+                    mb: 1,
+                  }}
+                  variant="subtitle1"
+                >
+                  {item.name}: {item.value}
+                </Typography>
+              ))}
+            </Grid>
+            <Grid size={{ xs: 12, md: 4 }}>
+              <Stack display="flex" flexDirection="column" alignItems="center">
+                <Logo sx={{ width: 80, height: 80 }} />
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: 'transparent',
+                    backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    fontSize: '700',
+                  }}
+                >
+                  TÀI LỘC
+                </Typography>
+              </Stack>
+            </Grid>
+          </Grid>
+        </Stack>
       </Container>
     </FooterRoot>
   );

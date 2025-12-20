@@ -5,8 +5,11 @@ import Stack from '@mui/material/Stack';
 import { BackToTopButton } from 'src/components/animate/back-to-top-button';
 import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll-progress';
 
+import { HomeInfo } from '../home-info';
 import { HomeBestSeller } from '../home-best-seller';
+import { HomeListProduct } from '../home-list-product';
 import { HomePriceContainer } from '../home-price-container';
+import { HomeReferencePrice } from '../home-reference-price';
 
 // ----------------------------------------------------------------------
 
@@ -28,6 +31,9 @@ export function HomeView() {
       <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
         <HomePriceContainer />
         <HomeBestSeller />
+        <HomeListProduct />
+        <HomeReferencePrice />
+        <HomeInfo />
       </Stack>
     </>
   );

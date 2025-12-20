@@ -138,10 +138,14 @@ type CardPriceProps = {
 export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell }: CardPriceProps) {
   return (
     <Card sx={sx}>
-      <Typography variant="h6">{title}</Typography>
-      <Grid container>
+      <Typography variant="h6" sx={{ mb: 2, color: '#8c0302' }}>
+        {title}
+      </Typography>
+      <Grid container spacing={1}>
         <Grid size={6}>
-          <Typography variant="h6">Giá mua</Typography>
+          <Typography variant="h6" sx={{ mb: 1 }}>
+            Giá mua
+          </Typography>
           <Typography variant="body2" color="success">
             {fNumber(buy)}
           </Typography>
@@ -150,12 +154,20 @@ export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell 
             variant="body2"
             color={isIncreaseBuy > 0 ? 'success' : 'error'}
           >
-            <Iconify icon={isIncreaseBuy > 0 ? 'eva:trending-up-fill' : 'eva:trending-down-fill'} />
+            <Iconify
+              icon={
+                isIncreaseBuy > 0
+                  ? 'solar:double-alt-arrow-up-bold-duotone'
+                  : 'solar:double-alt-arrow-down-bold-duotone'
+              }
+            />
             {fNumber(isIncreaseBuy)}
           </Typography>
         </Grid>
         <Grid size={6}>
-          <Typography variant="h6">Giá bán</Typography>
+          <Typography variant="h6" sx={{ mb: 1 }}>
+            Giá bán
+          </Typography>
           <Typography variant="body2" color="success">
             {fNumber(sell)}
           </Typography>
@@ -165,7 +177,11 @@ export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell 
             color={isIncreaseSell > 0 ? 'success' : 'error'}
           >
             <Iconify
-              icon={isIncreaseSell > 0 ? 'eva:trending-up-fill' : 'eva:trending-down-fill'}
+              icon={
+                isIncreaseSell > 0
+                  ? 'solar:double-alt-arrow-up-bold-duotone'
+                  : 'solar:double-alt-arrow-down-bold-duotone'
+              }
             />
             {fNumber(isIncreaseSell)}
           </Typography>

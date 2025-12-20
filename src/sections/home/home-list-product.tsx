@@ -4,13 +4,14 @@ import type { IProductItem } from 'src/types/product';
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
+import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import { varFade, MotionViewport } from 'src/components/animate';
 
-import { ProductList } from './components/product-list';
-import { FloatLine, FloatTriangleLeftIcon } from './components/svg-elements';
+import { ProductItemV2 } from './components/product-item-v2';
+import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
 
 // ----------------------------------------------------------------------
 
@@ -60,12 +61,35 @@ const _orders: IProductItem[] = [
 ];
 const renderLines = () => (
   <>
-    <FloatTriangleLeftIcon sx={{ top: 80, left: 80, opacity: 0.4 }} />
+    <Stack
+      spacing={8}
+      alignItems="center"
+      sx={{
+        top: 64,
+        left: 80,
+        position: 'absolute',
+        transform: 'translateX(-50%)',
+      }}
+    >
+      <FloatTriangleDownIcon sx={{ position: 'static', opacity: 0.12 }} />
+      <FloatTriangleDownIcon
+        sx={{
+          width: 30,
+          height: 15,
+          opacity: 0.24,
+          position: 'static',
+        }}
+      />
+    </Stack>
+
     <FloatLine vertical sx={{ top: 0, left: 80 }} />
   </>
 );
 
-export function HomeBestSeller({ sx, ...other }: BoxProps) {
+export function HomeListProduct({ sx, ...other }: BoxProps) {
+  const renderList = () =>
+    _orders.map((product) => <ProductItemV2 key={product.id} product={product} detailsHref="" />);
+
   return (
     <Box
       component="section"
@@ -83,22 +107,29 @@ export function HomeBestSeller({ sx, ...other }: BoxProps) {
 
         <Container sx={{ textAlign: 'center' }}>
           <Typography
-            // component={m.div}
-            // variants={varFade('inUp')}
             variant="h2"
             sx={{ color: '#8c0302', pb: 3, height: 'fit-content', textAlign: 'center' }}
           >
-            Sản phẩm bán chạy trong tuần
+            Danh sách sản phẩm
           </Typography>
-
           <m.div variants={varFade('inUp')}>
-            <img src="/assets/background/landing2.jpg" width="100%" height="auto" />
-          </m.div>
-          <m.div variants={varFade('inUp')}>
-            <ProductList data={_orders} />
-          </m.div>
-          <m.div variants={varFade('inUp')}>
-            <img src="/assets/background/landing3.jpg" width="100%" height="auto" />
+            <Box
+              sx={[
+                () => ({
+                  gap: 3,
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: 'repeat(1, 1fr)',
+                    sm: 'repeat(3, 1fr)',
+                    md: 'repeat(4, 1fr)',
+                    lg: 'repeat(4, 1fr)',
+                  },
+                }),
+              ]}
+              {...other}
+            >
+              {renderList()}
+            </Box>
           </m.div>
         </Container>
       </MotionViewport>
