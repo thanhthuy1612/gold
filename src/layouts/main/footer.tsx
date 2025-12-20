@@ -1,5 +1,7 @@
 import type { Breakpoint } from '@mui/material/styles';
 
+import { m } from 'framer-motion';
+
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -17,6 +19,7 @@ import { _socials } from 'src/_mock';
 
 import { Logo } from 'src/components/logo';
 import { Iconify } from 'src/components/iconify';
+import { varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -39,6 +42,19 @@ const LINKS = [
     ],
   },
   { headline: 'Contact', children: [{ name: 'support@minimals.cc', href: '#' }] },
+];
+
+const listSocial = [
+  {
+    icon: <img src="/assets/background/fb.png" width="30" height="auto" />,
+    name: 'Facebook',
+    href: '/',
+  },
+  {
+    icon: <img src="/assets/background/tt.png" width="30" height="auto" />,
+    name: 'Tiktok',
+    href: '/',
+  },
 ];
 
 // ----------------------------------------------------------------------
@@ -195,11 +211,32 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
             justifyContent="center"
             alignItems="center"
           >
-            <Iconify sx={{ height: 120, width: 120, mr: -5, pt: 2 }} icon="solar:phone-bold" />
-            <Stack>
+            <m.div variants={varFade('inUp')}>
+              <Box
+                component={m.div}
+                animate={{ y: [30, 10, 30] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                sx={{
+                  zIndex: 9,
+                  width: 120,
+                  aspectRatio: '1/1',
+                  position: 'relative',
+                }}
+              >
+                <img
+                  style={{
+                    marginRight: '-90px',
+                  }}
+                  src="/assets/background/ddt2.png"
+                  width="80"
+                  height="auto"
+                />
+              </Box>
+            </m.div>
+            <m.div variants={varFade('inUp')}>
               <Typography variant="h5">Hotline của chúng tôi luôn đón chào quý khách!</Typography>
               <Typography variant="h2">0383.599.995</Typography>
-            </Stack>
+            </m.div>
           </Stack>
         </Box>
         <Stack
@@ -225,43 +262,62 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   fontSize: '700',
-                  mb: 3,
+                  mb: 4,
                 }}
                 variant="h4"
               >
                 CÔNG TY TNHH VÀNG BẠC ĐÁ QUÝ TÀI LỘC
               </Typography>
               {listInfo.map((item) => (
-                <Typography
+                <Stack
+                  display="flex"
+                  flexDirection="row"
+                  alignItems="center"
+                  gap={2}
+                  sx={{ mb: 3 }}
                   key={item.name}
-                  sx={{
-                    color: 'transparent',
-                    backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    fontSize: '700',
-                    mb: 1,
-                  }}
-                  variant="subtitle1"
                 >
-                  {item.name}: {item.value}
-                </Typography>
+                  <Logo sx={{ width: 20, height: 20 }} />
+                  <Link
+                    href={item.href}
+                    variant="h5"
+                    sx={{
+                      color: 'transparent',
+                      backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      fontSize: '700',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    {item.name}: {item.value}
+                  </Link>
+                </Stack>
               ))}
             </Grid>
             <Grid size={{ xs: 12, md: 4 }}>
               <Stack display="flex" flexDirection="column" alignItems="center">
-                <Logo sx={{ width: 80, height: 80 }} />
+                <img src="/logo/logo.png" width="150" height="auto" />
+                <Stack display="flex" flexDirection="row" gap={1} alignItems="center">
+                  {listSocial.map((item) => (
+                    <Link href={item.href} key={item.name}>
+                      {item.icon}
+                    </Link>
+                  ))}
+                </Stack>
                 <Typography
-                  variant="h5"
+                  variant="subtitle2"
                   sx={{
                     color: 'transparent',
                     backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
-                    fontSize: '700',
+                    width: '125px',
+                    mt: 1,
                   }}
                 >
-                  TÀI LỘC
+                  Ấn vào ứng dụng để xem giá vàng!
                 </Typography>
               </Stack>
             </Grid>

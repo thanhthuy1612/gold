@@ -7,9 +7,8 @@ import Stack from '@mui/material/Stack';
 import { fabClasses } from '@mui/material/Fab';
 import { Tooltip, Typography } from '@mui/material';
 
-import { fCurrency } from 'src/utils/format-number';
+import { fNumber } from 'src/utils/format-number';
 
-import { Logo } from 'src/components/logo';
 import { Image } from 'src/components/image';
 
 // ----------------------------------------------------------------------
@@ -27,9 +26,9 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
     <Box
       sx={{
         gap: 1,
-        top: 16,
+        top: 4,
         zIndex: 9,
-        right: 16,
+        right: 4,
         display: 'flex',
         position: 'absolute',
         alignItems: 'center',
@@ -37,26 +36,26 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
       }}
     >
       <Stack display="flex" flexDirection="column" alignItems="center">
-        <Logo />
-        <Typography
-          variant="h6"
-          sx={{
-            color: 'transparent',
-            backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            fontWeight: '700',
-          }}
-        >
-          TÀI LỘC
-        </Typography>
+        <img src="/logo/logo.png" width="80" height="auto" />
       </Stack>
     </Box>
   );
 
   const renderImage = () => (
-    <Box sx={{ position: 'relative', p: 1 }}>
-      <Image alt={name} src={img} ratio="1/1" sx={{ borderRadius: 1.5, opacity: 0.95 }} />
+    <Box
+      sx={{
+        position: 'relative',
+        p: 1,
+        overflow: 'hidden',
+        height: '150px',
+        backgroundColor: 'white',
+      }}
+    >
+      <Image
+        alt={name}
+        src={img}
+        sx={{ width: 'auto', height: '100%', objectFit: 'cover', borderRadius: 1.5 }}
+      />
     </Box>
   );
 
@@ -95,10 +94,10 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
             mb: 0.5,
           }}
         >
-          Bán {fCurrency(buy)}
+          Bán {fNumber(buy)}
         </Typography>
         <Typography variant="h5" noWrap sx={{ color: 'white' }}>
-          Mua {fCurrency(sell)}
+          Mua {fNumber(sell)}
         </Typography>
       </Box>
     </Stack>

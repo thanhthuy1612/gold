@@ -25,11 +25,11 @@ export const navData: NavMainProps['data'] = [
   {
     title: 'Liên hệ',
     path: paths.contact,
-    icon: <Iconify width={16} icon="solar:user-id-bold" />,
+    icon: <Iconify width={16} icon="solar:phone-bold" />,
   },
   {
     title: 'Tin tức',
     path: paths.news,
-    icon: <Iconify width={16} icon="solar:notes-bold-duotone" />,
+    icon: <Iconify width={16} icon="solar:notebook-bold-duotone" />,
   },
 ];

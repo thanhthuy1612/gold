@@ -84,10 +84,20 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
           <m.div variants={varFade('inUp')}>
             <Grid container spacing={3}>
               <Grid size={{ xs: 12, md: 6 }}>
-                <TablePrice title="Giá bạc tham chiếu" data={TABLE_DATA} href="/" />
+                <TablePrice
+                  icon={<img src="/assets/background/b.png" width="30" height="auto" />}
+                  title="Giá bạc tham chiếu"
+                  data={TABLE_DATA}
+                  href="/"
+                />
               </Grid>
               <Grid size={{ xs: 12, md: 6 }}>
-                <TablePrice title="Giá bạc tham chiếu" data={TABLE_DATA} href="/" />
+                <TablePrice
+                  icon={<img src="/assets/background/v.png" width="30" height="auto" />}
+                  title="Giá vàng tham chiếu"
+                  data={TABLE_DATA}
+                  href="/"
+                />
               </Grid>
             </Grid>
           </m.div>
