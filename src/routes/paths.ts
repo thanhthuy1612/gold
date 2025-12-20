@@ -30,4 +30,9 @@ export const paths = {
   },
   components: '/components',
   docs: 'https://docs.minimals.cc/',
+  lookUpOrders: `/tra-cuu-don-hang`,
+  price: `/gia-vang-bac`,
+  store: `/cua-hang`,
+  contact: `/lien-he`,
+  news: `/tin-tuc`,
 };

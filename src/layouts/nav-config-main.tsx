@@ -9,27 +9,27 @@ import type { NavMainProps } from './main/nav/types';
 export const navData: NavMainProps['data'] = [
   {
     title: 'Tra cứu đơn hàng',
-    path: '/',
+    path: paths.lookUpOrders,
     icon: <Iconify width={16} icon="eva:search-fill" />,
   },
   {
     title: 'Giá vàng - Bạc',
-    path: '/',
+    path: paths.price,
     icon: <Iconify width={16} icon="solar:chart-square-outline" />,
   },
   {
     title: 'Cửa hàng',
-    path: '/',
+    path: paths.store,
     icon: <Iconify width={16} icon="solar:point-on-map-bold" />,
   },
   {
     title: 'Liên hệ',
-    path: paths.components,
+    path: paths.contact,
     icon: <Iconify width={16} icon="solar:user-id-bold" />,
   },
   {
     title: 'Tin tức',
-    path: paths.components,
+    path: paths.news,
     icon: <Iconify width={16} icon="solar:notes-bold-duotone" />,
   },
 ];
