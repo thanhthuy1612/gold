@@ -109,7 +109,6 @@ export function MainLayout({
                 backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
-                fontSize: '700',
                 display: 'none',
                 [theme.breakpoints.up(layoutQuery)]: { display: 'block' },
               })}

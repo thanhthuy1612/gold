@@ -14,7 +14,7 @@ export function StoreView() {
         sx={{ mb: { xs: 3, md: 5 } }}
         slotProps={{
           breadcrumbs: {
-            color: '#981113',
+            color: '#821818',
           },
           action: {},
           heading: {},
