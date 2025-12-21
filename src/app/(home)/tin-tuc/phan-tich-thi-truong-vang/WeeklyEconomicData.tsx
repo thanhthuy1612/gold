@@ -18,7 +18,7 @@ export default function WeeklyEconomicData() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box sx={{ display: 'flex', alignItems: 'stretch',  }}>
+      <Box sx={{ display: 'flex', alignItems: 'stretch' }}>
         {/* BOX TRÁI */}
         <Box
           sx={{
@@ -30,8 +30,7 @@ export default function WeeklyEconomicData() {
             py: 1.5,
             lineHeight: 1.2,
             pr: 12,
-            clipPath:
-              'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
+            clipPath: 'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
         >
           Dữ liệu kinh tế tuần này
@@ -43,15 +42,14 @@ export default function WeeklyEconomicData() {
             marginLeft: '-24px',
             width: 48,
             bgcolor: '#8c0302',
-            clipPath:
-              'polygon(32px 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
+            clipPath: 'polygon(32px 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
         />
       </Box>
 
       <Grid container spacing={2}>
         {/* ===== TABLE ===== */}
-        <Grid size={{ xs: 12, md: 7}}>
+        <Grid size={{ xs: 12, md: 7 }}>
           <Box
             sx={{
               border: '1px solid',
@@ -72,13 +70,24 @@ export default function WeeklyEconomicData() {
               Dữ liệu kinh tế
             </Box>
 
-            <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse', borderRadius: 1, }}>
+            <Box
+              component="table"
+              sx={{ width: '100%', borderCollapse: 'collapse', borderRadius: 1 }}
+            >
               <Box component="thead">
                 <Box component="tr" sx={{ bgcolor: '#19f0f0' }}>
-                  <Box component="th" sx={thStyle}>Ngày</Box>
-                  <Box component="th" sx={thStyle}>Sự kiện</Box>
-                  <Box component="th" sx={thStyle}>Quốc gia</Box>
-                  <Box component="th" sx={thStyle}>Dữ liệu kỳ trước</Box>
+                  <Box component="th" sx={thStyle}>
+                    Ngày
+                  </Box>
+                  <Box component="th" sx={thStyle}>
+                    Sự kiện
+                  </Box>
+                  <Box component="th" sx={thStyle}>
+                    Quốc gia
+                  </Box>
+                  <Box component="th" sx={thStyle}>
+                    Dữ liệu kỳ trước
+                  </Box>
                 </Box>
               </Box>
 
@@ -222,20 +231,20 @@ export default function WeeklyEconomicData() {
 
             <Box sx={{ p: 2 }}>
               <Typography fontSize={16} paragraph>
-                Trong tuần này, thị trường sẽ tập trung vào các dữ liệu về thị trường lao động
-                và lạm phát tại Mỹ. Đây sẽ là căn cứ để Fed có thể đưa ra chính sách tiền tệ rõ
-                ràng hơn trong năm 2026.
+                Trong tuần này, thị trường sẽ tập trung vào các dữ liệu về thị trường lao động và
+                lạm phát tại Mỹ. Đây sẽ là căn cứ để Fed có thể đưa ra chính sách tiền tệ rõ ràng
+                hơn trong năm 2026.
               </Typography>
 
               <Typography fontSize={16} paragraph>
-                Sau cuộc họp vào tháng 12 vừa qua, các thành viên FOMC vẫn duy trì quan điểm
-                thận trọng. Nếu dữ liệu lao động và lạm phát tiếp tục cho thấy kinh tế ổn định,
-                Fed có thể trì hoãn hỗ trợ cho đà tăng của kim loại quý. Ngược lại, đà tăng USD có 
-                thể giới hạn đà tăng của vàng do chi phí vốn neo cao.
+                Sau cuộc họp vào tháng 12 vừa qua, các thành viên FOMC vẫn duy trì quan điểm thận
+                trọng. Nếu dữ liệu lao động và lạm phát tiếp tục cho thấy kinh tế ổn định, Fed có
+                thể trì hoãn hỗ trợ cho đà tăng của kim loại quý. Ngược lại, đà tăng USD có thể giới
+                hạn đà tăng của vàng do chi phí vốn neo cao.
               </Typography>
 
               <Typography fontSize={16}>
-                Bên cạnh đó, việc quyết định lãi suất của BoE và BoJ có thể tác động đến sức mạnh 
+                Bên cạnh đó, việc quyết định lãi suất của BoE và BoJ có thể tác động đến sức mạnh
                 của đô la trong tuần này.
               </Typography>
             </Box>

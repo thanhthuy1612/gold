@@ -1,11 +1,8 @@
-import { NEWS } from 'src/_mock/news';
-import { Container, Typography, Stack } from '@mui/material';
+import { Stack, Container, Typography } from '@mui/material';
 
-export default async function NewsDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+import { NEWS } from 'src/_mock/news';
+
+export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const news = NEWS.find((n) => n.slug === slug);
 

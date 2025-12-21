@@ -4,7 +4,7 @@ export default function TechnicalAnalysis() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box sx={{ display: 'flex', alignItems: 'stretch',  }}>
+      <Box sx={{ display: 'flex', alignItems: 'stretch' }}>
         {/* BOX TRÁI */}
         <Box
           sx={{
@@ -16,8 +16,7 @@ export default function TechnicalAnalysis() {
             py: 1.5,
             lineHeight: 1.2,
             pr: 8,
-            clipPath:
-              'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
+            clipPath: 'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
         >
           Phân tích kỹ thuật
@@ -29,8 +28,7 @@ export default function TechnicalAnalysis() {
             marginLeft: '-24px',
             width: 48,
             bgcolor: '#8c0302',
-            clipPath:
-              'polygon(32px 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
+            clipPath: 'polygon(32px 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
         />
       </Box>
@@ -60,9 +58,7 @@ export default function TechnicalAnalysis() {
                   height: '100%',
                 }}
               >
-                <Typography fontWeight={700}>
-                  Vùng hỗ trợ
-                </Typography>
+                <Typography fontWeight={700}>Vùng hỗ trợ</Typography>
                 <Typography variant="body2">4100 USD/ounce</Typography>
                 <Typography variant="body2">4250 USD/ounce</Typography>
               </Box>
@@ -77,9 +73,7 @@ export default function TechnicalAnalysis() {
                   height: '100%',
                 }}
               >
-                <Typography fontWeight={700}>
-                  Vùng kháng cự
-                </Typography>
+                <Typography fontWeight={700}>Vùng kháng cự</Typography>
                 <Typography variant="body2">4500 USD/ounce</Typography>
                 <Typography variant="body2">4400 USD/ounce</Typography>
               </Box>
@@ -96,16 +90,16 @@ export default function TechnicalAnalysis() {
                   Nhận định:
                 </Typography>
                 <Typography variant="body2" fontSize={16} lineHeight={1.6}>
-                  Giá vàng Comex bật tăng trong tuần qua, vượt qua vùng kháng cự <strong>4300 USD</strong>
+                  Giá vàng Comex bật tăng trong tuần qua, vượt qua vùng kháng cự{' '}
+                  <strong>4300 USD</strong>
                   và hướng đến thử thách vùng kháng cự <strong>4400 USD</strong>. Nếu USD tiếp tục
-                  suy yếu trong tuần này, cùng với dữ liệu lạm phát của Mỹ gia tăng,
-                  giá vàng có thể thử thách vùng đỉnh được xác lập trong tháng 10 vừa
-                  qua.
+                  suy yếu trong tuần này, cùng với dữ liệu lạm phát của Mỹ gia tăng, giá vàng có thể
+                  thử thách vùng đỉnh được xác lập trong tháng 10 vừa qua.
                   <br />
                   <br />
-                  Để đà tăng được bền vững, giá vàng cần xác nhận lực mua tại các vùng
-                  hỗ trợ. Giá có thể biến động mạnh trong tuần này trước các dữ liệu
-                  lao động và lạm phát của Mỹ.
+                  Để đà tăng được bền vững, giá vàng cần xác nhận lực mua tại các vùng hỗ trợ. Giá
+                  có thể biến động mạnh trong tuần này trước các dữ liệu lao động và lạm phát của
+                  Mỹ.
                 </Typography>
               </Box>
             </Grid>

@@ -1,18 +1,11 @@
 'use client';
 
-import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { NEWS, IMAGES } from 'src/_mock/news';
+import { useMemo, useState } from 'react';
 
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Stack,
-  Button,
-  Pagination,
-} from '@mui/material';
+import { Box, Grid, Stack, Button, Container, Typography, Pagination } from '@mui/material';
+
+import { NEWS, IMAGES } from 'src/_mock/news';
 
 const PER_PAGE = 4;
 const GAP = 24;
@@ -39,9 +32,7 @@ export default function NewsListPage() {
   return (
     <Container sx={{ py: 6 }}>
       {/* Breadcrumb */}
-      <Typography sx={{ mb: 3, color: '#8c0302', fontWeight: 600 }}>
-        Trang chủ / Tin tức
-      </Typography>
+      <Typography sx={{ mb: 3, color: '#8c0302', fontWeight: 600 }}>Trang chủ / Tin tức</Typography>
 
       <Grid container spacing={3}>
         {/*Left: */}
@@ -87,11 +78,7 @@ export default function NewsListPage() {
                 {/* content */}
                 <Grid size={6}>
                   <Stack spacing={1}>
-                    <Typography
-                      variant="subtitle1"
-                      fontWeight={700}
-                      sx={{ color: '#8c0302' }}
-                    >
+                    <Typography variant="subtitle1" fontWeight={700} sx={{ color: '#8c0302' }}>
                       {item.title}
                     </Typography>
 
