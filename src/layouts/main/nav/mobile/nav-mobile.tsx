@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
+import { Typography } from '@mui/material';
 
-import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
 
 import { Logo } from 'src/components/logo';
@@ -61,9 +60,23 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
             pb: 2,
             pl: 2.5,
             display: 'flex',
+            background: '#901011',
+            alignItems: 'center',
+            gap: 3,
           }}
         >
           <Logo />
+          <Typography
+            variant="h6"
+            sx={{
+              color: 'transparent',
+              backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+            }}
+          >
+            TÀI LỘC
+          </Typography>
         </Box>
       )}
 
@@ -95,7 +108,7 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
         >
           <SignInButton fullWidth />
 
-          <Button
+          {/* <Button
             fullWidth
             variant="contained"
             rel="noopener"
@@ -103,7 +116,7 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
             href={paths.minimalStore}
           >
             Purchase
-          </Button>
+          </Button> */}
         </Box>
       )}
     </Drawer>
