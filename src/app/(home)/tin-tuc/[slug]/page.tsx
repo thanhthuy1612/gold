@@ -1,41 +1,35 @@
-'use client';
-import { useParams } from 'next/navigation';
 import { NEWS } from 'src/_mock/news';
+import { Container, Typography, Box } from '@mui/material';
 
-import { Box, Container, Typography, Stack } from '@mui/material';
+export default function NewsDetailPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const news = NEWS.find((n) => n.slug === params.slug);
 
-export default function NewsDetailPage() {
-  const { slug } = useParams();
-  const news = NEWS.find((n) => n.slug === slug);
-
-  if (!news) {
+  if (!news || !news.content) {
     return (
       <Container sx={{ py: 6 }}>
-        <Typography>Không tìm thấy bài viết</Typography>
+        <Typography>Không có nội dung chi tiết</Typography>
       </Container>
     );
   }
 
   return (
-    <Container sx={{ py: 6 }}>
-      <Typography sx={{ mb: 2, color: '#8c0302' }}>
-        Trang chủ / Tin tức / {news.title}
-      </Typography>
+    <>
+      <Container sx={{ py: 6 }}>
+        {/* Breadcrumb */}
+        <Typography sx={{ mb: 3, color: '#8c0302', fontWeight: 600 }}>
+          Trang chủ / Tin tức / {news.title}
+        </Typography>
 
-      <Stack spacing={3}>
-        <Typography variant="h4" fontWeight={700}>
+        <Typography variant="h4" fontWeight={700} sx={{ mb: 4 }}>
           {news.title}
         </Typography>
 
-        <Box
-          component="img"
-          src={news.image}
-          alt={news.title}
-          sx={{ width: '100%', borderRadius: 2 }}
-        />
-
-        <Typography>{news.content}</Typography>
-      </Stack>
-    </Container>
+        {news.content}
+      </Container>
+    </>
   );
 }

@@ -1,3 +1,11 @@
+import { ReactNode } from 'react';
+import { Box, Grid, Typography } from '@mui/material';
+import GoldMarketSummary from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/GoldMarketSummary';
+import WeeklyEvents from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/WeeklyEvents';
+import WeeklyEconomicData from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/WeeklyEconomicData';
+import GoldInventoryData from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/GoldInventoryData';
+import TechnicalAnalysis from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/TechnicalAnalysis';
+import DisclaimerSection from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/DisclaimerSection';
 export type ImagesItem = {
     id: number;
     image: string;
@@ -9,7 +17,7 @@ export type NewsItem = {
     desc: string;
     image: string;
     slug: string;
-    content: string;
+    content: ReactNode;
 };
 
 export const IMAGES: ImagesItem[] = [
@@ -46,7 +54,16 @@ export const NEWS: NewsItem[] = [
         desc: 'Cập nhật xu hướng giá vàng mới nhất...',
         image: '/assets/background/news-2.jpg',
         slug: 'phan-tich-thi-truong-vang',
-        content: 'Nội dung phân tích thị trường vàng chi tiết...',
+        content: (
+            <>
+                <GoldMarketSummary />
+                <WeeklyEvents />
+                <WeeklyEconomicData />
+                <GoldInventoryData />
+                <TechnicalAnalysis />
+                <DisclaimerSection />
+            </>
+        ),
     },
     {
         id: 3,
