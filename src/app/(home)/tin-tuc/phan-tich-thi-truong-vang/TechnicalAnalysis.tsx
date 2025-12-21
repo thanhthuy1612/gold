@@ -4,10 +4,11 @@ export default function TechnicalAnalysis() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box sx={{ display: 'flex', alignItems: 'stretch', mb: 3 }}>
+      <Box sx={{ display: 'flex', alignItems: 'stretch',  }}>
         {/* BOX TRÁI */}
         <Box
           sx={{
+            width: 450,
             bgcolor: '#8c0302',
             color: '#f5d36a',
             fontWeight: 700,
@@ -55,11 +56,11 @@ export default function TechnicalAnalysis() {
               <Box
                 sx={{
                   border: '1px solid #ccc',
-                  p: 2,
+                  p: 1,
                   height: '100%',
                 }}
               >
-                <Typography fontWeight={700} mb={1}>
+                <Typography fontWeight={700}>
                   Vùng hỗ trợ
                 </Typography>
                 <Typography variant="body2">4100 USD/ounce</Typography>
@@ -72,11 +73,11 @@ export default function TechnicalAnalysis() {
               <Box
                 sx={{
                   border: '1px solid #ccc',
-                  p: 2,
+                  p: 1,
                   height: '100%',
                 }}
               >
-                <Typography fontWeight={700} mb={1}>
+                <Typography fontWeight={700}>
                   Vùng kháng cự
                 </Typography>
                 <Typography variant="body2">4500 USD/ounce</Typography>
@@ -91,12 +92,12 @@ export default function TechnicalAnalysis() {
                   p: 2,
                 }}
               >
-                <Typography fontWeight={700} mb={1}>
+                <Typography fontWeight={700} fontSize={16} mb={1}>
                   Nhận định:
                 </Typography>
-                <Typography variant="body2" lineHeight={1.6}>
-                  Giá vàng Comex bật tăng trong tuần qua, vượt qua vùng kháng cự 4300
-                  USD và hướng đến thử thách vùng kháng cự 4400 USD. Nếu USD tiếp tục
+                <Typography variant="body2" fontSize={16} lineHeight={1.6}>
+                  Giá vàng Comex bật tăng trong tuần qua, vượt qua vùng kháng cự <strong>4300 USD</strong>
+                  và hướng đến thử thách vùng kháng cự <strong>4400 USD</strong>. Nếu USD tiếp tục
                   suy yếu trong tuần này, cùng với dữ liệu lạm phát của Mỹ gia tăng,
                   giá vàng có thể thử thách vùng đỉnh được xác lập trong tháng 10 vừa
                   qua.

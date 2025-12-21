@@ -4,9 +4,10 @@ import { Container, Typography, Stack } from '@mui/material';
 export default async function NewsDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const news = NEWS.find((n) => n.slug === params.slug);
+  const { slug } = await params;
+  const news = NEWS.find((n) => n.slug === slug);
 
   if (!news || !news.content) {
     return (

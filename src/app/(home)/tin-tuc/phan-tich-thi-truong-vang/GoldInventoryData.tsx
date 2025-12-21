@@ -4,17 +4,18 @@ export default function GoldInventoryData() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box sx={{ display: 'flex', alignItems: 'stretch', mb: 3 }}>
+      <Box sx={{ display: 'flex', alignItems: 'stretch', }}>
         {/* BOX TRÁI */}
         <Box
           sx={{
+            width: 450,
             bgcolor: '#8c0302',
             color: '#f5d36a',
             fontWeight: 700,
             px: 4,
             py: 1.5,
             lineHeight: 1.2,
-            pr: 8,
+            pr: 12,
             clipPath:
               'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
@@ -45,6 +46,7 @@ export default function GoldInventoryData() {
               py: 1,
               fontWeight: 700,
               mb: 2,
+              border: '1px solid #000',
               borderRadius: 1,
               textAlign: 'center',
             }}
@@ -55,7 +57,7 @@ export default function GoldInventoryData() {
           <Box
             component="img"
             src="/assets/background/chart-shanghai.jpg"
-            sx={{ width: '100%'}}
+            sx={{ width: '100%' }}
           />
         </Grid>
 
@@ -68,6 +70,7 @@ export default function GoldInventoryData() {
               py: 1,
               fontWeight: 700,
               mb: 2,
+              border: '1px solid #000',
               borderRadius: 1,
               textAlign: 'center',
             }}
@@ -78,7 +81,7 @@ export default function GoldInventoryData() {
           <Box
             component="img"
             src="/assets/background/chart-comex.jpg"
-            sx={{ width: '100%'}}
+            sx={{ width: '100%' }}
           />
         </Grid>
       </Grid>
@@ -87,10 +90,10 @@ export default function GoldInventoryData() {
       <Typography paragraph sx={{ mt: 3 }}>
         Tồn kho vàng tại Thượng Hải tăng nhẹ trong tuần vừa qua. Ngược lại, tồn kho
         vàng tại Comex có tuần giảm thứ 10 liên tiếp, mức giảm mạnh hơn 10 tấn
-        so với tuần trước đó. Thị trường vàng tiếp tục cho thấy nhu cầu mạnh mẽ của vàng 
-        vật chất khi khối lượng tồn kho của LBMA gia tăng trong tháng 11. Điều này cho 
-        thấy dòng dịch chuyển vàng đang diễn ra với dòng chảy từ Mỹ về châu Âu và các 
-        quốc gia châu Á. Nếu tồn kho tại Comex tiếp tục giảm, đây có thể là tín hiệu 
+        so với tuần trước đó. Thị trường vàng tiếp tục cho thấy nhu cầu mạnh mẽ của vàng
+        vật chất khi khối lượng tồn kho của LBMA gia tăng trong tháng 11. Điều này cho
+        thấy dòng dịch chuyển vàng đang diễn ra với dòng chảy từ Mỹ về châu Âu và các
+        quốc gia châu Á. Nếu tồn kho tại Comex tiếp tục giảm, đây có thể là tín hiệu
         tích cực cho giá vàng khi nhu cầu vẫn ổn định bất chấp đà tăng của giá.
       </Typography>
     </>

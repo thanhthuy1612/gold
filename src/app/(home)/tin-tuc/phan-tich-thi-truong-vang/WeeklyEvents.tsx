@@ -4,10 +4,11 @@ export default function WeeklyEvents() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box sx={{ display: 'flex', alignItems: 'stretch', mb: 3 }}>
+      <Box sx={{ display: 'flex', alignItems: 'stretch',  }}>
         {/* BOX TRÁI */}
         <Box
           sx={{
+            width: 450,
             bgcolor: '#8c0302',
             color: '#f5d36a',
             fontWeight: 700,
@@ -40,7 +41,7 @@ export default function WeeklyEvents() {
           <Typography fontWeight={700} gutterBottom>
             Thị trường vàng trong nước
           </Typography>
-          <Typography>- Giá vàng SJC trong nước tăng lên mức 153 triệu/lượng cùng đà tăng của vàng thế giới.</Typography>
+          <Typography>- Giá vàng SJC trong nước tăng lên mức <strong>153 triệu/lượng</strong> cùng đà tăng của vàng thế giới.</Typography>
           <Typography>- Giá vàng đang có tín hiệu thách thức lại vùng đỉnh cũ đã xác lập trong tháng 10 vừa qua.</Typography>
 
           <Typography fontWeight={700} mt={2} gutterBottom>
@@ -53,7 +54,7 @@ export default function WeeklyEvents() {
             Điểm tin thương mại
           </Typography>
           <Typography>- Căng thẳng thương mại hạ nhiệt, công nghiệp bán dẫn khởi sắc - Báo Mới.</Typography>
-          <Typography>- Quỹ ETF vàng SPDR tăng khối lượng dự trữ lên hơn 2,53 tấn so với tuần trước - Phú Quý tổng hợp.</Typography>
+          <Typography>- Quỹ ETF vàng SPDR tăng khối lượng dự trữ lên hơn <strong>2,53 tấn</strong> so với tuần trước - Phú Quý tổng hợp.</Typography>
 
         </Grid>
 
