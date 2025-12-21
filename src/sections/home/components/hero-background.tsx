@@ -19,6 +19,8 @@ export function HeroBackground({ sx, ...other }: BoxProps) {
 
   const strokeCount = 12;
 
+  if (!mdUp) return <></>;
+
   return (
     <MotionContainer>
       <Box

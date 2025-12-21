@@ -1,40 +1,37 @@
+'use client';
+
 // ----------------------------------------------------------------------
 
-import { Card, Stack, Container, Typography } from '@mui/material';
+import { Card, Stack, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 import { fDate, fTime } from 'src/utils/format-time';
 
 import { Logo } from 'src/components/logo';
-import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 import { Price } from '../price';
 
 export function PriceView() {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <Container sx={{ textAlign: 'center', my: 5 }}>
-      <CustomBreadcrumbs
-        links={[{ name: 'Trang chủ', href: '/' }, { name: 'Giá vàng - bạc' }]}
-        sx={{ mb: { xs: 3, md: 5 } }}
-        slotProps={{
-          breadcrumbs: {
-            color: '#821818',
-          },
-          action: {},
-          heading: {},
-          moreLink: {},
-        }}
-      />
+    <>
       <Stack
         display="flex"
-        gap={2}
-        flexDirection="row"
-        justifyContent="space-between"
+        gap={1}
+        flexDirection="column"
+        justifyContent="center"
         flexWrap="wrap"
         alignItems="center"
-        sx={{ background: '#821818', px: 5, py: 2 }}
+        sx={(t) => ({
+          background: '#821818',
+          px: 5,
+          py: 2,
+          mb: 5,
+          [theme.breakpoints.up('md')]: { justifyContent: 'space-between', flexDirection: 'row' },
+        })}
       >
-        <Stack display="flex" gap={2} flexDirection="row" alignItems="center">
-          <Logo sx={{ width: 60, height: 'auto' }} />
+        <Stack display="flex" gap={1} flexDirection="row" alignItems="center">
+          <Logo sx={{ width: isSmallScreen ? 30 : 60, height: 'auto' }} />
           <Typography
             sx={{
               color: 'transparent',
@@ -42,7 +39,7 @@ export function PriceView() {
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
             }}
-            variant="h3"
+            variant={isSmallScreen ? 'h5' : 'h4'}
           >
             TÀI LỘC
           </Typography>
@@ -54,14 +51,13 @@ export function PriceView() {
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
           }}
-          variant="h2"
+          variant={isSmallScreen ? 'h3' : 'h2'}
         >
           GIÁ BẠC PHÚ QUÝ
         </Typography>
         <Card
           sx={{
-            py: 1,
-            px: 2,
+            p: 1,
             position: 'relative',
             boxSizing: 'border-box',
             background: '#821818',
@@ -76,7 +72,7 @@ export function PriceView() {
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
             }}
-            variant="subtitle2"
+            variant="caption"
           >
             GIÁ NIÊM YẾT ĐƯỢC CẬP NHẬT LẦN CUỐI
           </Typography>
@@ -93,14 +89,22 @@ export function PriceView() {
               backgroundClip: 'text',
             }}
           >
-            <Typography variant="h4">{fTime(new Date())}</Typography>
+            <Typography variant="h5">{fTime(new Date())}</Typography>
             <Logo sx={{ width: 22, height: 'auto' }} />
-            <Typography variant="h4">{fDate(new Date(), 'DD/MM/YYYY')}</Typography>
+            <Typography variant="h5">{fDate(new Date(), 'DD/MM/YYYY')}</Typography>
           </Stack>
         </Card>
       </Stack>
       <Price />
-      <img src="/assets/background/price.jpg" width="100%" height="auto" />
-    </Container>
+      <Stack display="flex" alignItems="start" sx={{ mt: 2 }}>
+        <Typography variant="subtitle2" color="#821818">
+          Đơn giá đã bao gồm thuế GTGT
+        </Typography>
+        <Typography variant="subtitle2" color="#821818">
+          Quý khách lưu ý: Giá trên chỉ mang tính chất tham khảo, vui lòng liên hệ trực tiếp để có
+          giá mua bán chính xác nhất.
+        </Typography>
+      </Stack>
+    </>
   );
 }

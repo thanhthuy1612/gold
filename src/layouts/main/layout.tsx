@@ -59,7 +59,11 @@ export function MainLayout({
   const navData = slotProps?.nav?.data ?? mainNavData;
 
   const isHomePage = navData.reduce((res, item) => {
-    if (pathname === `${item.path}/` || pathname === '/' || pathname === paths.auth.jwt.signIn)
+    if (
+      pathname === `${item.path}/` ||
+      pathname === '/' ||
+      pathname === `${paths.auth.jwt.signIn}/`
+    )
       return true;
     return res;
   }, false);

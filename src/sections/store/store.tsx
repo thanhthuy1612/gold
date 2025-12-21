@@ -1,6 +1,8 @@
+'use client';
+
 // ----------------------------------------------------------------------
 
-import { Card, Grid, Stack, Typography } from '@mui/material';
+import { Card, Grid, Stack, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 const listFooter = [
   {
@@ -20,10 +22,12 @@ const listFooter = [
   },
 ];
 export function Store() {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const renderHeader = () => (
-    <Stack display="flex" flexDirection="row" gap={2} alignItems="center">
+    <Stack display="flex" flexDirection="row" gap={2} flexWrap="wrap" alignItems="center">
       <img src="/logo/logo.png" width="100" height="auto" />
-      <Typography variant="h2" sx={{ color: '#991113' }}>
+      <Typography variant={isSmallScreen ? 'h3' : 'h2'} sx={{ color: '#991113' }}>
         THƯƠNG HIỆU TÀI LỘC
       </Typography>
     </Stack>

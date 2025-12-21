@@ -9,9 +9,10 @@ import {
   TableBody,
   TableCell,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 
-import { fCurrency } from 'src/utils/format-number';
+import { fNumber } from 'src/utils/format-number';
 
 import { Iconify } from 'src/components/iconify';
 import { TableHeadCustom } from 'src/components/table';
@@ -40,6 +41,7 @@ type Props = {
 // ----------------------------------------------------------------------
 
 export function TablePrice({ icon, title, href, data }: Props) {
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
   return (
     <Stack sx={{ my: 8 }}>
       <Stack
@@ -48,6 +50,7 @@ export function TablePrice({ icon, title, href, data }: Props) {
         flexWrap="wrap"
         alignItems="center"
         justifyContent="space-between"
+        gap={2}
       >
         <Stack display="flex" flexDirection="row" gap={1}>
           {icon}
@@ -59,10 +62,14 @@ export function TablePrice({ icon, title, href, data }: Props) {
           href={href}
           size="small"
           variant="contained"
-          sx={{ background: 'white !important', color: 'black', borderRadius: 0 }}
+          endIcon={<Iconify icon="eva:diagonal-arrow-right-up-fill" />}
+          sx={{
+            background: 'white !important',
+            color: 'black',
+            borderRadius: 0,
+          }}
         >
-          XEM CHI TIẾT
-          <Iconify sx={{ ml: 1 }} icon="eva:diagonal-arrow-right-up-fill" />
+          {isSmallScreen ? 'CHI TIẾT' : 'XEM CHI TIẾT'}
         </Button>
       </Stack>
       <Table sx={{ background: 'white', mt: 2 }}>
@@ -80,12 +87,12 @@ export function TablePrice({ icon, title, href, data }: Props) {
               <TableCell sx={{ border: '2px solid white' }}>{row.name}</TableCell>
               <TableCell align="right" sx={{ border: '2px solid white' }}>
                 <Box display="flex" flexDirection="column" alignItems="flex-start">
-                  <Typography variant="body1" color="success">
-                    {fCurrency(row.buy)}
+                  <Typography variant="subtitle2" color="success">
+                    {fNumber(row.buy)}
                   </Typography>
                   <Typography
                     sx={{ display: 'flex', alignItems: 'center' }}
-                    variant="body2"
+                    variant="caption"
                     color={row.compareBuy > 0 ? 'success' : 'error'}
                   >
                     <Iconify
@@ -95,18 +102,18 @@ export function TablePrice({ icon, title, href, data }: Props) {
                           : 'solar:double-alt-arrow-down-bold-duotone'
                       }
                     />
-                    {fCurrency(row.compareBuy)}
+                    {fNumber(row.compareBuy)}
                   </Typography>
                 </Box>
               </TableCell>
               <TableCell align="right" sx={{ border: '2px solid white' }}>
                 <Box display="flex" flexDirection="column" alignItems="flex-start">
-                  <Typography variant="body1" color="success">
-                    {fCurrency(row.sell)}
+                  <Typography variant="subtitle2" color="success">
+                    {fNumber(row.sell)}
                   </Typography>
                   <Typography
                     sx={{ display: 'flex', alignItems: 'center' }}
-                    variant="body2"
+                    variant="caption"
                     color={row.compareSell > 0 ? 'success' : 'error'}
                   >
                     <Iconify
@@ -116,7 +123,7 @@ export function TablePrice({ icon, title, href, data }: Props) {
                           : 'solar:double-alt-arrow-down-bold-duotone'
                       }
                     />
-                    {fCurrency(row.compareSell)}
+                    {fNumber(row.compareSell)}
                   </Typography>
                 </Box>
               </TableCell>

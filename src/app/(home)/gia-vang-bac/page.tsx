@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 
+import { Container } from '@mui/material';
+
+import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
+
 import { PriceView } from 'src/sections/price/view';
 
 // ----------------------------------------------------------------------
@@ -10,5 +14,21 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <PriceView />;
+  return (
+    <Container sx={{ textAlign: 'center', my: 5 }}>
+      <CustomBreadcrumbs
+        links={[{ name: 'Trang chủ', href: '/' }, { name: 'Giá vàng - bạc' }]}
+        sx={{ mb: { xs: 3, md: 5 } }}
+        slotProps={{
+          breadcrumbs: {
+            color: '#821818',
+          },
+          action: {},
+          heading: {},
+          moreLink: {},
+        }}
+      />
+      <PriceView />
+    </Container>
+  );
 }
