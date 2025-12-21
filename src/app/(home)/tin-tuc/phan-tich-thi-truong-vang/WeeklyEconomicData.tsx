@@ -2,107 +2,239 @@ import { Box, Grid, Typography } from '@mui/material';
 
 const thStyle = {
   p: 1,
-  border: '1px solid #ccc',
-  fontWeight: 600,
+  border: '1px solid #999',
+  fontWeight: 700,
+  fontSize: 14,
+  textAlign: 'center',
 };
 
 const tdStyle = {
   p: 1,
-  border: '1px solid #ccc',
+  border: '1px solid #999',
+  fontSize: 14,
 };
 
 export default function WeeklyEconomicData() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box
-        sx={{
-          bgcolor: '#8c0302',
-          color: '#fff',
-          px: 3,
-          py: 1,
-          fontWeight: 700,
-          width: 'fit-content',
-          position: 'relative',
-          mb: 3,
-          mt: 5,
-        }}
-      >
-        Dữ liệu kinh tế tuần này
+      <Box sx={{ display: 'flex', alignItems: 'stretch', mb: 3 }}>
+        {/* BOX TRÁI */}
         <Box
           sx={{
-            position: 'absolute',
-            right: -24,
-            top: 0,
-            width: 0,
-            height: 0,
-            borderTop: '24px solid transparent',
-            borderBottom: '24px solid transparent',
-            borderLeft: '24px solid #8c0302',
+            bgcolor: '#8c0302',
+            color: '#f5d36a',
+            fontWeight: 700,
+            px: 4,
+            py: 1.5,
+            lineHeight: 1.2,
+            pr: 12,
+            clipPath:
+              'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
+          }}
+        >
+          Dữ liệu kinh tế tuần này
+        </Box>
+
+        {/* BOX PHẢI */}
+        <Box
+          sx={{
+            marginLeft: '-24px',
+            width: 48,
+            bgcolor: '#8c0302',
+            clipPath:
+              'polygon(32px 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
         />
       </Box>
 
-      <Grid container spacing={3}>
-        {/* TABLE */}
-        <Grid size={{ xs: 12, md: 7 }}>
-          <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse' }}>
-            <Box component="thead">
-              <Box component="tr" sx={{ bgcolor: '#00f5f5' }}>
-                <Box component="th" sx={thStyle}>Ngày</Box>
-                <Box component="th" sx={thStyle}>Sự kiện</Box>
-                <Box component="th" sx={thStyle}>Quốc gia</Box>
-                <Box component="th" sx={thStyle}>Dữ liệu kỳ trước</Box>
-              </Box>
+      <Grid container spacing={2}>
+        {/* ===== TABLE ===== */}
+        <Grid size={{ xs: 12, md: 7}}>
+          <Box
+            sx={{
+              border: '1px solid #999',
+            }}
+          >
+            {/* Table title */}
+            <Box
+              sx={{
+                bgcolor: '#eee',
+                textAlign: 'center',
+                fontWeight: 700,
+                py: 1,
+                borderBottom: '1px solid #999',
+              }}
+            >
+              Dữ liệu kinh tế
             </Box>
 
-            <Box component="tbody">
-              <Box component="tr">
-                <Box component="td" sx={tdStyle}>16/12/2025</Box>
-                <Box component="td" sx={tdStyle}>Thu nhập trung bình theo giờ (MoM)</Box>
-                <Box component="td" sx={tdStyle}>Mỹ</Box>
-                <Box component="td" sx={tdStyle}>0,2%</Box>
+            <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse' }}>
+              <Box component="thead">
+                <Box component="tr" sx={{ bgcolor: '#19f0f0' }}>
+                  <Box component="th" sx={thStyle}>Ngày</Box>
+                  <Box component="th" sx={thStyle}>Sự kiện</Box>
+                  <Box component="th" sx={thStyle}>Quốc gia</Box>
+                  <Box component="th" sx={thStyle}>Dữ liệu kỳ trước</Box>
+                </Box>
               </Box>
-              <Box component="tr">
-                <Box component="td" sx={tdStyle}>16/12/2025</Box>
-                <Box component="td" sx={tdStyle}>Bảng lương phi nông nghiệp</Box>
-                <Box component="td" sx={tdStyle}>Mỹ</Box>
-                <Box component="td" sx={tdStyle}>119 nghìn việc làm</Box>
-              </Box>
-              <Box component="tr">
-                <Box component="td" sx={tdStyle}>17/12/2025</Box>
-                <Box component="td" sx={tdStyle}>CPI tháng 11 (YoY)</Box>
-                <Box component="td" sx={tdStyle}>Anh</Box>
-                <Box component="td" sx={tdStyle}>3,6%</Box>
+
+              <Box component="tbody">
+                {/* ===== 16/12/2025 (rowSpan = 3) ===== */}
+                <Box component="tr">
+                  <Box component="td" sx={tdStyle} rowSpan={3}>
+                    16/12/2025
+                  </Box>
+                  <Box component="td" sx={tdStyle}>
+                    Thu nhập trung bình theo giờ tháng 11 (MoM)
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="center">
+                    Mỹ
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="right">
+                    0,2%
+                  </Box>
+                </Box>
+
+                <Box component="tr">
+                  <Box component="td" sx={tdStyle}>
+                    Bảng lương phi nông nghiệp tháng 11
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="center">
+                    Mỹ
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="right" fontWeight={700}>
+                    119 nghìn việc làm
+                  </Box>
+                </Box>
+
+                <Box component="tr">
+                  <Box component="td" sx={tdStyle}>
+                    Tỷ lệ thất nghiệp tháng 11
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="center">
+                    Mỹ
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="right" fontWeight={700}>
+                    4,4%
+                  </Box>
+                </Box>
+
+                {/* ===== 17/12/2025 (rowSpan = 1) ===== */}
+                <Box component="tr">
+                  <Box component="td" sx={tdStyle}>
+                    17/12/2025
+                  </Box>
+                  <Box component="td" sx={tdStyle}>
+                    CPI tháng 11 (YoY)
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="center">
+                    Anh
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="right" fontWeight={700}>
+                    3,6%
+                  </Box>
+                </Box>
+
+                {/* ===== 18/12/2025 (rowSpan = 2) ===== */}
+                <Box component="tr">
+                  <Box component="td" sx={tdStyle} rowSpan={2}>
+                    18/12/2025
+                  </Box>
+                  <Box component="td" sx={tdStyle}>
+                    Quyết định lãi suất
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="center">
+                    Anh
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="right" fontWeight={700}>
+                    4,00%
+                  </Box>
+                </Box>
+
+                <Box component="tr">
+                  <Box component="td" sx={tdStyle}>
+                    CPI tháng 11 (YoY)
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="center">
+                    Mỹ
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="right">
+                    3,0%
+                  </Box>
+                </Box>
+
+                {/* ===== 19/12/2025 (rowSpan = 2) ===== */}
+                <Box component="tr">
+                  <Box component="td" sx={tdStyle} rowSpan={2}>
+                    19/12/2025
+                  </Box>
+                  <Box component="td" sx={tdStyle}>
+                    Quyết định lãi suất
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="center">
+                    Nhật Bản
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="right" fontWeight={700}>
+                    0,50%
+                  </Box>
+                </Box>
+
+                <Box component="tr">
+                  <Box component="td" sx={tdStyle}>
+                    PCE tháng 10 (YoY)
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="center">
+                    Mỹ
+                  </Box>
+                  <Box component="td" sx={tdStyle} align="right">
+                    2,8%
+                  </Box>
+                </Box>
               </Box>
             </Box>
           </Box>
         </Grid>
 
-        {/* IMPACT */}
+        {/* ===== IMPACT ===== */}
         <Grid size={{ xs: 12, md: 5 }}>
           <Box
             sx={{
-              border: '1px solid #ccc',
-              p: 2,
               height: '100%',
             }}
           >
-            <Typography fontWeight={700} gutterBottom>
+            <Box
+              sx={{
+                bgcolor: '#eee',
+                border: '1px solid #999',
+                textAlign: 'center',
+                fontWeight: 700,
+                px: 2,
+                py: 1,
+              }}
+            >
               Ảnh hưởng đến giá vàng
-            </Typography>
+            </Box>
 
-            <Typography paragraph>
-              Trong tuần này, thị trường sẽ tập trung vào các dữ liệu về thị trường lao động
-              và lạm phát Mỹ. Đây sẽ là căn cứ để Fed có thể đưa ra chính sách tiền tệ rõ
-              ràng hơn trong năm 2026.
-            </Typography>
+            <Box sx={{ p: 2 }}>
+              <Typography fontSize={14} paragraph>
+                Trong tuần này, thị trường sẽ tập trung vào các dữ liệu về thị trường lao động
+                và lạm phát tại Mỹ. Đây sẽ là căn cứ để Fed có thể đưa ra chính sách tiền tệ rõ
+                ràng hơn trong năm 2026.
+              </Typography>
 
-            <Typography paragraph>
-              Sau cuộc họp vào tháng 12 vừa qua, các chuyên gia của FOMC vẫn được
-              đánh giá là thận trọng. Tuy nhiên, việc duy trì lãi suất trong dài hạn
-              sẽ là yếu tố hỗ trợ giá vàng.
-            </Typography>
+              <Typography fontSize={14} paragraph>
+                Sau cuộc họp vào tháng 12 vừa qua, các thành viên FOMC vẫn duy trì quan điểm
+                thận trọng. Nếu dữ liệu lao động và lạm phát tiếp tục cho thấy kinh tế ổn định,
+                Fed có thể trì hoãn hỗ trợ cho đà tăng của kim loại quý. Ngược lại, đà tăng USD có 
+                thể giới hạn đà tăng của vàng do chi phí vốn neo cao.
+              </Typography>
+
+              <Typography fontSize={14}>
+                Bên cạnh đó, việc quyết định lãi suất của BoE và BoJ có thể tác động đến sức mạnh 
+                của đô la trong tuần này.
+              </Typography>
+            </Box>
           </Box>
         </Grid>
       </Grid>

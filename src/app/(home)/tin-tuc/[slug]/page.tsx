@@ -1,7 +1,7 @@
 import { NEWS } from 'src/_mock/news';
-import { Container, Typography, Box } from '@mui/material';
+import { Container, Typography, Stack } from '@mui/material';
 
-export default function NewsDetailPage({
+export default async function NewsDetailPage({
   params,
 }: {
   params: { slug: string };
@@ -10,26 +10,28 @@ export default function NewsDetailPage({
 
   if (!news || !news.content) {
     return (
-      <Container sx={{ py: 6 }}>
+      <Container sx={{ py: 8 }}>
         <Typography>Không có nội dung chi tiết</Typography>
       </Container>
     );
   }
 
   return (
-    <>
-      <Container sx={{ py: 6 }}>
+    <Container sx={{ py: 8 }}>
+      <Stack spacing={4}>
         {/* Breadcrumb */}
-        <Typography sx={{ mb: 3, color: '#8c0302', fontWeight: 600 }}>
+        <Typography sx={{ color: '#8c0302', fontWeight: 600 }}>
           Trang chủ / Tin tức / {news.title}
         </Typography>
 
-        <Typography variant="h4" fontWeight={700} sx={{ mb: 4 }}>
+        {/* Title */}
+        <Typography variant="h4" fontWeight={700}>
           {news.title}
         </Typography>
 
-        {news.content}
-      </Container>
-    </>
+        {/* Content */}
+        <Stack spacing={4}>{news.content}</Stack>
+      </Stack>
+    </Container>
   );
 }

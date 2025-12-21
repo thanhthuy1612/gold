@@ -4,30 +4,32 @@ export default function GoldInventoryData() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box
-        sx={{
-          bgcolor: '#8c0302',
-          color: '#fff',
-          px: 3,
-          py: 1,
-          fontWeight: 700,
-          width: 'fit-content',
-          position: 'relative',
-          mb: 3,
-          mt: 5,
-        }}
-      >
-        Dữ liệu về vàng
+      <Box sx={{ display: 'flex', alignItems: 'stretch', mb: 3 }}>
+        {/* BOX TRÁI */}
         <Box
           sx={{
-            position: 'absolute',
-            right: -24,
-            top: 0,
-            width: 0,
-            height: 0,
-            borderTop: '24px solid transparent',
-            borderBottom: '24px solid transparent',
-            borderLeft: '24px solid #8c0302',
+            bgcolor: '#8c0302',
+            color: '#f5d36a',
+            fontWeight: 700,
+            px: 4,
+            py: 1.5,
+            lineHeight: 1.2,
+            pr: 8,
+            clipPath:
+              'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
+          }}
+        >
+          Dữ liệu về vàng
+        </Box>
+
+        {/* BOX PHẢI */}
+        <Box
+          sx={{
+            marginLeft: '-24px',
+            width: 48,
+            bgcolor: '#8c0302',
+            clipPath:
+              'polygon(32px 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
         />
       </Box>
@@ -41,7 +43,7 @@ export default function GoldInventoryData() {
               bgcolor: '#eee',
               px: 2,
               py: 1,
-              fontWeight: 600,
+              fontWeight: 700,
               mb: 2,
               borderRadius: 1,
               textAlign: 'center',
@@ -64,7 +66,7 @@ export default function GoldInventoryData() {
               bgcolor: '#eee',
               px: 2,
               py: 1,
-              fontWeight: 600,
+              fontWeight: 700,
               mb: 2,
               borderRadius: 1,
               textAlign: 'center',
@@ -84,14 +86,12 @@ export default function GoldInventoryData() {
       {/* ===== DESCRIPTION ===== */}
       <Typography paragraph sx={{ mt: 3 }}>
         Tồn kho vàng tại Thượng Hải tăng nhẹ trong tuần vừa qua. Ngược lại, tồn kho
-        vàng tại Comex có xu hướng giảm thứ 10 liên tiếp, mức giảm mạnh hơn 10 tấn
-        so với tuần trước đó.
-      </Typography>
-
-      <Typography paragraph>
-        Thị trường vàng tiếp tục cho thấy nhu cầu mạnh mẽ của vàng vật chất khối
-        lượng lớn, đồng thời áp lực chốt lời từ các quỹ đầu cơ dịch chuyển dòng tiền
-        sang các tài sản khác.
+        vàng tại Comex có tuần giảm thứ 10 liên tiếp, mức giảm mạnh hơn 10 tấn
+        so với tuần trước đó. Thị trường vàng tiếp tục cho thấy nhu cầu mạnh mẽ của vàng 
+        vật chất khi khối lượng tồn kho của LBMA gia tăng trong tháng 11. Điều này cho 
+        thấy dòng dịch chuyển vàng đang diễn ra với dòng chảy từ Mỹ về châu Âu và các 
+        quốc gia châu Á. Nếu tồn kho tại Comex tiếp tục giảm, đây có thể là tín hiệu 
+        tích cực cho giá vàng khi nhu cầu vẫn ổn định bất chấp đà tăng của giá.
       </Typography>
     </>
   );

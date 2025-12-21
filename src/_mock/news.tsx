@@ -23,7 +23,7 @@ export type NewsItem = {
 export const IMAGES: ImagesItem[] = [
     {
         id: 1,
-        image: '/assets/background/info1.png',
+        image: '/assets/background/info2.jpg',
     },
     {
         id: 2,
@@ -35,7 +35,7 @@ export const IMAGES: ImagesItem[] = [
     },
     {
         id: 4,
-        image: '/assets/background/info1.png',
+        image: '/assets/background/info2.jpg',
     },
 ]
 
