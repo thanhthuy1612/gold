@@ -97,12 +97,13 @@ export default function NewsListPage() {
 
                     <Typography
                       variant="body2"
-                      color="text.secondary"
+                      fontWeight={700}
                       sx={{
                         display: '-webkit-box',
-                        WebkitLineClamp: 2,
+                        WebkitLineClamp: 5,
                         WebkitBoxOrient: 'vertical',
                         overflow: 'hidden',
+                        whiteSpace: 'pre-line',
                       }}
                     >
                       {item.desc}
@@ -115,10 +116,10 @@ export default function NewsListPage() {
                       sx={{
                         alignSelf: 'flex-start',
                         bgcolor: '#8c0302',
-                        color: '#f0b05c',
-                        px: 2,
-                        py: 0.5,
-                        borderRadius: '16px',
+                        color: '#f5d36a',
+                        px: 2.5,
+                        py: 1,
+                        borderRadius: '4px',
                         fontSize: 12,
                         textTransform: 'none',
                         '&:hover': {

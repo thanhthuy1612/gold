@@ -4,30 +4,33 @@ export default function TechnicalAnalysis() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box
-        sx={{
-          bgcolor: '#8c0302',
-          color: '#fff',
-          px: 3,
-          py: 1,
-          fontWeight: 700,
-          width: 'fit-content',
-          position: 'relative',
-          mb: 3,
-          mt: 5,
-        }}
-      >
-        Phân tích kỹ thuật
+      <Box sx={{ display: 'flex', alignItems: 'stretch',  }}>
+        {/* BOX TRÁI */}
         <Box
           sx={{
-            position: 'absolute',
-            right: -24,
-            top: 0,
-            width: 0,
-            height: 0,
-            borderTop: '24px solid transparent',
-            borderBottom: '24px solid transparent',
-            borderLeft: '24px solid #8c0302',
+            width: 450,
+            bgcolor: '#8c0302',
+            color: '#f5d36a',
+            fontWeight: 700,
+            px: 4,
+            py: 1.5,
+            lineHeight: 1.2,
+            pr: 8,
+            clipPath:
+              'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
+          }}
+        >
+          Phân tích kỹ thuật
+        </Box>
+
+        {/* BOX PHẢI */}
+        <Box
+          sx={{
+            marginLeft: '-24px',
+            width: 48,
+            bgcolor: '#8c0302',
+            clipPath:
+              'polygon(32px 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
         />
       </Box>
@@ -38,47 +41,75 @@ export default function TechnicalAnalysis() {
           <Box
             component="img"
             src="/assets/background/chart-technical-large.jpg"
-            sx={{ width: '100%', border: '1px solid #ddd' }}
+            sx={{
+              width: '100%',
+              border: '1px solid #ddd',
+            }}
           />
         </Grid>
 
         {/* SIDE INFO */}
         <Grid size={{ xs: 12, md: 4 }}>
-          <Box
-            sx={{
-              border: '1px solid #ccc',
-              p: 2,
-              mb: 2,
-            }}
-          >
-            <Typography fontWeight={700}>Vùng hỗ trợ</Typography>
-            <Typography>4100 USD/Ounce</Typography>
-            <Typography>4250 USD/Ounce</Typography>
-          </Box>
+          <Grid container>
+            {/* SUPPORT */}
+            <Grid size={{ xs: 6 }}>
+              <Box
+                sx={{
+                  border: '1px solid #ccc',
+                  p: 1,
+                  height: '100%',
+                }}
+              >
+                <Typography fontWeight={700}>
+                  Vùng hỗ trợ
+                </Typography>
+                <Typography variant="body2">4100 USD/ounce</Typography>
+                <Typography variant="body2">4250 USD/ounce</Typography>
+              </Box>
+            </Grid>
 
-          <Box
-            sx={{
-              border: '1px solid #ccc',
-              p: 2,
-              mb: 2,
-            }}
-          >
-            <Typography fontWeight={700}>Vùng kháng cự</Typography>
-            <Typography>4400 USD/Ounce</Typography>
-            <Typography>4500 USD/Ounce</Typography>
-          </Box>
+            {/* RESISTANCE */}
+            <Grid size={{ xs: 6 }}>
+              <Box
+                sx={{
+                  border: '1px solid #ccc',
+                  p: 1,
+                  height: '100%',
+                }}
+              >
+                <Typography fontWeight={700}>
+                  Vùng kháng cự
+                </Typography>
+                <Typography variant="body2">4500 USD/ounce</Typography>
+                <Typography variant="body2">4400 USD/ounce</Typography>
+              </Box>
+            </Grid>
 
-          <Box sx={{ border: '1px solid #ccc', p: 2 }}>
-            <Typography fontWeight={700} gutterBottom>
-              Nhận định
-            </Typography>
-            <Typography variant="body2">
-              Giá vàng Comex bật tăng trong tuần qua, vượt qua vùng kháng cự 4300
-              USD và hướng đến thử thách vùng kháng cự 4400 USD. Nếu USD tiếp tục
-              suy yếu, giá vàng nhiều khả năng sẽ tiếp tục duy trì xu hướng tăng
-              trung hạn.
-            </Typography>
-          </Box>
+            {/* ANALYSIS */}
+            <Grid size={{ xs: 12 }}>
+              <Box
+                sx={{
+                  p: 2,
+                }}
+              >
+                <Typography fontWeight={700} fontSize={16} mb={1}>
+                  Nhận định:
+                </Typography>
+                <Typography variant="body2" fontSize={16} lineHeight={1.6}>
+                  Giá vàng Comex bật tăng trong tuần qua, vượt qua vùng kháng cự <strong>4300 USD</strong>
+                  và hướng đến thử thách vùng kháng cự <strong>4400 USD</strong>. Nếu USD tiếp tục
+                  suy yếu trong tuần này, cùng với dữ liệu lạm phát của Mỹ gia tăng,
+                  giá vàng có thể thử thách vùng đỉnh được xác lập trong tháng 10 vừa
+                  qua.
+                  <br />
+                  <br />
+                  Để đà tăng được bền vững, giá vàng cần xác nhận lực mua tại các vùng
+                  hỗ trợ. Giá có thể biến động mạnh trong tuần này trước các dữ liệu
+                  lao động và lạm phát của Mỹ.
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </>

@@ -23,7 +23,7 @@ export type NewsItem = {
 export const IMAGES: ImagesItem[] = [
     {
         id: 1,
-        image: '/assets/background/info1.png',
+        image: '/assets/background/info2.jpg',
     },
     {
         id: 2,
@@ -35,7 +35,7 @@ export const IMAGES: ImagesItem[] = [
     },
     {
         id: 4,
-        image: '/assets/background/info1.png',
+        image: '/assets/background/info2.jpg',
     },
 ]
 
@@ -43,7 +43,7 @@ export const NEWS: NewsItem[] = [
     {
         id: 1,
         title: 'Tết rinh lộc vàng - Đón ngàn điều may',
-        desc: 'Ưu đãi hấp dẫn dịp tết với nhiều phần quà...',
+        desc: 'Tết sinh lộc vàng mang niềm tin khởi sắc, mở ra năm mới an khang thịnh vượng. Gia đình sum vầy, kinh doanh hanh thông, tài lộc gõ cửa, đón ngàn điều may, gửi trọn hy vọng ...',
         image: '/assets/background/news-1.jpg',
         slug: 'tet-rinh-loc-vang',
         content: 'Nội dung chi tiết bài viết Tết rinh lộc vàng...',
@@ -51,7 +51,7 @@ export const NEWS: NewsItem[] = [
     {
         id: 2,
         title: 'Phân tích thị trường vàng',
-        desc: 'Cập nhật xu hướng giá vàng mới nhất...',
+        desc: 'Giá vàng SJC tại Phú Quý bật tăng trong tuần qua, giao dịch trên mức 153 triệu/lượng mua vào, 156 triệu/lượng bán ra.\n Giá vàng trong nước tăng nhẹ cùng với giá ...',
         image: '/assets/background/news-2.jpg',
         slug: 'phan-tich-thi-truong-vang',
         content: (
@@ -68,15 +68,15 @@ export const NEWS: NewsItem[] = [
     {
         id: 3,
         title: 'Phân tích thị trường bạc',
-        desc: 'Nhận định biến động giá bạc...',
+        desc: 'Giá vàng Bạc thỏi Phú Quý kết thúc tuần vừa qua quanh mức: 62,1 triệu đồng/ Kg - Mua vào và 64 triều đồng/ Kg - Bán ra. Tăng 6.05% so với tuần trước đó. Giá bạc trong nước tiếp ...',
         image: '/assets/background/news-3.jpg',
         slug: 'phan-tich-thi-truong-bac',
         content: 'Nội dung phân tích thị trường bạc...',
     },
     {
         id: 4,
-        title: 'Giá bạc thế giới vượt mức 63,49$',
-        desc: 'Giá bạc Phú Quý trong tuần vừa qua ...',
+        title: 'Giá Bạc thế giới vượt mức 63,49$',
+        desc: 'Giá vàng SJC tại Phú Quý bật tăng trong tuần qua, giao dịch trên mức 153 triệu/lượng mua vào, 156 triệu/lượng bán ra.\n Giá vàng trong nước tăng nhẹ cùng với giá ...',
         image: '/assets/background/news-4.jpg',
         slug: 'gia-bac-vuot-muc',
         content: 'Nội dung chi tiết bài viết Tết rinh lộc vàng...',

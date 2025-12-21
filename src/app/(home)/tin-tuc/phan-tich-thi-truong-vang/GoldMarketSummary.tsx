@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from '@mui/material';
 const thStyle = {
   p: 1,
   border: '1px solid #ccc',
-  fontWeight: 600,
+  fontWeight: 700,
 };
 
 const tdStyle = {
@@ -15,29 +15,33 @@ export default function GoldMarketSummary() {
   return (
     <>
       {/* ===== HEADER ===== */}
-      <Box
-        sx={{
-          bgcolor: '#8c0302',
-          color: '#fff',
-          px: 3,
-          py: 1,
-          fontWeight: 700,
-          width: 'fit-content',
-          position: 'relative',
-          mb: 3,
-        }}
-      >
-        Tổng hợp thị trường vàng tuần qua
+      <Box sx={{ display: 'flex', alignItems: 'stretch', }}>
+        {/* BOX TRÁI */}
         <Box
           sx={{
-            position: 'absolute',
-            right: -24,
-            top: 0,
-            width: 0,
-            height: 0,
-            borderTop: '24px solid transparent',
-            borderBottom: '24px solid transparent',
-            borderLeft: '24px solid #8c0302',
+            width: 450,
+            bgcolor: '#8c0302',
+            color: '#f5d36a',
+            fontWeight: 700,
+            px: 4,
+            py: 1.5,
+            lineHeight: 1.2,
+            pr: 12,
+            clipPath:
+              'polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
+          }}
+        >
+          Tổng hợp thị trường vàng tuần qua
+        </Box>
+
+        {/* BOX PHẢI */}
+        <Box
+          sx={{
+            marginLeft: '-24px',
+            width: 48,
+            bgcolor: '#8c0302',
+            clipPath:
+              'polygon(32px 0, 100% 0, calc(100% - 32px) 100%, 0 100%)',
           }}
         />
       </Box>
@@ -51,8 +55,9 @@ export default function GoldMarketSummary() {
               bgcolor: '#eee',
               px: 2,
               py: 1,
-              fontWeight: 600,
+              fontWeight: 700,
               mb: 2,
+              border: '1px solid #000',
               borderRadius: 1,
               textAlign: 'center',
             }}
@@ -62,7 +67,7 @@ export default function GoldMarketSummary() {
 
           <Typography paragraph>
             Giá vàng SJC tại Phú Quý bật tăng trong tuần vừa qua, giao dịch
-            trên mức 153 triệu/lượng - mua vào, 156 triệu/lượng - bán ra.
+            trên mức <strong>153 triệu/lượng</strong> - mua vào, <strong>156 triệu/lượng</strong> - bán ra.
           </Typography>
 
           <Typography paragraph>
@@ -77,8 +82,9 @@ export default function GoldMarketSummary() {
               bgcolor: '#eee',
               px: 2,
               py: 1,
-              fontWeight: 600,
+              fontWeight: 700,
               mb: 2,
+              border: '1px solid #000',
               borderRadius: 1,
               textAlign: 'center',
             }}
@@ -98,7 +104,7 @@ export default function GoldMarketSummary() {
       </Grid>
 
       {/* ===== TABLE ===== */}
-      <Typography variant="h6" fontWeight={700} sx={{ mt: 4, mb: 1 }}>
+      <Typography variant="h6" fontWeight={700} sx={{ mt: 4, }}>
         Giá vàng quốc tế
       </Typography>
 
