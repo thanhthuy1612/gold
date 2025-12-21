@@ -6,6 +6,7 @@ import { BackToTopButton } from 'src/components/animate/back-to-top-button';
 import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll-progress';
 
 import { HomeInfo } from '../home-info';
+import { HomeHero } from '../home-hero';
 import { HomeBestSeller } from '../home-best-seller';
 import { HomeListProduct } from '../home-list-product';
 import { HomePriceContainer } from '../home-price-container';
@@ -34,6 +35,7 @@ export function HomeView() {
         <HomeListProduct />
         <HomeReferencePrice />
         <HomeInfo />
+        <HomeHero />
       </Stack>
     </>
   );

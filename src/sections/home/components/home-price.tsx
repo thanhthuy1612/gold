@@ -151,7 +151,7 @@ export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell 
           </Typography>
           <Typography
             sx={{ display: 'flex', alignItems: 'center' }}
-            variant="body2"
+            variant="caption"
             color={isIncreaseBuy > 0 ? 'success' : 'error'}
           >
             <Iconify
@@ -173,7 +173,7 @@ export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell 
           </Typography>
           <Typography
             sx={{ display: 'flex', alignItems: 'center' }}
-            variant="body2"
+            variant="caption"
             color={isIncreaseSell > 0 ? 'success' : 'error'}
           >
             <Iconify

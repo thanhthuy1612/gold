@@ -86,9 +86,6 @@ export function HomeInfo({ sx, ...other }: BoxProps) {
               Xem tất cả
             </Button>
           </m.div>
-          <m.div variants={varFade('inUp')}>
-            <img src="/assets/background/info4.jpg" width="100%" height="auto" />
-          </m.div>
         </Container>
       </MotionViewport>
     </Box>

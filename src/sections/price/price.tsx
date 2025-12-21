@@ -2,7 +2,16 @@
 
 // ----------------------------------------------------------------------
 
-import { Table, Stack, TableRow, TableBody, TableCell, Typography } from '@mui/material';
+import {
+  Table,
+  Stack,
+  TableRow,
+  useTheme,
+  TableBody,
+  TableCell,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 
 import { fNumber } from 'src/utils/format-number';
 
@@ -10,10 +19,16 @@ import { Logo } from 'src/components/logo';
 import { TableHeadCustom, type TableHeadCellProps } from 'src/components/table';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
-  { id: 'name', label: 'SẢN PHẨM' },
-  { id: 'cost', label: 'ĐƠN VỊ' },
-  { id: 'buy', label: 'GIÁ MUA VÀO', align: 'right' },
-  { id: 'sell', label: 'GIÁ BÁN RA', align: 'right' },
+  { id: 'name', label: 'SẢN PHẨM', align: 'center', width: '35%' },
+  { id: 'cost', label: 'ĐƠN VỊ', width: '15%' },
+  { id: 'buy', label: 'GIÁ MUA VÀO', align: 'right', width: '25%' },
+  { id: 'sell', label: 'GIÁ BÁN RA', align: 'right', width: '25%' },
+];
+
+const TABLE_HEAD_MIN: TableHeadCellProps[] = [
+  { id: 'name', label: 'SẢN PHẨM', align: 'center', width: '35%' },
+  { id: 'buy', label: 'GIÁ MUA VÀO', align: 'right', width: '25%' },
+  { id: 'sell', label: 'GIÁ BÁN RA', align: 'right', width: '25%' },
 ];
 
 export type TableData = {
@@ -79,44 +94,74 @@ const TABLE_DATA: PriceData[] = [
 ];
 
 export function Price() {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const renderTable = (item: TableData) => (
-    <TableRow
-      key={item.name}
-      sx={{ width: '100%', '&:not(:last-child)': { borderBottom: '8px #971519 solid' } }}
-    >
-      <TableCell sx={{ border: '2px solid white' }}>{item.name}</TableCell>
-      <TableCell sx={{ border: '2px solid white' }}>{item.cost}</TableCell>
-      <TableCell align="right" sx={{ border: '2px solid white' }}>
-        <Typography variant="body1" color="success">
-          {fNumber(item.buy)}
-        </Typography>
+    <TableRow key={item.name}>
+      <TableCell sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
+        <Typography variant="h5">{item.name}</Typography>
+        {item?.description && <Typography variant="caption">({item.description})</Typography>}
       </TableCell>
-      <TableCell align="right" sx={{ border: '2px solid white' }}>
-        <Typography variant="body1" color="success">
-          {item?.sell ? fNumber(item.sell) : <Logo />}
-        </Typography>
+      {!isSmallScreen && (
+        <TableCell sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
+          {item.cost}
+        </TableCell>
+      )}
+      <TableCell align="right" sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
+        <Typography variant="subtitle1">{fNumber(item.buy)}</Typography>
+        {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
+      </TableCell>
+      <TableCell align="right" sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
+        <Typography variant="subtitle1">{item?.sell ? fNumber(item.sell) : <Logo />}</Typography>
+        {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
       </TableCell>
     </TableRow>
   );
 
   const renderHeader = (title: string) => (
-    <Stack sx={{ background: '#821818', width: '100%' }}>
-      <Typography>{title}</Typography>
-      <></>
+    <Stack
+      display="flex"
+      flexDirection="row"
+      justifyContent="space-between"
+      alignItems="center"
+      sx={{ background: '#821818', width: '100%', p: 2 }}
+    >
+      <Typography
+        sx={{
+          color: 'transparent',
+          backgroundImage: 'linear-gradient(180deg, #f6ca68, #c18b49)',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+        }}
+        variant={isSmallScreen ? 'h6' : 'h4'}
+      >
+        {title}
+      </Typography>
+      <Logo />
     </Stack>
   );
   return (
     <>
-      {TABLE_DATA.map((row, index) => (
+      {TABLE_DATA.map((row) => (
         <Stack key={row.title}>
           {renderHeader(row.title)}
-          <Table sx={{ background: 'white' }}>
+          <Table sx={{ background: '#821818' }}>
             <TableHeadCustom
-              sx={{ background: '#821818', color: 'white', border: '2px solid white' }}
-              headCells={TABLE_HEAD}
+              sx={{
+                color: 'transparent',
+                backgroundImage: 'linear-gradient(180deg, #f6ca68, #c18b49)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                border: '1px #c18b49 solid !important',
+                fontSize: isSmallScreen ? 12 : 20,
+                fontWeight: 'bold',
+              }}
+              headCells={isSmallScreen ? TABLE_HEAD_MIN : TABLE_HEAD}
             />
 
-            <TableBody>{row.data.map((item) => renderTable(item))}</TableBody>
+            <TableBody sx={{ background: 'white', color: '#821818' }}>
+              {row.data.map((item) => renderTable(item))}
+            </TableBody>
           </Table>
         </Stack>
       ))}

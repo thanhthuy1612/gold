@@ -203,6 +203,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
           <Stack
             sx={{
               py: 1,
+              px: 3,
               borderTop: '2px solid #901011',
               borderBottom: '2px solid #901011',
             }}
@@ -216,21 +217,16 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                 component={m.div}
                 animate={{ y: [30, 10, 30] }}
                 transition={{ duration: 4, repeat: Infinity }}
-                sx={{
+                sx={(theme) => ({
                   zIndex: 9,
-                  width: 120,
+                  width: 40,
+                  display: 'none',
+                  [theme.breakpoints.up('md')]: { width: 120, mr: -7, display: 'block' },
                   aspectRatio: '1/1',
                   position: 'relative',
-                }}
+                })}
               >
-                <img
-                  style={{
-                    marginRight: '-90px',
-                  }}
-                  src="/assets/background/ddt2.png"
-                  width="80"
-                  height="auto"
-                />
+                <img src="/assets/background/ddt2.png" width="80" height="auto" />
               </Box>
             </m.div>
             <m.div variants={varFade('inUp')}>
