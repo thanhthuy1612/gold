@@ -52,8 +52,20 @@ export function ProductItem({ product, detailsHref, sx }: Props) {
   );
 
   const renderImage = () => (
-    <Box sx={{ position: 'relative', p: 1 }}>
-      <Image alt={name} src={img} ratio="1/1" sx={{ borderRadius: 1.5, opacity: 0.95 }} />
+    <Box
+      sx={{
+        position: 'relative',
+        p: 1,
+        overflow: 'hidden',
+        height: '300px',
+        backgroundColor: 'white',
+      }}
+    >
+      <Image
+        alt={name}
+        src={img}
+        sx={{ width: 'auto', height: '100%', objectFit: 'cover', borderRadius: 1.5 }}
+      />
     </Box>
   );
 

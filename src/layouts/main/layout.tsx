@@ -8,11 +8,10 @@ import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import { Stack, Typography } from '@mui/material';
 
+import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
 
 import { Logo } from 'src/components/logo';
-import { Label } from 'src/components/label';
-import { Iconify } from 'src/components/iconify';
 
 import { NavMobile } from './nav/mobile';
 import { NavDesktop } from './nav/desktop';
@@ -57,9 +56,13 @@ export function MainLayout({
 
   const { value: open, onFalse: onClose, onTrue: onOpen } = useBoolean();
 
-  const isHomePage = pathname === '/';
-
   const navData = slotProps?.nav?.data ?? mainNavData;
+
+  const isHomePage = navData.reduce((res, item) => {
+    if (pathname === `${item.path}/` || pathname === '/' || pathname === paths.auth.jwt.signIn)
+      return true;
+    return res;
+  }, false);
 
   const renderHeader = () => {
     const headerSlots: HeaderSectionProps['slots'] = {
@@ -84,6 +87,20 @@ export function MainLayout({
 
           {/** @slot Logo */}
           <Stack display="flex" gap={2} flexDirection="row" alignItems="center">
+            <Typography
+              sx={(theme) => ({
+                display: 'none',
+                [theme.breakpoints.up('lg')]: { display: 'flex', alignItems: 'center', gap: 1 },
+                color: 'transparent',
+                backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+              })}
+              variant="subtitle2"
+            >
+              <img src="/assets/background/map.png" width="auto" height="16" />
+              187 Xã Đàn - Hà Nội
+            </Typography>
             <Logo />
             <Typography
               variant="h6"
@@ -99,17 +116,6 @@ export function MainLayout({
             >
               TÀI LỘC
             </Typography>
-            <Label
-              sx={(theme) => ({
-                display: 'none',
-                [theme.breakpoints.up('lg')]: { display: 'flex' },
-                background: 'linear-gradient(90deg,#901011 0%, #cf2a2a 50%, #901011 100%)',
-                color: '#f0b05c',
-              })}
-            >
-              <Iconify icon="solar:point-on-map-bold" />
-              187 Xã Đàn - Hà Nội
-            </Label>
           </Stack>
         </>
       ),

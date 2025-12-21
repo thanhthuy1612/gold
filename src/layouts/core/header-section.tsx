@@ -12,6 +12,8 @@ import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import { Box, Stack, useTheme, Typography, useMediaQuery } from '@mui/material';
 
+import { Logo } from 'src/components/logo';
+
 import { layoutClasses } from './classes';
 
 // ----------------------------------------------------------------------
@@ -66,7 +68,7 @@ export function HeaderSection({
           display="flex"
           alignItems="center"
           justifyContent="center"
-          columnGap={3}
+          columnGap={1}
           flexWrap="wrap"
         >
           <Typography
@@ -75,6 +77,7 @@ export function HeaderSection({
           >
             Chào mừng đến với TÀI LỘC
           </Typography>
+          <Logo />
           <Typography
             sx={{ width: 'fit-content', textAlign: 'center' }}
             variant={isSmallScreen ? 'body2' : 'h6'}

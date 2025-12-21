@@ -35,10 +35,11 @@ type Props = {
   title: string;
   href: string;
   data: TableData[];
+  icon: any;
 };
 // ----------------------------------------------------------------------
 
-export function TablePrice({ title, href, data }: Props) {
+export function TablePrice({ icon, title, href, data }: Props) {
   return (
     <Stack sx={{ my: 8 }}>
       <Stack
@@ -48,13 +49,17 @@ export function TablePrice({ title, href, data }: Props) {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Typography variant="h5" sx={{ color: 'white', display: 'flex' }}>
-          {title}
-        </Typography>
+        <Stack display="flex" flexDirection="row" gap={1}>
+          {icon}
+          <Typography variant="h5" sx={{ color: 'white', display: 'flex' }}>
+            {title}
+          </Typography>
+        </Stack>
         <Button
           href={href}
+          size="small"
           variant="contained"
-          sx={{ background: 'white !important', color: 'black' }}
+          sx={{ background: 'white !important', color: 'black', borderRadius: 0 }}
         >
           XEM CHI TIẾT
           <Iconify sx={{ ml: 1 }} icon="eva:diagonal-arrow-right-up-fill" />

@@ -68,13 +68,13 @@ export function HomeInfo({ sx, ...other }: BoxProps) {
           <m.div variants={varFade('inUp')}>
             <Grid container spacing={2}>
               <Grid size={4}>
-                <img src="/assets/background/info1.png" width="100%" height="auto" />
+                <img src="/assets/background/info1.jpg" width="100%" height="auto" />
               </Grid>
               <Grid size={4}>
-                <img src="/assets/background/info2.png" width="100%" height="auto" />
+                <img src="/assets/background/info2.jpg" width="100%" height="auto" />
               </Grid>
               <Grid size={4}>
-                <img src="/assets/background/info3.png" width="100%" height="auto" />
+                <img src="/assets/background/info3.jpg" width="100%" height="auto" />
               </Grid>
             </Grid>
             <Button
@@ -87,7 +87,7 @@ export function HomeInfo({ sx, ...other }: BoxProps) {
             </Button>
           </m.div>
           <m.div variants={varFade('inUp')}>
-            <img src="/assets/background/info4.png" width="100%" height="auto" />
+            <img src="/assets/background/info4.jpg" width="100%" height="auto" />
           </m.div>
         </Container>
       </MotionViewport>

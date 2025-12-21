@@ -207,7 +207,7 @@ export function Logo({
       ]}
       {...other}
     >
-      {isSingle ? singleLogo : fullLogo}
+      <img src="/assets/background/logo.png" width="100%" height="auto" />
     </LogoRoot>
   );
 }

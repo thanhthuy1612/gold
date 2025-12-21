@@ -34,7 +34,7 @@ export function ProductList({ data }: Props) {
         sx={{
           color: '#98130f',
           backgroundColor: '#fff',
-          border: '1px solid #98130f',
+          border: '2px solid #98130f',
           '&:hover': {
             backgroundColor: '#98130f',
             color: '#fff',
