@@ -12,7 +12,12 @@ const GAP = 24;
 const BIG_H = 400;
 const ROW_H = (BIG_H - GAP) / 2;
 
-export default function NewsListPage() {
+// export const metadata: Metadata = {
+//   title: `Tin tức | ${CONFIG.appName}`,
+//   description: 'Vàng bạc Tài Lộc',
+// };
+
+export default function Page() {
   const [page, setPage] = useState(1);
 
   const pageCount = Math.ceil(NEWS.length / PER_PAGE);
