@@ -63,7 +63,8 @@ export function MainLayout({
     if (
       pathname === `${item.path}/` ||
       pathname === '/' ||
-      pathname === `${paths.auth.jwt.signIn}/`
+      pathname === `${paths.auth.jwt.signIn}/` ||
+      pathname.includes(paths.news)
     )
       return true;
     return res;

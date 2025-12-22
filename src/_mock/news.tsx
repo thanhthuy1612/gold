@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 
-import WeeklyEvents from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/WeeklyEvents';
-import GoldMarketSummary from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/GoldMarketSummary';
-import GoldInventoryData from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/GoldInventoryData';
-import TechnicalAnalysis from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/TechnicalAnalysis';
-import DisclaimerSection from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/DisclaimerSection';
-import WeeklyEconomicData from 'src/app/(home)/tin-tuc/phan-tich-thi-truong-vang/WeeklyEconomicData';
+import WeeklyEvents from 'src/sections/phan-tich-thi-truong-vang/WeeklyEvents';
+import GoldMarketSummary from 'src/sections/phan-tich-thi-truong-vang/GoldMarketSummary';
+import GoldInventoryData from 'src/sections/phan-tich-thi-truong-vang/GoldInventoryData';
+import TechnicalAnalysis from 'src/sections/phan-tich-thi-truong-vang/TechnicalAnalysis';
+import DisclaimerSection from 'src/sections/phan-tich-thi-truong-vang/DisclaimerSection';
+import WeeklyEconomicData from 'src/sections/phan-tich-thi-truong-vang/WeeklyEconomicData';
 
 export type ImagesItem = {
   id: number;
