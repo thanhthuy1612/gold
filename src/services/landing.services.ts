@@ -13,7 +13,7 @@ export const homeService = {
 
     return data;
   },
-  async price(body: PriceType) {
+  async price(body?: PriceType) {
     const { data } = await axiosInstance.post(endpoints.landing.price, body);
 
     return data;

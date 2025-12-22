@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import type { CardProps } from '@mui/material/Card';
 import type { ChartOptions } from 'src/components/chart';
 
@@ -9,12 +10,14 @@ import CardHeader from '@mui/material/CardHeader';
 
 import { fShortenNumber } from 'src/utils/format-number';
 
-import { Chart, useChart, ChartSelect, ChartLegends } from 'src/components/chart';
+import { Chart, useChart, ChartLegends } from 'src/components/chart';
 
 // ----------------------------------------------------------------------
 
 type Props = CardProps & {
-  title?: string;
+  title?: React.ReactNode;
+  action?: JSX.Element;
+
   subheader?: string;
   chart: {
     colors?: string[];
@@ -30,7 +33,7 @@ type Props = CardProps & {
   };
 };
 
-export function HomeChart({ title, subheader, chart, sx, ...other }: Props) {
+export function HomeChart({ action, title, subheader, chart, sx, ...other }: Props) {
   const theme = useTheme();
 
   const [selectedSeries, setSelectedSeries] = useState('Tháng 11');
@@ -51,18 +54,7 @@ export function HomeChart({ title, subheader, chart, sx, ...other }: Props) {
 
   return (
     <Card sx={sx} {...other}>
-      <CardHeader
-        title={title}
-        subheader={subheader}
-        action={
-          <ChartSelect
-            options={chart.series.map((item) => item.name)}
-            value={selectedSeries}
-            onChange={handleChangeSeries}
-          />
-        }
-        sx={{ mb: 3 }}
-      />
+      <CardHeader title={title} subheader={subheader} action={action} sx={{ mb: 3 }} />
 
       <ChartLegends
         colors={chartOptions?.colors}

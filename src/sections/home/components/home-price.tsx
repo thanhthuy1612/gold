@@ -1,16 +1,94 @@
+'use client';
+
 import type { Theme, SxProps, BoxProps } from '@mui/material';
+import type { PriceType, PriceData, PriceResult } from 'src/types/landing';
 
-import { Box, Card, Grid, Button, Typography } from '@mui/material';
+import React from 'react';
 
+import { Box, Card, Grid, Stack, Button, Typography } from '@mui/material';
+
+import { fDate } from 'src/utils/format-time';
 import { fNumber } from 'src/utils/format-number';
 
+import { homeService } from 'src/services/landing.services';
+
 import { Iconify } from 'src/components/iconify';
+import { ChartSelect } from 'src/components/chart';
+
+import { ChartUnit, ProductType, ChartTimeRange } from 'src/types/landing';
 
 import { HomeChart } from './home-chart';
 
 // ----------------------------------------------------------------------
 
+const listTimeRange = ['1 ngày', '7 ngày', '1 tháng', '3 tháng', '1 năm'];
+const listUnitSilver = ['Lượng', 'Kg'];
+const listUnitGold = ['Chỉ', 'Lương'];
+
+const gold = ['Vàng SJC', 'Vàng Phú Quý'];
 export function HomePrice({ sx, ...other }: BoxProps) {
+  const [chart, setChart] = React.useState<PriceData>();
+  const [data, setData] = React.useState<PriceResult>();
+  const [type, setType] = React.useState<ProductType>(ProductType.SILVER);
+  const [goldType, setGoldType] = React.useState<string>('Vàng SJC');
+  const [timeRange, setTimeRange] = React.useState<ChartTimeRange>(ChartTimeRange._1D);
+  const [unit, setUnit] = React.useState<ChartUnit>(ChartUnit.BAC_LUONG);
+  const [loading, setLoading] = React.useState<boolean>(true);
+  const [loadingFirst, setLoadingFirst] = React.useState<boolean>(true);
+
+  React.useEffect(() => {
+    if (loadingFirst) {
+      fetchData({
+        type: null,
+        unit: null,
+        timeRange: null,
+      });
+    } else {
+      fetchData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadingFirst]);
+
+  const fetchData = async (body?: PriceType) => {
+    try {
+      setLoading(true);
+      const newBody = body ?? {
+        type,
+        unit,
+        timeRange,
+      };
+      const result = await homeService.price(newBody);
+      if (!loadingFirst) {
+        setChart(
+          newBody.type !== ProductType.GOLD
+            ? result.data?.silver
+            : goldType === 'Vàng SJC'
+              ? result.data?.sjcGold
+              : result.data?.pqGold
+        );
+      } else {
+        setData(result.data);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const renderTitle: () => React.ReactNode = () =>
+    type === ProductType.SILVER ? (
+      'Giá bạc Phú Quý'
+    ) : (
+      <ChartSelect
+        options={gold}
+        value={goldType}
+        onChange={(value) => {
+          setGoldType(value);
+        }}
+      />
+    );
+
   return (
     <Box sx={{ my: 5, ...sx }} {...other}>
       <Typography variant="h4" sx={{ color: '#8c0302', mb: 3 }}>
@@ -31,19 +109,39 @@ export function HomePrice({ sx, ...other }: BoxProps) {
             <Box>
               <CardPrice
                 title="Bạc thỏi Phú Quý 1kg"
-                buy={6210611}
-                sell={64026507}
-                isIncreaseBuy={-2426661}
-                isIncreaseSell={-2426661}
-                sx={{ p: 2, mb: 3, backgroundColor: '#ffffff' }}
+                buy={data?.silver?.infoList?.[1]?.priceOut ?? 0}
+                sell={data?.silver?.infoList?.[1]?.priceIn ?? 0}
+                isIncreaseBuy={
+                  (data?.silver?.infoList?.[1]?.priceOut ?? 0) -
+                  (data?.silver?.infoList?.[0]?.priceOut ?? 0)
+                }
+                isIncreaseSell={
+                  (data?.silver?.infoList?.[1]?.priceIn ?? 0) -
+                  (data?.silver?.infoList?.[0]?.priceIn ?? 0)
+                }
+                sx={{
+                  p: 2,
+                  mb: 3,
+                  backgroundColor: type === ProductType.SILVER ? '#ffffff' : '#cedcff',
+                }}
               />
               <CardPrice
                 title="Giá Vàng Phú Quý 1 lượng"
-                buy={6210611}
-                sell={64026507}
-                isIncreaseBuy={2426661}
-                isIncreaseSell={2426661}
-                sx={{ p: 2, mb: 3, backgroundColor: '#cedcff' }}
+                buy={data?.pqGold?.infoList?.[1]?.priceOut ?? 0}
+                sell={data?.pqGold?.infoList?.[1]?.priceIn ?? 0}
+                isIncreaseBuy={
+                  (data?.pqGold?.infoList?.[1]?.priceOut ?? 0) -
+                  (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)
+                }
+                isIncreaseSell={
+                  (data?.pqGold?.infoList?.[1]?.priceIn ?? 0) -
+                  (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)
+                }
+                sx={{
+                  p: 2,
+                  mb: 3,
+                  backgroundColor: type === ProductType.GOLD ? '#ffffff' : '#cedcff',
+                }}
               />
             </Box>
             <Grid container spacing={2}>
@@ -53,6 +151,15 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                   fullWidth
                   size="large"
                   sx={{ background: '#b4292d !important' }}
+                  onClick={async () => {
+                    setType(ProductType.SILVER);
+                    setUnit(ChartUnit.BAC_LUONG);
+                    await fetchData({
+                      type: ProductType.SILVER,
+                      unit: ChartUnit.BAC_LUONG,
+                      timeRange,
+                    });
+                  }}
                 >
                   XEM BẢNG GIÁ BẠC
                 </Button>
@@ -63,6 +170,15 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                   fullWidth
                   size="large"
                   sx={{ background: '#ff8c1c !important' }}
+                  onClick={async () => {
+                    setType(ProductType.GOLD);
+                    setUnit(ChartUnit.VANG_CHI);
+                    await fetchData({
+                      type: ProductType.GOLD,
+                      unit: ChartUnit.VANG_CHI,
+                      timeRange,
+                    });
+                  }}
                 >
                   XEM BẢNG GIÁ VÀNG
                 </Button>
@@ -72,47 +188,58 @@ export function HomePrice({ sx, ...other }: BoxProps) {
         </Grid>
         <Grid size={{ xs: 12, md: 6, lg: 7 }}>
           <HomeChart
-            title="Giá Bạc Phú Quý"
+            title={renderTitle()}
             subheader=""
+            action={
+              <Stack display="flex" flexDirection="row" gap={0.5}>
+                <ChartSelect
+                  options={listTimeRange}
+                  value={listTimeRange[timeRange - 1]}
+                  onChange={async (value) => {
+                    const target = listTimeRange.indexOf(value) + 1;
+                    setTimeRange(target);
+                    await fetchData({
+                      type,
+                      unit,
+                      timeRange: target,
+                    });
+                  }}
+                />
+                <ChartSelect
+                  options={type === ProductType.SILVER ? listUnitSilver : listUnitGold}
+                  value={
+                    type === ProductType.SILVER ? listUnitSilver[unit - 1] : listUnitGold[unit - 3]
+                  }
+                  onChange={async (value) => {
+                    const target =
+                      type === ProductType.SILVER
+                        ? listUnitSilver.indexOf(value) + 1
+                        : listUnitGold.indexOf(value) + 3;
+                    setUnit(target);
+                    await fetchData({
+                      type,
+                      unit: target,
+                      timeRange,
+                    });
+                  }}
+                />
+              </Stack>
+            }
             chart={{
-              categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec',
-              ],
+              categories: (chart?.infoList ?? []).map((item) =>
+                item?.lastUpdate ? fDate(item?.lastUpdate, 'DD/MM') : ''
+              ),
               series: [
                 {
-                  name: 'Tháng 11',
+                  name: listTimeRange[timeRange - 1],
                   data: [
                     {
                       name: 'Mua vào',
-                      data: [10, 41, 35, 51, 49, 62, 69, 91, 148, 35, 51, 49],
+                      data: (chart?.infoList ?? []).map((item) => item?.priceIn),
                     },
                     {
                       name: 'Bán ra',
-                      data: [10, 34, 13, 56, 77, 88, 99, 77, 45, 13, 56, 77],
-                    },
-                  ],
-                },
-                {
-                  name: 'Tháng 12',
-                  data: [
-                    {
-                      name: 'Mua vào',
-                      data: [51, 35, 41, 10, 91, 69, 62, 148, 91, 69, 62, 49],
-                    },
-                    {
-                      name: 'Bán ra',
-                      data: [56, 13, 34, 10, 77, 99, 88, 45, 77, 99, 88, 77],
+                      data: (chart?.infoList ?? []).map((item) => item?.priceOut),
                     },
                   ],
                 },
