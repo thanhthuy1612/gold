@@ -1,8 +1,16 @@
+import type { Metadata } from 'next';
+
 import { Stack, Container, Typography } from '@mui/material';
 
 import { NEWS } from 'src/_mock/news';
+import { CONFIG } from 'src/global-config';
 
-export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export const metadata: Metadata = {
+  title: `Tin tức | ${CONFIG.appName}`,
+  description: 'Vàng bạc Tài Lộc',
+};
+
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const news = NEWS.find((n) => n.slug === slug);
 

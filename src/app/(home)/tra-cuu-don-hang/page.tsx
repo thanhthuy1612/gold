@@ -2,13 +2,15 @@ import type { Metadata } from 'next';
 
 import { Container } from '@mui/material';
 
+import { CONFIG } from 'src/global-config';
+
 import { ComingSoonView } from 'src/components/coming-soon/view';
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: 'Tra cứu đơn',
+  title: `Tra cứu đơn | ${CONFIG.appName}`,
   description: 'Vàng bạc Tài Lộc',
 };
 

@@ -23,8 +23,7 @@ export function FormHead({ sx, icon, title, description, ...other }: FormHeadPro
       <Box
         sx={[
           () => ({
-            mb: 5,
-            gap: 1.5,
+            gap: 1,
             display: 'flex',
             textAlign: 'center',
             whiteSpace: 'pre-line',
@@ -34,7 +33,10 @@ export function FormHead({ sx, icon, title, description, ...other }: FormHeadPro
         ]}
         {...other}
       >
-        <Typography variant="h5">{title}</Typography>
+        <Typography color="#970e12" variant="h3">
+          {title}
+        </Typography>
+        <Box sx={{ borderTop: '1px solid #dcdcdc', mb: 3 }} />
 
         {description && (
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>

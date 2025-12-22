@@ -1,6 +1,7 @@
 'use client';
 
-import type { Breakpoint } from '@mui/material/styles';
+import type { Theme } from '@mui/material';
+import type { CSSObject, Breakpoint } from '@mui/material/styles';
 
 import { useBoolean } from 'minimal-shared/hooks';
 
@@ -210,10 +211,39 @@ export function MainLayout({
       /** **************************************
        * @Styles
        *************************************** */
-      cssVars={cssVars}
-      sx={sx}
+      cssVars={
+        pathname === `${paths.auth.jwt.signIn}/`
+          ? { '--layout-auth-content-width': '420px', ...cssVars }
+          : cssVars
+      }
+      sx={
+        pathname === `${paths.auth.jwt.signIn}/`
+          ? [
+              (theme) => ({
+                position: 'relative',
+                '&::before': backgroundStyles(theme),
+              }),
+              ...(Array.isArray(sx) ? sx : [sx]),
+            ]
+          : sx
+      }
     >
       {renderMain()}
     </LayoutSection>
   );
 }
+
+const backgroundStyles = (theme: Theme): CSSObject => ({
+  // ...theme.mixins.bgGradient({
+  //   images: [`url(${CONFIG.assetsDir}/assets/background/background-3-blur.webp)`],
+  // }),
+  zIndex: 1,
+  opacity: 0.24,
+  width: '100%',
+  height: '100%',
+  content: "''",
+  position: 'absolute',
+  ...theme.applyStyles('dark', {
+    opacity: 0.08,
+  }),
+});

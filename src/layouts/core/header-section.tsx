@@ -10,7 +10,7 @@ import { varAlpha, mergeClasses } from 'minimal-shared/utils';
 import AppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
-import { Box, Stack, useTheme, Typography, useMediaQuery } from '@mui/material';
+import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
 
 import { Logo } from 'src/components/logo';
 
@@ -48,8 +48,7 @@ export function HeaderSection({
   ...other
 }: HeaderSectionProps) {
   const { offsetTop: isOffset } = useScrollOffsetTop();
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
   return (
     <>
       <Stack
