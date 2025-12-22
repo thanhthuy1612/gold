@@ -1,6 +1,6 @@
 import { paths } from 'src/routes/paths';
 
-import axios from 'src/lib/axios';
+import { axiosInstance as axios } from 'src/lib/axios';
 
 import { JWT_STORAGE_KEY } from './constant';
 
