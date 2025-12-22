@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import userSlice from './features/user';
+import landingReducer from './features/landing';
 
 export const makeStore = () =>
   configureStore({
     reducer: {
       user: userSlice,
+      landing: landingReducer,
     },
   });
 

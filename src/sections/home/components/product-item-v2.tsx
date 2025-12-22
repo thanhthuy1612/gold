@@ -94,10 +94,10 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
             mb: 0.5,
           }}
         >
-          Bán {fNumber(buy)}
+          Bán {fNumber(buy)} đ
         </Typography>
         <Typography variant="h5" noWrap sx={{ color: 'white' }}>
-          Mua {fNumber(sell)}
+          Mua {fNumber(sell)} đ
         </Typography>
       </Box>
     </Stack>

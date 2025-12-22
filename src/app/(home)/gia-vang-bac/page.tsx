@@ -3,8 +3,7 @@ import type { Metadata } from 'next';
 import { Container } from '@mui/material';
 
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
-
-import { PriceView } from 'src/sections/price/view';
+import GiaVangBacClient from './gia-vang-bac-client';
 
 // ----------------------------------------------------------------------
 
@@ -28,7 +27,8 @@ export default function Page() {
           moreLink: {},
         }}
       />
-      <PriceView />
+
+      <GiaVangBacClient />
     </Container>
   );
 }

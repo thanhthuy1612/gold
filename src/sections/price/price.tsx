@@ -17,6 +17,7 @@ import { fNumber } from 'src/utils/format-number';
 
 import { Logo } from 'src/components/logo';
 import { TableHeadCustom, type TableHeadCellProps } from 'src/components/table';
+import { useAppSelector } from 'src/lib/hooks';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
   { id: 'name', label: 'SẢN PHẨM', align: 'center', width: '35%' },
@@ -44,75 +45,101 @@ export type PriceData = {
   data: TableData[];
 };
 
-const TABLE_DATA: PriceData[] = [
+type PriceGroup = 'silver' | 'gold';
+
+const silverOtherBrandData: TableData[] = [
   {
-    title: 'BẠC THƯƠNG HIỆU PHÚ QUÝ',
-    data: [
-      {
-        name: 'Bạc miếng Phú Quý 999 1 lượng',
-        buy: 2198000,
-        sell: 2266000,
-        cost: 'VNĐ/LƯỢNG',
-      },
-      {
-        name: 'Bạc thỏi phú quý 999 10 luợng, 5 lượng',
-        buy: 2198000,
-        sell: 2266000,
-        cost: 'VNĐ/LƯỢNG',
-      },
-      {
-        name: 'Đồng bạc mỹ nghệ phú quý 999',
-        buy: 2198000,
-        sell: 2266000,
-        cost: 'VNĐ/LƯỢNG',
-      },
-      {
-        name: 'Bạc thỏi phú quý 999 1kilo',
-        buy: 6210611,
-        sell: 64026507,
-        cost: 'VNĐ/KG',
-      },
-    ],
+    name: 'BẠC 999 TRÊN 500 LƯỢNG',
+    buy: 1915800,
+    cost: 'VNĐ/LƯỢNG',
+    description: 'MIẾNG - THANH - THỎI',
   },
   {
-    title: 'BẠC THƯƠNG HIỆU KHÁC',
-    data: [
-      {
-        name: 'BẠC 999 TRÊN 500 LƯỢNG',
-        buy: 1915800,
-        cost: 'VNĐ/LƯỢNG',
-        description: 'MIẾNG - THANH - THỎI',
-      },
-      {
-        name: 'BẠC 999 DƯỚI 500 LƯỢNG',
-        buy: 1860000,
-        cost: 'VNĐ/LƯỢNG',
-        description: 'MIẾNG - THANH - THỎI',
-      },
-    ],
+    name: 'BẠC 999 DƯỚI 500 LƯỢNG',
+    buy: 1860000,
+    cost: 'VNĐ/LƯỢNG',
+    description: 'MIẾNG - THANH - THỎI',
   },
 ];
 
-export function Price() {
+const goldOtherBrandData: TableData[] = [
+  {
+    name: 'VÀNG 9999',
+    buy: 7400000,
+    sell: 7500000,
+    cost: 'VNĐ/CHỈ',
+  },
+];
+
+export function Price({ group }: { group: PriceGroup }) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
-  const renderTable = (item: TableData) => (
+
+  const { gold = [], silver = [] } = useAppSelector((state) => state.landing);
+
+  /* ---------- MAP API DATA ---------- */
+  const silverPhuQuyData: TableData[] = silver.map((item) => ({
+    name: item.productTypeName,
+    buy: item.priceIn,
+    sell: item.priceOut,
+    cost: item.unitOfMeasure.toUpperCase(),
+    description: item.description ?? undefined,
+  }));
+
+  const goldPhuQuyData: TableData[] = gold.map((item) => ({
+    name: item.productTypeName,
+    buy: item.priceIn,
+    sell: item.priceOut,
+    cost: item.unitOfMeasure.toUpperCase(),
+    description: item.description ?? undefined,
+  }));
+
+  const TABLE_DATA: PriceData[] =
+    group === 'silver'
+      ? [
+          {
+            title: 'BẠC THƯƠNG HIỆU PHÚ QUÝ',
+            data: silverPhuQuyData,
+          },
+          {
+            title: 'BẠC THƯƠNG HIỆU KHÁC',
+            data: silverOtherBrandData,
+          },
+        ]
+      : [
+          {
+            title: 'VÀNG THƯƠNG HIỆU PHÚ QUÝ',
+            data: goldPhuQuyData,
+          },
+          {
+            title: 'VÀNG THƯƠNG HIỆU KHÁC',
+            data: goldOtherBrandData,
+          },
+        ];
+
+  /* ---------- RENDER ---------- */
+
+  const renderTableRow = (item: TableData) => (
     <TableRow key={item.name}>
       <TableCell sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
         <Typography variant="h5">{item.name}</Typography>
-        {item?.description && <Typography variant="caption">({item.description})</Typography>}
+        {item.description && <Typography variant="caption">({item.description})</Typography>}
       </TableCell>
       {!isSmallScreen && (
         <TableCell sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
           {item.cost}
         </TableCell>
       )}
-      <TableCell align="right" sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
+
+      <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
         <Typography variant="subtitle1">{fNumber(item.buy)}</Typography>
         {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
       </TableCell>
-      <TableCell align="right" sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
-        <Typography variant="subtitle1">{item?.sell ? fNumber(item.sell) : <Logo />}</Typography>
+
+      <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
+        <Typography variant="subtitle1">
+          {item.sell ? fNumber(item.sell) : <Logo />}
+        </Typography>
         {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
       </TableCell>
     </TableRow>
@@ -159,8 +186,8 @@ export function Price() {
               headCells={isSmallScreen ? TABLE_HEAD_MIN : TABLE_HEAD}
             />
 
-            <TableBody sx={{ background: 'white', color: '#821818' }}>
-              {row.data.map((item) => renderTable(item))}
+            <TableBody sx={{ background: 'white' }}>
+              {row.data.map((item) => renderTableRow(item))}
             </TableBody>
           </Table>
         </Stack>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { HomeView } from 'src/sections/home/view';
+import HomeClient from './home-client';
 
 // ----------------------------------------------------------------------
 
@@ -9,6 +9,6 @@ export const metadata: Metadata = {
   description: 'Vàng bạc Tài Lộc',
 };
 
-export default function Page() {
-  return <HomeView />;
+export default function HomePage() {
+  return <HomeClient />;
 }

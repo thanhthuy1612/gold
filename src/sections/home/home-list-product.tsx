@@ -12,6 +12,10 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 import { ProductItemV2 } from './components/product-item-v2';
 import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
+import { useEffect, useState } from 'react';
+import { homeService } from 'src/services/landing.services';
+import { mapProductApiToItem } from 'src/utils/map-products';
+
 
 // ----------------------------------------------------------------------
 
@@ -87,9 +91,41 @@ const renderLines = () => (
 );
 
 export function HomeListProduct({ sx, ...other }: BoxProps) {
-  const renderList = () =>
-    _orders.map((product) => <ProductItemV2 key={product.id} product={product} detailsHref="" />);
+  // const renderList = () =>
+  //   _orders.map((product) => <ProductItemV2 key={product.id} product={product} detailsHref="" />);
+  const [products, setProducts] = useState<IProductItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await homeService.products();
+
+        const raw = res.data;
+
+        const merged = [
+          ...(raw?.bacTichLuy || []),
+          ...(raw?.bacMyNghe || []),
+        ].map(mapProductApiToItem);
+
+        setProducts(merged);
+      } catch (error) {
+        console.error('Fetch products failed:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+  const renderList = () =>
+    products.map((product) => (
+      <ProductItemV2
+        key={product.id}
+        product={product}
+        detailsHref={`/san-pham/${product.id}`}
+      />
+    ));
   return (
     <Box
       component="section"

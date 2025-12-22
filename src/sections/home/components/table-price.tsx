@@ -87,7 +87,10 @@ export function TablePrice({ icon, title, href, data }: Props) {
               <TableCell sx={{ border: '2px solid white' }}>{row.name}</TableCell>
               <TableCell align="right" sx={{ border: '2px solid white' }}>
                 <Box display="flex" flexDirection="column" alignItems="flex-start">
-                  <Typography variant="subtitle2" color="success">
+                  <Typography
+                    variant="subtitle2"
+                    color={row.compareBuy < 0 ? 'error' : 'success'}
+                  >
                     {fNumber(row.buy)}
                   </Typography>
                   <Typography
@@ -108,7 +111,10 @@ export function TablePrice({ icon, title, href, data }: Props) {
               </TableCell>
               <TableCell align="right" sx={{ border: '2px solid white' }}>
                 <Box display="flex" flexDirection="column" alignItems="flex-start">
-                  <Typography variant="subtitle2" color="success">
+                  <Typography
+                    variant="subtitle2"
+                    color={row.compareSell < 0 ? 'error' : 'success'}
+                  >
                     {fNumber(row.sell)}
                   </Typography>
                   <Typography
