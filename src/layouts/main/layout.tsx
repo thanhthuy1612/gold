@@ -153,22 +153,32 @@ export function MainLayout({
                 alignItems: 'center',
                 gap: { xs: 1, sm: 1.5 },
                 height: '100%',
-                color: '#901011',
-                '&:hover': {
-                  color: 'transparent',
+                background: pathname === `${paths.auth.jwt.signIn}/` ? '#901011' : '',
+                borderRadius: 0,
+                color: pathname === `${paths.auth.jwt.signIn}/` ? 'transparent' : '#901011',
+                '& .icon': {
+                  color: pathname === `${paths.auth.jwt.signIn}/` ? '#d8a45b' : '#901011',
+                },
+                '& .text': {
+                  color: pathname === `${paths.auth.jwt.signIn}/` ? 'transparent' : '#901011',
                   backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
-                  '& .iconColorChange': {
-                    color: '#d8a45b',
+                },
+                '&:hover': {
+                  '& .text': { color: '#d8a45b !important' },
+                  '& .icon': {
+                    color: '#d8a45b !important',
                   },
                 },
                 '&.active': {
-                  color: 'transparent',
-                  backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  '& .iconColorChange': {
+                  '& .text': {
+                    color: 'transparent',
+                    backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                  },
+                  '& .icon': {
                     color: '#d8a45b',
                   },
                 },

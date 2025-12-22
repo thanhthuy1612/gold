@@ -21,7 +21,6 @@ import { Form, Field } from 'src/components/hook-form';
 import { useAuthContext } from '../../hooks';
 import { getErrorMessage } from '../../utils';
 import { FormHead } from '../../components/form-head';
-import { signInWithPassword } from '../../context/jwt';
 
 // ----------------------------------------------------------------------
 
@@ -65,12 +64,11 @@ export function JwtSignInView() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await signInWithPassword({ email: data.email, password: data.password });
-      await checkUserSession?.();
-
-      if (pathname.includes('/auth/jwt/sign-in/')) {
-        window.location.reload();
-      }
+      // await signInWithPassword({ email: data.email, password: data.password });
+      // await checkUserSession?.();
+      // if (pathname.includes('/auth/jwt/sign-in/')) {
+      //   window.location.reload();
+      // }
       // router.refresh();
       // router.push(paths.dashboard.root);
     } catch (error) {

@@ -1,6 +1,6 @@
 import type { ButtonProps } from '@mui/material';
 
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 import { RouterLink } from 'src/routes/components';
 
@@ -19,8 +19,10 @@ export function SignInButton({ sx, ...other }: ButtonProps) {
       sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', ...sx }}
       {...other}
     >
-      <Iconify width={16} icon="solar:user-rounded-bold" className="iconColorChange" />
-      Đăng nhập
+      <Iconify width={16} icon="solar:user-rounded-bold" className="icon" />
+      <Typography variant="subtitle2" className="text">
+        Đăng nhập
+      </Typography>
     </Button>
   );
 }
