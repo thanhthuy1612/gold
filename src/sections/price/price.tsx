@@ -15,9 +15,10 @@ import {
 
 import { fNumber } from 'src/utils/format-number';
 
+import { useAppSelector } from 'src/lib/hooks';
+
 import { Logo } from 'src/components/logo';
 import { TableHeadCustom, type TableHeadCellProps } from 'src/components/table';
-import { useAppSelector } from 'src/lib/hooks';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
   { id: 'name', label: 'SẢN PHẨM', align: 'center', width: '35%' },
@@ -137,9 +138,7 @@ export function Price({ group }: { group: PriceGroup }) {
       </TableCell>
 
       <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="subtitle1">
-          {item.sell ? fNumber(item.sell) : <Logo />}
-        </Typography>
+        <Typography variant="subtitle1">{item.sell ? fNumber(item.sell) : <Logo />}</Typography>
         {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
       </TableCell>
     </TableRow>

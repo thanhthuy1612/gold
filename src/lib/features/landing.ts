@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { axiosInstance, endpoints } from 'src/lib/axios';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+import { endpoints, axiosInstance } from 'src/lib/axios';
 
 export interface MetalPrice {
   productType: string | null;
@@ -24,7 +25,6 @@ interface LandingState {
   loading: boolean;
 }
 
-
 const fetchGoldApi = async (): Promise<MetalResponse> => {
   const res = await axiosInstance.get(endpoints.landing.gold);
   return res.data.data;
@@ -35,33 +35,21 @@ const fetchSilverApi = async (): Promise<MetalResponse> => {
   return res.data.data;
 };
 
-
 export const fetchLandingGold = createAsyncThunk(
   'landing/fetchGold',
-  async () => {
-    return await fetchGoldApi();
-  }
+  async () => await fetchGoldApi()
 );
 
 export const fetchLandingSilver = createAsyncThunk(
   'landing/fetchSilver',
-  async () => {
-    return await fetchSilverApi();
-  }
+  async () => await fetchSilverApi()
 );
 
+export const fetchLandingMetals = createAsyncThunk('landing/fetchMetals', async () => {
+  const [gold, silver] = await Promise.all([fetchGoldApi(), fetchSilverApi()]);
 
-export const fetchLandingMetals = createAsyncThunk(
-  'landing/fetchMetals',
-  async () => {
-    const [gold, silver] = await Promise.all([
-      fetchGoldApi(),
-      fetchSilverApi(),
-    ]);
-
-    return { gold, silver };
-  }
-);
+  return { gold, silver };
+});
 
 const initialState: LandingState = {
   gold: [],

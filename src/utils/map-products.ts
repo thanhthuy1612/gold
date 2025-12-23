@@ -1,4 +1,5 @@
 import type { IProductItem } from 'src/types/product';
+
 import { buildImageUrl } from 'src/utils/build-image';
 
 type ApiProduct = {

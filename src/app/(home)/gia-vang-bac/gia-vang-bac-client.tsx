@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { useAppDispatch } from 'src/lib/hooks';
 import { fetchLandingMetals } from 'src/lib/features/landing';
 

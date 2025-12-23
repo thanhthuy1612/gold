@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Container } from '@mui/material';
 
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
+
 import GiaVangBacClient from './gia-vang-bac-client';
 
 // ----------------------------------------------------------------------

@@ -6,13 +6,14 @@ import Box from '@mui/material/Box';
 import { Grid, Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 
+import { useAppSelector } from 'src/lib/hooks';
+
 import { varFade, MotionViewport } from 'src/components/animate';
 
 import { TablePrice } from './components/table-price';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
 
 import type { TableData } from './components/table-price';
-import { useAppSelector } from 'src/lib/hooks';
 // ----------------------------------------------------------------------
 const TABLE_DATA: TableData[] = [
   {
@@ -73,7 +74,6 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
       sell: item.priceOut,
       compareBuy: Math.floor(Math.random() * 1000001) - 500000,
       compareSell: Math.floor(Math.random() * 1000001) - 500000,
-
     }));
 
   const { gold, silver } = useAppSelector((state) => state.landing);

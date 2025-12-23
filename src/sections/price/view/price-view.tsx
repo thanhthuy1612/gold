@@ -2,7 +2,7 @@
 
 // ----------------------------------------------------------------------
 
-import { Card, Stack, Typography, useTheme, useMediaQuery } from '@mui/material';
+import { Card, Stack, useTheme, Typography, useMediaQuery } from '@mui/material';
 
 import { fDate, fTime } from 'src/utils/format-time';
 

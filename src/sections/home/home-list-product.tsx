@@ -2,20 +2,21 @@ import type { BoxProps } from '@mui/material/Box';
 import type { IProductItem } from 'src/types/product';
 
 import { m } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
+import { mapProductApiToItem } from 'src/utils/map-products';
+
+import { homeService } from 'src/services/landing.services';
+
 import { varFade, MotionViewport } from 'src/components/animate';
 
 import { ProductItemV2 } from './components/product-item-v2';
 import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
-import { useEffect, useState } from 'react';
-import { homeService } from 'src/services/landing.services';
-import { mapProductApiToItem } from 'src/utils/map-products';
-
 
 // ----------------------------------------------------------------------
 
@@ -103,10 +104,9 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
 
         const raw = res.data;
 
-        const merged = [
-          ...(raw?.bacTichLuy || []),
-          ...(raw?.bacMyNghe || []),
-        ].map(mapProductApiToItem);
+        const merged = [...(raw?.bacTichLuy || []), ...(raw?.bacMyNghe || [])].map(
+          mapProductApiToItem
+        );
 
         setProducts(merged);
       } catch (error) {
@@ -120,11 +120,7 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
   }, []);
   const renderList = () =>
     products.map((product) => (
-      <ProductItemV2
-        key={product.id}
-        product={product}
-        detailsHref={`/san-pham/${product.id}`}
-      />
+      <ProductItemV2 key={product.id} product={product} detailsHref={`/san-pham/${product.id}`} />
     ));
   return (
     <Box
