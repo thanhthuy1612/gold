@@ -14,7 +14,7 @@ import { varFade } from 'src/components/animate';
 
 const baseStyles = (theme: Theme): SxProps<Theme> => ({
   zIndex: 2,
-  display: 'none',
+  display: 'none !important',
   color: 'grey.500',
   position: 'absolute',
   '& line': { strokeDasharray: 3, stroke: 'currentColor' },
