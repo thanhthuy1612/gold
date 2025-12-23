@@ -15,8 +15,8 @@ import { homeService } from 'src/services/landing.services';
 import { MotionViewport } from 'src/components/animate';
 
 import { ProductItemV2 } from './components/product-item-v2';
-import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
 import { ProductItemSkeleton } from './components/product-item-skeleton';
+import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
 
 // ----------------------------------------------------------------------
 
@@ -120,17 +120,11 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
   }, []);
   const renderList = () => {
     if (loading) {
-      return Array.from({ length: 10 }).map((_, i) => (
-        <ProductItemSkeleton key={i} />
-      ));
+      return Array.from({ length: 10 }).map((_, i) => <ProductItemSkeleton key={i} />);
     }
 
     return products.map((product) => (
-      <ProductItemV2
-        key={product.id}
-        product={product}
-        detailsHref={`/san-pham/${product.id}`}
-      />
+      <ProductItemV2 key={product.id} product={product} detailsHref={`/san-pham/${product.id}`} />
     ));
   };
   return (

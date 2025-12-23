@@ -125,8 +125,6 @@ export function PriceView() {
 
   return (
     <>
-      {renderHeader(tab === 'silver' ? 'GIÁ BẠC PHÚ QUÝ' : 'GIÁ VÀNG PHÚ QUÝ')}
-
       {/* ================= TABS ================= */}
       <Tabs
         value={tab}
@@ -142,6 +140,8 @@ export function PriceView() {
         <Tab value="silver" label="GIÁ BẠC" />
         <Tab value="gold" label="GIÁ VÀNG" />
       </Tabs>
+
+      {renderHeader(tab === 'silver' ? 'GIÁ BẠC PHÚ QUÝ' : 'GIÁ VÀNG PHÚ QUÝ')}
 
       {/* ================= CONTENT ================= */}
       {loading ? (
