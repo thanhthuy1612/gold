@@ -20,22 +20,19 @@ const TABLE_DATA: TableData[] = [
     name: 'Bạc thỏi Phú Quý 1kg',
     buy: 6210611,
     sell: 64026507,
-    compareBuy: 2426661,
-    compareSell: 2426661,
+
   },
   {
     name: 'Bạc thỏi Phú Quý 1kg2',
     buy: 6210611,
     sell: 64026507,
-    compareBuy: -2426661,
-    compareSell: -2426661,
+
   },
   {
     name: 'Bạc thỏi Phú Quý 1kg3',
     buy: 6210611,
     sell: 64026507,
-    compareBuy: 2426661,
-    compareSell: 2426661,
+
   },
 ];
 
@@ -72,8 +69,6 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
       name: item.productTypeName,
       buy: item.priceIn,
       sell: item.priceOut,
-      compareBuy: Math.floor(Math.random() * 1000001) - 500000,
-      compareSell: Math.floor(Math.random() * 1000001) - 500000,
     }));
 
   const { gold, silver } = useAppSelector((state) => state.landing);

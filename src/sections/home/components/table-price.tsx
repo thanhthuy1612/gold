@@ -28,8 +28,6 @@ export type TableData = {
   name: string;
   buy: number;
   sell: number;
-  compareBuy: number;
-  compareSell: number;
 };
 
 type Props = {
@@ -84,52 +82,44 @@ export function TablePrice({ icon, title, href, data }: Props) {
               key={row.name}
               sx={{ '&:not(:last-child)': { borderBottom: '8px #971519 solid' } }}
             >
-              <TableCell sx={{ border: '2px solid white' }}>{row.name}</TableCell>
-              <TableCell align="right" sx={{ border: '2px solid white' }}>
-                <Box display="flex" flexDirection="column" alignItems="flex-start">
-                  <Typography
-                    variant="subtitle2"
-                    color={row.compareBuy < 0 ? 'error' : 'success'}
-                  >
+              <TableCell sx={{ border: '2px solid white' }}>
+                {row.name}
+              </TableCell>
+
+              <TableCell
+                align="right"
+                sx={{
+                  border: '2px solid white',
+                  verticalAlign: 'middle',
+                }}
+              >
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="flex-end"
+                  height="100%"
+                >
+                  <Typography variant="subtitle2" color="success.main" fontSize={16}>
                     {fNumber(row.buy)}
-                  </Typography>
-                  <Typography
-                    sx={{ display: 'flex', alignItems: 'center' }}
-                    variant="caption"
-                    color={row.compareBuy > 0 ? 'success' : 'error'}
-                  >
-                    <Iconify
-                      icon={
-                        row.compareBuy > 0
-                          ? 'solar:double-alt-arrow-up-bold-duotone'
-                          : 'solar:double-alt-arrow-down-bold-duotone'
-                      }
-                    />
-                    {fNumber(row.compareBuy)}
                   </Typography>
                 </Box>
               </TableCell>
-              <TableCell align="right" sx={{ border: '2px solid white' }}>
-                <Box display="flex" flexDirection="column" alignItems="flex-start">
-                  <Typography
-                    variant="subtitle2"
-                    color={row.compareSell < 0 ? 'error' : 'success'}
-                  >
+
+              <TableCell
+                align="right"
+                sx={{
+                  border: '2px solid white',
+                  verticalAlign: 'middle',
+                }}
+              >
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="flex-end"
+                  height="100%"
+                >
+                  <Typography variant="subtitle2" color="error" fontSize={16}>
                     {fNumber(row.sell)}
-                  </Typography>
-                  <Typography
-                    sx={{ display: 'flex', alignItems: 'center' }}
-                    variant="caption"
-                    color={row.compareSell > 0 ? 'success' : 'error'}
-                  >
-                    <Iconify
-                      icon={
-                        row.compareSell > 0
-                          ? 'solar:double-alt-arrow-up-bold-duotone'
-                          : 'solar:double-alt-arrow-down-bold-duotone'
-                      }
-                    />
-                    {fNumber(row.compareSell)}
                   </Typography>
                 </Box>
               </TableCell>
