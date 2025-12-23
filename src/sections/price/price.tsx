@@ -13,7 +13,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-import { fNumber } from 'src/utils/format-number';
+import { fCurrency } from 'src/utils/format-number';
 
 import { useAppSelector } from 'src/lib/hooks';
 
@@ -48,30 +48,6 @@ export type PriceData = {
 
 type PriceGroup = 'silver' | 'gold';
 
-const silverOtherBrandData: TableData[] = [
-  {
-    name: 'BẠC 999 TRÊN 500 LƯỢNG',
-    buy: 1915800,
-    cost: 'VNĐ/LƯỢNG',
-    description: 'MIẾNG - THANH - THỎI',
-  },
-  {
-    name: 'BẠC 999 DƯỚI 500 LƯỢNG',
-    buy: 1860000,
-    cost: 'VNĐ/LƯỢNG',
-    description: 'MIẾNG - THANH - THỎI',
-  },
-];
-
-const goldOtherBrandData: TableData[] = [
-  {
-    name: 'VÀNG 9999',
-    buy: 15800000,
-    sell: 16000000,
-    cost: 'VNĐ/CHỈ',
-  },
-];
-
 export function Price({ group }: { group: PriceGroup }) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -101,21 +77,13 @@ export function Price({ group }: { group: PriceGroup }) {
           {
             title: 'BẠC THƯƠNG HIỆU PHÚ QUÝ',
             data: silverPhuQuyData,
-          },
-          {
-            title: 'BẠC THƯƠNG HIỆU KHÁC',
-            data: silverOtherBrandData,
-          },
+          }
         ]
       : [
           {
             title: 'VÀNG THƯƠNG HIỆU PHÚ QUÝ',
             data: goldPhuQuyData,
-          },
-          {
-            title: 'VÀNG THƯƠNG HIỆU KHÁC',
-            data: goldOtherBrandData,
-          },
+          }
         ];
 
   /* ---------- RENDER ---------- */
@@ -133,12 +101,12 @@ export function Price({ group }: { group: PriceGroup }) {
       )}
 
       <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="subtitle1">{fNumber(item.buy)}</Typography>
+        <Typography variant="subtitle1" color="success.main">{fCurrency(item.buy)}</Typography>
         {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
       </TableCell>
 
       <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="subtitle1">{item.sell ? fNumber(item.sell) : <Logo />}</Typography>
+        <Typography variant="subtitle1" color="error">{item.sell ? fCurrency(item.sell) : <Logo />}</Typography>
         {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
       </TableCell>
     </TableRow>

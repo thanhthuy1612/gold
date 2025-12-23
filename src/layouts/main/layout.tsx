@@ -97,22 +97,22 @@ export function MainLayout({
               sx={(theme) => ({
                 display: 'none',
                 [theme.breakpoints.up('lg')]: { display: 'flex', alignItems: 'center', gap: 1 },
-                color: 'transparent',
-                backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                color: '#cc8b1a',
+                backgroundImage: 'linear-gradient(90deg, #8c0d0d 0%, #b41717 50%, #8c0d0d 100%)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
               })}
               variant="subtitle2"
             >
-              <img src="/assets/background/map.png" width="auto" height="16" />
+              <img src="/assets/background/map.png" width="auto" height="16" color='#cc8b1a'/>
               187 Xã Đàn - Hà Nội
             </Typography>
             <Logo />
             <Typography
               variant="h6"
               sx={(theme) => ({
-                color: 'transparent',
-                backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                color: '#f7b142',
+                backgroundImage: 'linear-gradient(90deg, #8c0d0d 0%, #b41717 50%, #8c0d0d 100%)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
                 display: 'none',
@@ -230,12 +230,12 @@ export function MainLayout({
       sx={
         pathname === `${paths.auth.jwt.signIn}/`
           ? [
-              (theme) => ({
-                position: 'relative',
-                '&::before': backgroundStyles(theme),
-              }),
-              ...(Array.isArray(sx) ? sx : [sx]),
-            ]
+            (theme) => ({
+              position: 'relative',
+              '&::before': backgroundStyles(theme),
+            }),
+            ...(Array.isArray(sx) ? sx : [sx]),
+          ]
           : sx
       }
     >

@@ -14,6 +14,7 @@ import { TablePrice } from './components/table-price';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
 
 import type { TableData } from './components/table-price';
+import { TablePriceSkeleton } from './components/table-price-skeleton';
 // ----------------------------------------------------------------------
 const TABLE_DATA: TableData[] = [
   {
@@ -71,7 +72,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
       sell: item.priceOut,
     }));
 
-  const { gold, silver } = useAppSelector((state) => state.landing);
+  const { gold, silver, loading } = useAppSelector((state) => state.landing);
 
   const silverTableData = mapToTableData(silver);
   const goldTableData = mapToTableData(gold);
@@ -95,21 +96,29 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
           <m.div variants={varFade('inUp')}>
             <Grid container spacing={3}>
               <Grid size={{ xs: 12, md: 6 }}>
-                <TablePrice
-                  icon={<img src="/assets/background/b.png" width="30" />}
-                  title="Giá bạc tham chiếu"
-                  data={silverTableData}
-                  href="/"
-                />
+                {loading ? (
+                  <TablePriceSkeleton />
+                ) : (
+                  <TablePrice
+                    icon={<img src="/assets/background/b.png" width="30" />}
+                    title="Giá bạc tham chiếu"
+                    data={silverTableData}
+                    href="/"
+                  />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12, md: 6 }}>
-                <TablePrice
-                  icon={<img src="/assets/background/v.png" width="30" />}
-                  title="Giá vàng tham chiếu"
-                  data={goldTableData}
-                  href="/"
-                />
+                {loading ? (
+                  <TablePriceSkeleton />
+                ) : (
+                  <TablePrice
+                    icon={<img src="/assets/background/v.png" width="30" />}
+                    title="Giá vàng tham chiếu"
+                    data={goldTableData}
+                    href="/"
+                  />
+                )}
               </Grid>
             </Grid>
           </m.div>

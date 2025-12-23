@@ -2,17 +2,25 @@
 
 // ----------------------------------------------------------------------
 
-import { Card, Stack, useTheme, Typography, useMediaQuery } from '@mui/material';
+import { Card, Stack, useTheme, Typography, useMediaQuery, Tab, Tabs, CircularProgress } from '@mui/material';
 
 import { fDate, fTime } from 'src/utils/format-time';
 
 import { Logo } from 'src/components/logo';
 
 import { Price } from '../price';
+import { useState } from 'react';
+import { useAppSelector } from 'src/lib/hooks';
+
+type TabValue = 'silver' | 'gold';
 
 export function PriceView() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const [tab, setTab] = useState<TabValue>('silver');
+
+  const {loading} = useAppSelector((state: any) => state.landing);
 
   const renderHeader = (title: string) => (
     <Stack
@@ -106,21 +114,35 @@ export function PriceView() {
 
   return (
     <>
-      {/* ================= BẠC ================= */}
-      {renderHeader('GIÁ BẠC PHÚ QUÝ')}
-      <Price group="silver" />
+      {renderHeader(tab === 'silver' ? 'GIÁ BẠC PHÚ QUÝ' : 'GIÁ VÀNG PHÚ QUÝ')}
 
-      <Stack
+      {/* ================= TABS ================= */}
+      <Tabs
+        value={tab}
+        onChange={(_, value) => setTab(value)}
         sx={{
-          height: 32,
-          my: 6,
-          borderTop: '2px solid #c18b49',
+          mb: 3,
+          '& .MuiTab-root': {
+            fontWeight: 700,
+            fontSize: isSmallScreen ? 13 : 16,
+          },
         }}
-      />
+      >
+        <Tab value="silver" label="GIÁ BẠC" />
+        <Tab value="gold" label="GIÁ VÀNG" />
+      </Tabs>
 
-      {/* ================= VÀNG ================= */}
-      {renderHeader('GIÁ VÀNG PHÚ QUÝ')}
-      <Price group="gold" />
+      {/* ================= CONTENT ================= */}
+      {loading ? (
+        <Stack alignItems="center" my={6}>
+          <CircularProgress sx={{ color: '#821818' }} />
+          <Typography mt={2} color="#821818">
+            Đang tải dữ liệu giá...
+          </Typography>
+        </Stack>
+      ) : (
+        <Price group={tab} />
+      )}
 
       {/* ================= NOTE ================= */}
       <Stack display="flex" alignItems="flex-start" sx={{ mt: 2 }}>

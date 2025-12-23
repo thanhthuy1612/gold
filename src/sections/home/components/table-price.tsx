@@ -12,15 +12,15 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-import { fNumber } from 'src/utils/format-number';
+import { fCurrency, fNumber } from 'src/utils/format-number';
 
 import { Iconify } from 'src/components/iconify';
 import { TableHeadCustom } from 'src/components/table';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
   { id: 'name', label: 'Tên' },
-  { id: 'buy', label: 'Giá bán', align: 'left' },
-  { id: 'sell', label: 'Giá mua', align: 'left' },
+  { id: 'buy', label: 'Giá bán', align: 'center' },
+  { id: 'sell', label: 'Giá mua', align: 'center' },
 ];
 
 // ----------------------------------------------------------------------
@@ -95,12 +95,12 @@ export function TablePrice({ icon, title, href, data }: Props) {
               >
                 <Box
                   display="flex"
-                  alignItems="center"
+                  alignItems="left"
                   justifyContent="flex-end"
                   height="100%"
                 >
                   <Typography variant="subtitle2" color="success.main" fontSize={16}>
-                    {fNumber(row.buy)}
+                    {fCurrency(row.buy)}
                   </Typography>
                 </Box>
               </TableCell>
@@ -114,12 +114,12 @@ export function TablePrice({ icon, title, href, data }: Props) {
               >
                 <Box
                   display="flex"
-                  alignItems="center"
+                  alignItems="left"
                   justifyContent="flex-end"
                   height="100%"
                 >
                   <Typography variant="subtitle2" color="error" fontSize={16}>
-                    {fNumber(row.sell)}
+                    {fCurrency(row.sell)}
                   </Typography>
                 </Box>
               </TableCell>

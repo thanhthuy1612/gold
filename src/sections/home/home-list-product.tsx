@@ -17,6 +17,7 @@ import { varFade, MotionViewport } from 'src/components/animate';
 
 import { ProductItemV2 } from './components/product-item-v2';
 import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
+import { ProductItemSkeleton } from './components/product-item-skeleton';
 
 // ----------------------------------------------------------------------
 
@@ -118,10 +119,21 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
 
     fetchProducts();
   }, []);
-  const renderList = () =>
-    products.map((product) => (
-      <ProductItemV2 key={product.id} product={product} detailsHref={`/san-pham/${product.id}`} />
+  const renderList = () => {
+    if (loading) {
+      return Array.from({ length: 10 }).map((_, i) => (
+        <ProductItemSkeleton key={i} />
+      ));
+    }
+
+    return products.map((product) => (
+      <ProductItemV2
+        key={product.id}
+        product={product}
+        detailsHref={`/san-pham/${product.id}`}
+      />
     ));
+  };
   return (
     <Box
       component="section"
