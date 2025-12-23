@@ -5,6 +5,8 @@ export type PriceType = {
 };
 
 export type PriceData = {
+  changePriceIn?: number;
+  changePriceOut?: number;
   changeRate: number;
   infoList: {
     lastUpdate: Date;

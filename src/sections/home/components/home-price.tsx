@@ -7,7 +7,6 @@ import React from 'react';
 
 import { Box, Card, Grid, Stack, Button, Typography } from '@mui/material';
 
-import { fDate } from 'src/utils/format-time';
 import { fNumber } from 'src/utils/format-number';
 
 import { homeService } from 'src/services/landing.services';
@@ -58,21 +57,21 @@ export function HomePrice({ sx, ...other }: BoxProps) {
         timeRange,
       };
       const result = await homeService.price(newBody);
-      if (!loadingFirst) {
-        setChart(
-          newBody.type !== ProductType.GOLD
-            ? result.data?.silver
-            : goldType === 'Vàng SJC'
-              ? result.data?.sjcGold
-              : result.data?.pqGold
-        );
-      } else {
+      setChart(
+        newBody.type !== ProductType.GOLD
+          ? result.data?.silver
+          : goldType === 'Vàng SJC'
+            ? result.data?.sjcGold
+            : result.data?.pqGold
+      );
+      if (loadingFirst) {
         setData(result.data);
       }
     } catch (err) {
       console.error(err);
     } finally {
       setLoading(false);
+      setLoadingFirst(false);
     }
   };
 
@@ -95,7 +94,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
         Tỷ giá vàng bạc
       </Typography>
       <Grid container spacing={5}>
-        <Grid size={{ xs: 12, md: 6, lg: 5 }}>
+        <Grid size={{ xs: 12, md: 5, lg: 4 }}>
           <Card
             sx={{
               p: 3,
@@ -150,7 +149,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                   variant="contained"
                   fullWidth
                   size="large"
-                  sx={{ background: '#b4292d !important' }}
+                  sx={{ background: '#b4292d !important', fontSize: 12 }}
                   onClick={async () => {
                     setType(ProductType.SILVER);
                     setUnit(ChartUnit.BAC_LUONG);
@@ -169,7 +168,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                   variant="contained"
                   fullWidth
                   size="large"
-                  sx={{ background: '#ff8c1c !important' }}
+                  sx={{ background: '#ff8c1c !important', fontSize: 12 }}
                   onClick={async () => {
                     setType(ProductType.GOLD);
                     setUnit(ChartUnit.VANG_CHI);
@@ -186,8 +185,10 @@ export function HomePrice({ sx, ...other }: BoxProps) {
             </Grid>
           </Card>
         </Grid>
-        <Grid size={{ xs: 12, md: 6, lg: 7 }}>
+        <Grid size={{ xs: 12, md: 7, lg: 8 }}>
           <HomeChart
+            timeRange={timeRange}
+            loading={loading}
             title={renderTitle()}
             subheader=""
             action={
@@ -225,13 +226,12 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                 />
               </Stack>
             }
+            changePriceIn={chart?.changePriceIn}
+            changePriceOut={chart?.changePriceOut}
             chart={{
-              categories: (chart?.infoList ?? []).map((item) =>
-                item?.lastUpdate ? fDate(item?.lastUpdate, 'DD/MM') : ''
-              ),
+              categories: (chart?.infoList ?? []).map((item) => item.lastUpdate),
               series: [
                 {
-                  name: listTimeRange[timeRange - 1],
                   data: [
                     {
                       name: 'Mua vào',
