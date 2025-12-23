@@ -95,21 +95,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
         {/* {renderLines()} */}
 
         <Container>
-          {/* <m.div variants={varFade('inUp')}> */}
-          <Grid
-            container
-            spacing={3}
-            // sx={(theme) => ({
-            //   ...theme.mixins.bgGradient({
-            //     images: [`url(${CONFIG.assetsDir}/assets/background/footer.jpg)`],
-            //   }),
-            //   zIndex: 1,
-            //   width: '100%',
-            //   height: 'auto',
-            //   content: "''",
-            //   position: 'absolute',
-            // })}
-          >
+          <Grid container spacing={3}>
             <Grid size={{ xs: 12, md: 6 }}>
               <TablePrice
                 icon={<img src="/assets/background/b.png" width="30" />}
