@@ -31,7 +31,7 @@ export function HomeView() {
 
       <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
         <HomePriceContainer />
-        <HomeBestSeller />
+        {/* <HomeBestSeller /> */}
         <HomeListProduct />
         <HomeReferencePrice />
         <HomeInfo />

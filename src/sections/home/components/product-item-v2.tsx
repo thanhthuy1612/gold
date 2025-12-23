@@ -80,25 +80,62 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           {name}
         </Typography>
       </Tooltip>
-      <Box sx={{ background: '#98130f', p: 3, pts: 2 }}>
-        <Typography
-          variant="h5"
-          noWrap
-          color="success"
-          sx={{
-            color: 'transparent',
-            backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            fontWeight: '700',
-            mb: 0.5,
-          }}
-        >
-          Bán {fNumber(buy)} đ
-        </Typography>
-        <Typography variant="h5" noWrap sx={{ color: 'white' }}>
-          Mua {fNumber(sell)} đ
-        </Typography>
+      <Box sx={{
+        background: '#fff',
+        p: 3,
+        borderTop: '2px solid #98130f',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
+          <Box
+            component="svg"
+            sx={{ width: 28, height: 28 }}
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2,5 L10,12 L2,19 L7,19 L15,12 L7,5 Z M11,5 L19,12 L11,19 L16,19 L24,12 L16,5 Z"
+              fill="#3ab163"
+            />
+          </Box>
+
+          <Typography
+            variant="h5"
+            sx={{
+              color: '#3ab163',
+              fontWeight: 700,
+              fontFamily: 'serif',
+            }}
+          >
+            Bán {fNumber(buy)}đ
+          </Typography>
+        </Stack>
+
+        <Stack direction="row" alignItems="center" spacing={1}>
+          <Box
+            component="svg"
+            sx={{ width: 28, height: 28 }}
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M22,5 L14,12 L22,19 L17,19 L9,12 L17,5 Z M13,5 L5,12 L13,19 L8,19 L0,12 L8,5 Z"
+              fill="#9a0f15"
+            />
+          </Box>
+
+          <Typography
+            variant="h5"
+            sx={{
+              color: '#9a0f15',
+              fontWeight: 700,
+              fontFamily: 'serif',
+            }}
+          >
+            Mua {fNumber(sell)}đ
+          </Typography>
+        </Stack>
       </Box>
     </Stack>
   );

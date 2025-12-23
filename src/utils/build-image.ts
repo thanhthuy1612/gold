@@ -3,7 +3,8 @@ import { CONFIG } from 'src/global-config';
 export function buildImageUrl(path?: string) {
   if (!path) return '/assets/no-image.png';
 
-  const encodedPath = encodeURI(path);
+  const cleanServerUrl = CONFIG.serverUrl.replace(/\/+$/, '');
+  const cleanPath = path.replace(/^\/+/, '');
 
-  return `${CONFIG.serverUrl}${encodedPath}`;
+  return `${cleanServerUrl}/${encodeURI(cleanPath)}`;
 }

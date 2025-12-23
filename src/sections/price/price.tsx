@@ -66,8 +66,8 @@ const silverOtherBrandData: TableData[] = [
 const goldOtherBrandData: TableData[] = [
   {
     name: 'VÀNG 9999',
-    buy: 7400000,
-    sell: 7500000,
+    buy: 15800000,
+    sell: 16000000,
     cost: 'VNĐ/CHỈ',
   },
 ];
@@ -76,10 +76,10 @@ export function Price({ group }: { group: PriceGroup }) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-  const { gold = [], silver = [] } = useAppSelector((state) => state.landing);
+  const { gold = [], silver = [] } = useAppSelector((state: any) => state.landing);
 
   /* ---------- MAP API DATA ---------- */
-  const silverPhuQuyData: TableData[] = silver.map((item) => ({
+  const silverPhuQuyData: TableData[] = silver.map((item: { productTypeName: any; priceIn: any; priceOut: any; unitOfMeasure: string; description: any; }) => ({
     name: item.productTypeName,
     buy: item.priceIn,
     sell: item.priceOut,
@@ -87,7 +87,7 @@ export function Price({ group }: { group: PriceGroup }) {
     description: item.description ?? undefined,
   }));
 
-  const goldPhuQuyData: TableData[] = gold.map((item) => ({
+  const goldPhuQuyData: TableData[] = gold.map((item: { productTypeName: any; priceIn: any; priceOut: any; unitOfMeasure: string; description: any; }) => ({
     name: item.productTypeName,
     buy: item.priceIn,
     sell: item.priceOut,
