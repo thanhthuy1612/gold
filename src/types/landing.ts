@@ -1,7 +1,24 @@
 export type PriceType = {
-  type: ChartUnit;
-  unit: ChartUnit;
-  timeRange: ChartTimeRange;
+  type: ProductType | null;
+  unit: ChartUnit | null;
+  timeRange: ChartTimeRange | null;
+};
+
+export type PriceData = {
+  changePriceIn?: number;
+  changePriceOut?: number;
+  changeRate: number;
+  infoList: {
+    lastUpdate: Date;
+    priceIn: number;
+    priceOut: number;
+  }[];
+};
+
+export type PriceResult = {
+  silver: PriceData;
+  sjcGold: PriceData;
+  pqGold: PriceData;
 };
 
 export enum ChartTimeRange {
