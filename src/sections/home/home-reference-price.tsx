@@ -1,39 +1,34 @@
 import type { BoxProps } from '@mui/material/Box';
 
-import { m } from 'framer-motion';
-
 import Box from '@mui/material/Box';
 import { Grid, Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 
+import { CONFIG } from 'src/global-config';
 import { useAppSelector } from 'src/lib/hooks';
 
-import { varFade, MotionViewport } from 'src/components/animate';
+import { MotionViewport } from 'src/components/animate';
 
 import { TablePrice } from './components/table-price';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
 
 import type { TableData } from './components/table-price';
-import { TablePriceSkeleton } from './components/table-price-skeleton';
 // ----------------------------------------------------------------------
 const TABLE_DATA: TableData[] = [
   {
     name: 'Bạc thỏi Phú Quý 1kg',
     buy: 6210611,
     sell: 64026507,
-
   },
   {
     name: 'Bạc thỏi Phú Quý 1kg2',
     buy: 6210611,
     sell: 64026507,
-
   },
   {
     name: 'Bạc thỏi Phú Quý 1kg3',
     buy: 6210611,
     sell: 64026507,
-
   },
 ];
 
@@ -80,48 +75,60 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
   return (
     <Box
       component="section"
-      sx={[
-        () => ({
-          pt: 5,
-          position: 'relative',
+      sx={(theme) => ({
+        mt: 5,
+        position: 'relative',
+        alignContent: 'center',
+        ...theme.mixins.bgGradient({
+          images: [`url(${CONFIG.assetsDir}/assets/background/footer.jpg)`],
         }),
-        ...(Array.isArray(sx) ? sx : [sx]),
-      ]}
+        zIndex: 1,
+        width: '100%',
+        height: 'fit-content',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      })}
       {...other}
     >
       <MotionViewport>
-        {renderLines()}
+        {/* {renderLines()} */}
 
-        <Container sx={{ textAlign: 'center', background: '#8c0302' }}>
-          <m.div variants={varFade('inUp')}>
-            <Grid container spacing={3}>
-              <Grid size={{ xs: 12, md: 6 }}>
-                {loading ? (
-                  <TablePriceSkeleton />
-                ) : (
-                  <TablePrice
-                    icon={<img src="/assets/background/b.png" width="30" />}
-                    title="Giá bạc tham chiếu"
-                    data={silverTableData}
-                    href="/"
-                  />
-                )}
-              </Grid>
-
-              <Grid size={{ xs: 12, md: 6 }}>
-                {loading ? (
-                  <TablePriceSkeleton />
-                ) : (
-                  <TablePrice
-                    icon={<img src="/assets/background/v.png" width="30" />}
-                    title="Giá vàng tham chiếu"
-                    data={goldTableData}
-                    href="/"
-                  />
-                )}
-              </Grid>
+        <Container>
+          {/* <m.div variants={varFade('inUp')}> */}
+          <Grid
+            container
+            spacing={3}
+            // sx={(theme) => ({
+            //   ...theme.mixins.bgGradient({
+            //     images: [`url(${CONFIG.assetsDir}/assets/background/footer.jpg)`],
+            //   }),
+            //   zIndex: 1,
+            //   width: '100%',
+            //   height: 'auto',
+            //   content: "''",
+            //   position: 'absolute',
+            // })}
+          >
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TablePrice
+                icon={<img src="/assets/background/b.png" width="30" />}
+                title="Giá bạc tham chiếu"
+                data={silverTableData}
+                href="/"
+              />
             </Grid>
-          </m.div>
+
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TablePrice
+                icon={<img src="/assets/background/v.png" width="30" />}
+                title="Giá vàng tham chiếu"
+                data={goldTableData}
+                href="/"
+              />
+            </Grid>
+          </Grid>
+          {/* </m.div> */}
         </Container>
       </MotionViewport>
     </Box>

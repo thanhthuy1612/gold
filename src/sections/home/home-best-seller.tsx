@@ -1,13 +1,11 @@
 import type { BoxProps } from '@mui/material/Box';
 import type { IProductItem } from 'src/types/product';
 
-import { m } from 'framer-motion';
-
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import { varFade, MotionViewport } from 'src/components/animate';
+import { MotionViewport } from 'src/components/animate';
 
 import { ProductList } from './components/product-list';
 import { FloatLine, FloatTriangleLeftIcon } from './components/svg-elements';
@@ -91,15 +89,12 @@ export function HomeBestSeller({ sx, ...other }: BoxProps) {
             Sản phẩm bán chạy trong tuần
           </Typography>
 
-          <m.div variants={varFade('inUp')}>
-            <img src="/assets/background/landing2.jpg" width="100%" height="auto" />
-          </m.div>
-          <m.div variants={varFade('inUp')}>
-            <ProductList data={_orders} />
-          </m.div>
-          <m.div variants={varFade('inUp')}>
-            <img src="/assets/background/landing3.jpg" width="100%" height="auto" />
-          </m.div>
+          {/* <m.div variants={varFade('inUp')}> */}
+          <img src="/assets/background/landing2.jpg" width="100%" height="auto" />
+          {/* </m.div> */}
+          {/* <m.div variants={varFade('inUp')}> */}
+          <ProductList data={_orders} />
+          {/* </m.div> */}
         </Container>
       </MotionViewport>
     </Box>

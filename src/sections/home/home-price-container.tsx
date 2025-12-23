@@ -1,15 +1,14 @@
 import type { BoxProps } from '@mui/material/Box';
 
 import React from 'react';
-import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-import { varFade, MotionViewport } from 'src/components/animate';
+import { MotionViewport } from 'src/components/animate';
 
 import { HomePrice } from './components/home-price';
-import { CircleSvg, FloatLine, FloatPlusIcon } from './components/svg-elements';
+import { FloatLine, FloatPlusIcon } from './components/svg-elements';
 
 // ----------------------------------------------------------------------
 
@@ -37,15 +36,15 @@ export function HomePriceContainer({ sx, ...other }: BoxProps) {
       {...other}
     >
       <MotionViewport>
-        {renderLines()}
-        <m.div variants={varFade('inUp')}>
-          <img src="/assets/background/landing1.jpg" width="100%" height="auto" />
-        </m.div>
+        {/* {renderLines()} */}
+        {/* <m.div variants={varFade('inUp')}> */}
+        <img src="/assets/background/landing1.jpg" width="100%" height="auto" />
+        {/* </m.div> */}
         <Container sx={{ position: 'relative' }}>
-          <CircleSvg variants={varFade('in')} sx={{ display: { xs: 'none', md: 'block' } }} />
-          <m.div variants={varFade('inUp')}>
-            <HomePrice />
-          </m.div>
+          {/* <CircleSvg variants={varFade('in')} sx={{ display: { xs: 'none', md: 'block' } }} /> */}
+          {/* <m.div variants={varFade('inUp')}> */}
+          <HomePrice />
+          {/* </m.div> */}
         </Container>
       </MotionViewport>
     </Box>

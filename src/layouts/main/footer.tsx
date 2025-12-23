@@ -16,6 +16,7 @@ import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { _socials } from 'src/_mock';
+import { CONFIG } from 'src/global-config';
 
 import { Logo } from 'src/components/logo';
 import { Iconify } from 'src/components/iconify';
@@ -239,7 +240,17 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          sx={{ backgroundColor: '#901011' }}
+          sx={(theme) => ({
+            ...theme.mixins.bgGradient({
+              images: [`url(${CONFIG.assetsDir}/assets/background/footer.jpg)`],
+            }),
+            zIndex: 1,
+            width: '100%',
+            height: 'fit-content',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          })}
         >
           <Grid
             container

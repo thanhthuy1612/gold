@@ -1,5 +1,6 @@
 import { mergeClasses } from 'minimal-shared/utils';
 
+import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 import { chartClasses } from '../classes';
@@ -66,7 +67,7 @@ export function ChartLegends({
 
           {values && (
             <ItemValue className={chartClasses.legends.item.value} {...slotProps?.value}>
-              {values[index]}
+              <Typography color={index ? 'success' : 'error'}>{values[index]}</Typography>
             </ItemValue>
           )}
         </ItemWrap>

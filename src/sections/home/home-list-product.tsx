@@ -1,7 +1,6 @@
 import type { BoxProps } from '@mui/material/Box';
 import type { IProductItem } from 'src/types/product';
 
-import { m } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
@@ -13,7 +12,7 @@ import { mapProductApiToItem } from 'src/utils/map-products';
 
 import { homeService } from 'src/services/landing.services';
 
-import { varFade, MotionViewport } from 'src/components/animate';
+import { MotionViewport } from 'src/components/animate';
 
 import { ProductItemV2 } from './components/product-item-v2';
 import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
@@ -139,7 +138,7 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
       component="section"
       sx={[
         () => ({
-          pt: 5,
+          // pt: 5,
           position: 'relative',
         }),
         ...(Array.isArray(sx) ? sx : [sx]),
@@ -147,34 +146,39 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
       {...other}
     >
       <MotionViewport>
-        {renderLines()}
+        {/* {renderLines()} */}
 
         <Container sx={{ textAlign: 'center' }}>
+          {/* <m.div variants={varFade('inUp')}> */}
+          <img src="/assets/background/landing3.jpg" width="100%" height="auto" />
+          {/* </m.div> */}
           <Typography
+            // component={m.div}
+            // variants={varFade('inUp')}
             variant="h2"
-            sx={{ color: '#8c0302', pb: 3, height: 'fit-content', textAlign: 'center' }}
+            sx={{ color: '#8c0302', pb: 3, mt: 5, height: 'fit-content', textAlign: 'center' }}
           >
             Danh sách sản phẩm
           </Typography>
-          <m.div variants={varFade('inUp')}>
-            <Box
-              sx={[
-                () => ({
-                  gap: 3,
-                  display: 'grid',
-                  gridTemplateColumns: {
-                    xs: 'repeat(1, 1fr)',
-                    sm: 'repeat(3, 1fr)',
-                    md: 'repeat(4, 1fr)',
-                    lg: 'repeat(4, 1fr)',
-                  },
-                }),
-              ]}
-              {...other}
-            >
-              {renderList()}
-            </Box>
-          </m.div>
+          {/* <m.div variants={varFade('inUp')}> */}
+          <Box
+            sx={[
+              () => ({
+                gap: 3,
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: 'repeat(1, 1fr)',
+                  sm: 'repeat(3, 1fr)',
+                  md: 'repeat(4, 1fr)',
+                  lg: 'repeat(4, 1fr)',
+                },
+              }),
+            ]}
+            {...other}
+          >
+            {renderList()}
+          </Box>
+          {/* </m.div> */}
         </Container>
       </MotionViewport>
     </Box>

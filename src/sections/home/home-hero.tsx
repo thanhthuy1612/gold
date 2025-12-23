@@ -1,12 +1,12 @@
 import type { BoxProps } from '@mui/material/Box';
 
 import { useRef, useState } from 'react';
-import { m, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useScroll, useMotionValueEvent } from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
-import { varFade, MotionContainer } from 'src/components/animate';
+import { MotionContainer } from 'src/components/animate';
 
 import { HeroBackground } from './components/hero-background';
 
@@ -36,9 +36,9 @@ export function HomeHero({ sx, ...other }: BoxProps) {
       {...other}
     >
       <Container component={MotionContainer} sx={{ textAlign: 'center' }}>
-        <m.div variants={varFade('inUp')}>
-          <img src="/assets/background/info4.jpg" width="100%" height="auto" />
-        </m.div>
+        {/* <m.div variants={varFade('inUp')}> */}
+        <img src="/assets/background/info4.jpg" width="100%" height="auto" />
+        {/* </m.div> */}
       </Container>
 
       <HeroBackground />

@@ -12,7 +12,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-import { fCurrency, fNumber } from 'src/utils/format-number';
+import { fCurrency } from 'src/utils/format-number';
 
 import { Iconify } from 'src/components/iconify';
 import { TableHeadCustom } from 'src/components/table';
@@ -82,9 +82,7 @@ export function TablePrice({ icon, title, href, data }: Props) {
               key={row.name}
               sx={{ '&:not(:last-child)': { borderBottom: '8px #971519 solid' } }}
             >
-              <TableCell sx={{ border: '2px solid white' }}>
-                {row.name}
-              </TableCell>
+              <TableCell sx={{ border: '2px solid white' }}>{row.name}</TableCell>
 
               <TableCell
                 align="right"
@@ -93,12 +91,7 @@ export function TablePrice({ icon, title, href, data }: Props) {
                   verticalAlign: 'middle',
                 }}
               >
-                <Box
-                  display="flex"
-                  alignItems="left"
-                  justifyContent="flex-end"
-                  height="100%"
-                >
+                <Box display="flex" alignItems="center" justifyContent="flex-end" height="100%">
                   <Typography variant="subtitle2" color="success.main" fontSize={16}>
                     {fCurrency(row.buy)}
                   </Typography>
@@ -112,12 +105,7 @@ export function TablePrice({ icon, title, href, data }: Props) {
                   verticalAlign: 'middle',
                 }}
               >
-                <Box
-                  display="flex"
-                  alignItems="left"
-                  justifyContent="flex-end"
-                  height="100%"
-                >
+                <Box display="flex" alignItems="center" justifyContent="flex-end" height="100%">
                   <Typography variant="subtitle2" color="error" fontSize={16}>
                     {fCurrency(row.sell)}
                   </Typography>

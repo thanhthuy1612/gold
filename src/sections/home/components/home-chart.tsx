@@ -6,8 +6,8 @@ import Card from '@mui/material/Card';
 import { useTheme } from '@mui/material/styles';
 import CardHeader from '@mui/material/CardHeader';
 
+import { fCurrency } from 'src/utils/format-number';
 import { fDate, fTime } from 'src/utils/format-time';
-import { fShortenNumber } from 'src/utils/format-number';
 
 import { Chart, useChart, ChartLegends } from 'src/components/chart';
 
@@ -51,7 +51,7 @@ export function HomeChart({
 }: Props) {
   const theme = useTheme();
 
-  const chartColors = chart.colors ?? [theme.palette.error.main, theme.palette.info.main];
+  const chartColors = chart.colors ?? [theme.palette.error.main, theme.palette.success.main];
 
   const getLable = () =>
     (chart.categories ?? []).map((item) => {
@@ -61,17 +61,31 @@ export function HomeChart({
           return fTime(item, 'HH:MM');
         case ChartTimeRange._1M:
         case ChartTimeRange._7D:
-          return fDate(item, 'DD/MM');
+          return fDate(item, 'HH:MM DD/MM/YYYY');
         case ChartTimeRange._3M:
         case ChartTimeRange._1Y:
-          return `${fDate(item, 'DD/MM/YYYY')}`;
+          return `${fDate(item, 'HH:MM DD/MM/YYYY')}`;
         default:
           return '';
       }
     });
+
   const chartOptions = useChart({
     colors: chartColors,
-    xaxis: { categories: getLable() },
+    xaxis: {
+      categories: getLable(),
+      labels: {
+        show: false,
+      },
+    },
+    yaxis: {
+      labels: {
+        formatter: (value) => fCurrency(value),
+      },
+    },
+    tooltip: {
+      enabled: true, // Ensure tooltip is enabled
+    },
     ...chart.options,
   });
 
@@ -82,7 +96,7 @@ export function HomeChart({
       <ChartLegends
         colors={chartOptions?.colors}
         labels={(chart.series[0] ?? [])?.data.map((item) => item.name)}
-        values={[fShortenNumber(changePriceIn ?? 0), fShortenNumber(changePriceOut ?? 0)]}
+        values={[fCurrency(changePriceIn ?? 0), fCurrency(changePriceOut ?? 0)]}
         sx={{ px: 3, gap: 3 }}
       />
 

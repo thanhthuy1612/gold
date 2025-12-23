@@ -1,13 +1,11 @@
 import type { BoxProps } from '@mui/material/Box';
 
-import { m } from 'framer-motion';
-
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { Grid, Stack, Button } from '@mui/material';
 
-import { varFade, MotionViewport } from 'src/components/animate';
+import { MotionViewport } from 'src/components/animate';
 
 import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
 
@@ -53,7 +51,7 @@ export function HomeInfo({ sx, ...other }: BoxProps) {
       {...other}
     >
       <MotionViewport>
-        {renderLines()}
+        {/* {renderLines()} */}
 
         <Container sx={{ textAlign: 'center' }}>
           <Typography
@@ -65,27 +63,27 @@ export function HomeInfo({ sx, ...other }: BoxProps) {
             Tin tức
           </Typography>
 
-          <m.div variants={varFade('inUp')}>
-            <Grid container spacing={2}>
-              <Grid size={4}>
-                <img src="/assets/background/info1.jpg" width="100%" height="auto" />
-              </Grid>
-              <Grid size={4}>
-                <img src="/assets/background/info2.jpg" width="100%" height="auto" />
-              </Grid>
-              <Grid size={4}>
-                <img src="/assets/background/info3.jpg" width="100%" height="auto" />
-              </Grid>
+          {/* <m.div variants={varFade('inUp')}> */}
+          <Grid container spacing={2}>
+            <Grid size={4}>
+              <img src="/assets/background/info1.jpg" width="100%" height="auto" />
             </Grid>
-            <Button
-              size="large"
-              variant="outlined"
-              sx={{ border: '2px #8c0302 solid', color: '#8c0302', my: 5 }}
-              href="/"
-            >
-              Xem tất cả
-            </Button>
-          </m.div>
+            <Grid size={4}>
+              <img src="/assets/background/info2.jpg" width="100%" height="auto" />
+            </Grid>
+            <Grid size={4}>
+              <img src="/assets/background/info3.jpg" width="100%" height="auto" />
+            </Grid>
+          </Grid>
+          <Button
+            size="large"
+            variant="outlined"
+            sx={{ border: '2px #8c0302 solid', color: '#8c0302', my: 5 }}
+            href="/"
+          >
+            Xem tất cả
+          </Button>
+          {/* </m.div> */}
         </Container>
       </MotionViewport>
     </Box>
