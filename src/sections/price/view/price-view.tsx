@@ -2,15 +2,26 @@
 
 // ----------------------------------------------------------------------
 
-import { Card, Stack, useTheme, Typography, useMediaQuery, Tab, Tabs, CircularProgress } from '@mui/material';
+import { useState } from 'react';
+
+import {
+  Tab,
+  Card,
+  Tabs,
+  Stack,
+  useTheme,
+  Typography,
+  useMediaQuery,
+  CircularProgress,
+} from '@mui/material';
 
 import { fDate, fTime } from 'src/utils/format-time';
+
+import { useAppSelector } from 'src/lib/hooks';
 
 import { Logo } from 'src/components/logo';
 
 import { Price } from '../price';
-import { useState } from 'react';
-import { useAppSelector } from 'src/lib/hooks';
 
 type TabValue = 'silver' | 'gold';
 
@@ -20,7 +31,7 @@ export function PriceView() {
 
   const [tab, setTab] = useState<TabValue>('silver');
 
-  const {loading} = useAppSelector((state: any) => state.landing);
+  const { loading } = useAppSelector((state: any) => state.landing);
 
   const renderHeader = (title: string) => (
     <Stack
