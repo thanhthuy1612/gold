@@ -160,7 +160,7 @@ export function Price({ group }: { group: PriceGroup }) {
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
                 border: '1px #d09f19 solid !important',
-                fontSize: isSmallScreen ? 12 : 20,
+                fontSize: 20,
                 fontWeight: 'bold',
               }}
               headCells={TABLE_HEAD}
