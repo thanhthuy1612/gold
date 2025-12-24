@@ -86,7 +86,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
         width: '100%',
         height: 'fit-content',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'right bottom',
         backgroundRepeat: 'no-repeat',
       })}
       {...other}
