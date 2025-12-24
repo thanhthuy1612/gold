@@ -1,5 +1,7 @@
 import type { BoxProps } from '@mui/material/Box';
 
+import { useRouter } from 'next/navigation';
+
 import Box from '@mui/material/Box';
 import { Grid, Stack } from '@mui/material';
 import Container from '@mui/material/Container';
@@ -7,9 +9,10 @@ import Container from '@mui/material/Container';
 import { paths } from 'src/routes/paths';
 
 import { CONFIG } from 'src/global-config';
-import { useAppSelector } from 'src/lib/hooks';
+import { updateType } from 'src/lib/features/landing';
+import { useAppDispatch, useAppSelector } from 'src/lib/hooks';
 
-import { MotionViewport } from 'src/components/animate';
+import { MotionViewport, AnimateLogoZoom } from 'src/components/animate';
 
 import { TablePrice } from './components/table-price';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
@@ -74,6 +77,9 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
   const silverTableData = mapToTableData(silver);
   const goldTableData = mapToTableData(gold);
 
+  const dispath = useAppDispatch();
+  const router = useRouter();
+
   return (
     <Box
       component="section"
@@ -97,25 +103,43 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
         {/* {renderLines()} */}
 
         <Container>
-          <Grid container spacing={3}>
-            <Grid size={{ xs: 12, md: 6 }}>
-              <TablePrice
-                icon={<img src="/assets/background/b.png" width="30" />}
-                title="Giá bạc tham chiếu"
-                data={silverTableData}
-                href={paths.price}
-              />
-            </Grid>
+          {loading ? (
+            <Stack
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              flexDirection="row"
+              sx={{ minHeight: '347.5px' }}
+            >
+              <AnimateLogoZoom />
+            </Stack>
+          ) : (
+            <Grid container spacing={3}>
+              <Grid size={{ xs: 12, md: 6 }}>
+                <TablePrice
+                  icon={<img src="/assets/background/b.png" width="30" />}
+                  title="Giá bạc tham chiếu"
+                  data={silverTableData}
+                  onClick={() => {
+                    dispath(updateType('silver'));
+                    router.push(paths.price);
+                  }}
+                />
+              </Grid>
 
-            <Grid size={{ xs: 12, md: 6 }}>
-              <TablePrice
-                icon={<img src="/assets/background/v.png" width="30" />}
-                title="Giá vàng tham chiếu"
-                data={goldTableData}
-                href={paths.price}
-              />
+              <Grid size={{ xs: 12, md: 6 }}>
+                <TablePrice
+                  icon={<img src="/assets/background/v.png" width="30" />}
+                  title="Giá vàng tham chiếu"
+                  data={goldTableData}
+                  onClick={() => {
+                    dispath(updateType('gold'));
+                    router.push(paths.price);
+                  }}
+                />
+              </Grid>
             </Grid>
-          </Grid>
+          )}
           {/* </m.div> */}
         </Container>
       </MotionViewport>

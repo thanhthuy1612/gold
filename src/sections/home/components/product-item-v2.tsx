@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import { fabClasses } from '@mui/material/Fab';
 import { Tooltip, Typography, useMediaQuery } from '@mui/material';
 
-import { fNumber, fCurrency } from 'src/utils/format-number';
+import { fCurrency } from 'src/utils/format-number';
 
 import { Image } from 'src/components/image';
 import { Iconify } from 'src/components/iconify';
@@ -130,7 +130,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               wordBreak: 'break-all',
             }}
           >
-            Mua {fNumber(sell)}đ
+            Mua {fCurrency(sell)}
           </Typography>
         </Stack>
       </Box>

@@ -4,11 +4,16 @@ import type { Theme, SxProps, BoxProps } from '@mui/material';
 import type { PriceType, PriceData, PriceResult } from 'src/types/landing';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Box, Card, Grid, Stack, Button, Typography } from '@mui/material';
 
+import { paths } from 'src/routes/paths';
+
 import { fCurrency, fShortenNumber } from 'src/utils/format-number';
 
+import { useAppDispatch } from 'src/lib/hooks';
+import { updateType } from 'src/lib/features/landing';
 import { homeService } from 'src/services/landing.services';
 
 import { Iconify } from 'src/components/iconify';
@@ -22,7 +27,7 @@ import { HomeChart } from './home-chart';
 
 const listTimeRange = ['1 ngày', '7 ngày', '1 tháng', '3 tháng', '1 năm'];
 const listUnitSilver = ['Lượng', 'Kg'];
-const listUnitGold = ['Chỉ', 'Lương'];
+const listUnitGold = ['Chỉ', 'Lượng'];
 
 const gold = ['Vàng SJC', 'Vàng Phú Quý'];
 export function HomePrice({ sx, ...other }: BoxProps) {
@@ -34,6 +39,9 @@ export function HomePrice({ sx, ...other }: BoxProps) {
   const [unit, setUnit] = React.useState<ChartUnit>(ChartUnit.BAC_LUONG);
   const [loading, setLoading] = React.useState<boolean>(true);
   const [loadingFirst, setLoadingFirst] = React.useState<boolean>(true);
+
+  const dispath = useAppDispatch();
+  const router = useRouter();
 
   React.useEffect(() => {
     if (loadingFirst) {
@@ -107,102 +115,116 @@ export function HomePrice({ sx, ...other }: BoxProps) {
             }}
           >
             <Box>
-              <CardPrice
-                loading={loadingFirst}
-                title="Giá bạc Phú Quý"
-                buy={data?.silver?.infoList?.[1]?.priceIn ?? 0}
-                sell={data?.silver?.infoList?.[1]?.priceOut ?? 0}
-                persentBuy={
-                  (((data?.silver?.infoList?.[1]?.priceIn ?? 0) -
-                    (data?.silver?.infoList?.[0]?.priceIn ?? 0)) /
-                    (data?.silver?.infoList?.[0]?.priceIn ?? 0)) *
-                  100
-                }
-                persentSell={
-                  (((data?.silver?.infoList?.[1]?.priceOut ?? 0) -
-                    (data?.silver?.infoList?.[0]?.priceOut ?? 0)) /
-                    (data?.silver?.infoList?.[0]?.priceOut ?? 0)) *
-                  100
-                }
-                isIncreaseBuy={
-                  (data?.silver?.infoList?.[1]?.priceIn ?? 0) -
-                  (data?.silver?.infoList?.[0]?.priceIn ?? 0)
-                }
-                isIncreaseSell={
-                  (data?.silver?.infoList?.[1]?.priceOut ?? 0) -
-                  (data?.silver?.infoList?.[0]?.priceOut ?? 0)
-                }
-                sx={{
-                  p: 2,
-                  mb: 3,
-                  backgroundColor: type === ProductType.SILVER ? '#ffffff' : '#cedcff',
+              <Stack
+                onClick={() => {
+                  dispath(updateType('silver'));
+                  router.push(paths.price);
                 }}
-              />
-              {goldType === 'Vàng SJC' ? (
+              >
                 <CardPrice
                   loading={loadingFirst}
-                  title="Giá vàng SJC"
-                  buy={data?.sjcGold?.infoList?.[1]?.priceIn ?? 0}
-                  sell={data?.sjcGold?.infoList?.[1]?.priceOut ?? 0}
+                  title="Giá bạc Phú Quý"
+                  buy={data?.silver?.infoList?.[1]?.priceIn ?? 0}
+                  sell={data?.silver?.infoList?.[1]?.priceOut ?? 0}
                   persentBuy={
-                    (((data?.sjcGold?.infoList?.[1]?.priceIn ?? 0) -
-                      (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)) /
-                      (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)) *
+                    (((data?.silver?.infoList?.[1]?.priceIn ?? 0) -
+                      (data?.silver?.infoList?.[0]?.priceIn ?? 0)) /
+                      (data?.silver?.infoList?.[0]?.priceIn ?? 0)) *
                     100
                   }
                   persentSell={
-                    (((data?.sjcGold?.infoList?.[1]?.priceOut ?? 0) -
-                      (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)) /
-                      (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)) *
+                    (((data?.silver?.infoList?.[1]?.priceOut ?? 0) -
+                      (data?.silver?.infoList?.[0]?.priceOut ?? 0)) /
+                      (data?.silver?.infoList?.[0]?.priceOut ?? 0)) *
                     100
                   }
                   isIncreaseBuy={
-                    (data?.sjcGold?.infoList?.[1]?.priceIn ?? 0) -
-                    (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)
+                    (data?.silver?.infoList?.[1]?.priceIn ?? 0) -
+                    (data?.silver?.infoList?.[0]?.priceIn ?? 0)
                   }
                   isIncreaseSell={
-                    (data?.sjcGold?.infoList?.[1]?.priceOut ?? 0) -
-                    (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)
+                    (data?.silver?.infoList?.[1]?.priceOut ?? 0) -
+                    (data?.silver?.infoList?.[0]?.priceOut ?? 0)
                   }
                   sx={{
                     p: 2,
                     mb: 3,
-                    backgroundColor: type === ProductType.GOLD ? '#ffffff' : '#cedcff',
+                    backgroundColor: type === ProductType.SILVER ? '#ffffff' : '#cedcff',
                   }}
                 />
-              ) : (
-                <CardPrice
-                  loading={loadingFirst}
-                  title="Giá vàng Phú Quý"
-                  buy={data?.pqGold?.infoList?.[1]?.priceIn ?? 0}
-                  sell={data?.pqGold?.infoList?.[1]?.priceOut ?? 0}
-                  persentBuy={
-                    (((data?.pqGold?.infoList?.[1]?.priceIn ?? 0) -
-                      (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)) /
-                      (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)) *
-                    100
-                  }
-                  persentSell={
-                    (((data?.pqGold?.infoList?.[1]?.priceOut ?? 0) -
-                      (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)) /
-                      (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)) *
-                    100
-                  }
-                  isIncreaseBuy={
-                    (data?.pqGold?.infoList?.[1]?.priceIn ?? 0) -
-                    (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)
-                  }
-                  isIncreaseSell={
-                    (data?.pqGold?.infoList?.[1]?.priceOut ?? 0) -
-                    (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)
-                  }
-                  sx={{
-                    p: 2,
-                    mb: 3,
-                    backgroundColor: type === ProductType.GOLD ? '#ffffff' : '#cedcff',
-                  }}
-                />
-              )}
+              </Stack>
+              <Stack
+                onClick={() => {
+                  dispath(updateType('gold'));
+                  router.push(paths.price);
+                }}
+              >
+                {goldType === 'Vàng SJC' ? (
+                  <CardPrice
+                    loading={loadingFirst}
+                    title="Giá vàng SJC"
+                    buy={data?.sjcGold?.infoList?.[1]?.priceIn ?? 0}
+                    sell={data?.sjcGold?.infoList?.[1]?.priceOut ?? 0}
+                    persentBuy={
+                      (((data?.sjcGold?.infoList?.[1]?.priceIn ?? 0) -
+                        (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)) /
+                        (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)) *
+                      100
+                    }
+                    persentSell={
+                      (((data?.sjcGold?.infoList?.[1]?.priceOut ?? 0) -
+                        (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)) /
+                        (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)) *
+                      100
+                    }
+                    isIncreaseBuy={
+                      (data?.sjcGold?.infoList?.[1]?.priceIn ?? 0) -
+                      (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)
+                    }
+                    isIncreaseSell={
+                      (data?.sjcGold?.infoList?.[1]?.priceOut ?? 0) -
+                      (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)
+                    }
+                    sx={{
+                      p: 2,
+                      mb: 3,
+                      backgroundColor: type === ProductType.GOLD ? '#ffffff' : '#cedcff',
+                    }}
+                  />
+                ) : (
+                  <CardPrice
+                    loading={loadingFirst}
+                    title="Giá vàng Phú Quý"
+                    buy={data?.pqGold?.infoList?.[1]?.priceIn ?? 0}
+                    sell={data?.pqGold?.infoList?.[1]?.priceOut ?? 0}
+                    persentBuy={
+                      (((data?.pqGold?.infoList?.[1]?.priceIn ?? 0) -
+                        (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)) /
+                        (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)) *
+                      100
+                    }
+                    persentSell={
+                      (((data?.pqGold?.infoList?.[1]?.priceOut ?? 0) -
+                        (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)) /
+                        (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)) *
+                      100
+                    }
+                    isIncreaseBuy={
+                      (data?.pqGold?.infoList?.[1]?.priceIn ?? 0) -
+                      (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)
+                    }
+                    isIncreaseSell={
+                      (data?.pqGold?.infoList?.[1]?.priceOut ?? 0) -
+                      (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)
+                    }
+                    sx={{
+                      p: 2,
+                      mb: 3,
+                      backgroundColor: type === ProductType.GOLD ? '#ffffff' : '#cedcff',
+                    }}
+                  />
+                )}
+              </Stack>
             </Box>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12, md: 6 }}>

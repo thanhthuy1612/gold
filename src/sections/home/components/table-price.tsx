@@ -32,13 +32,13 @@ export type TableData = {
 
 type Props = {
   title: string;
-  href: string;
+  onClick: () => void;
   data: TableData[];
   icon: any;
 };
 // ----------------------------------------------------------------------
 
-export function TablePrice({ icon, title, href, data }: Props) {
+export function TablePrice({ icon, title, onClick, data }: Props) {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
   return (
     <Stack sx={{ my: 8 }}>
@@ -57,7 +57,7 @@ export function TablePrice({ icon, title, href, data }: Props) {
           </Typography>
         </Stack>
         <Button
-          href={href}
+          onClick={onClick}
           size="small"
           variant="contained"
           endIcon={<Iconify icon="eva:diagonal-arrow-right-up-fill" />}
@@ -82,7 +82,9 @@ export function TablePrice({ icon, title, href, data }: Props) {
               key={row.name}
               sx={{ '&:not(:last-child)': { borderBottom: '8px #971519 solid' } }}
             >
-              <TableCell sx={{ border: '2px solid white' }}>{row.name}</TableCell>
+              <TableCell sx={{ border: '2px solid white', fontWeight: '700' }}>
+                {row.name}
+              </TableCell>
 
               <TableCell
                 align="right"

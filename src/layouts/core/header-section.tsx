@@ -60,7 +60,7 @@ export function HeaderSection({
         <Box
           sx={{
             color: 'transparent',
-            backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
           }}
@@ -106,7 +106,10 @@ export function HeaderSection({
 
         <Stack
           sx={{
-            background: 'linear-gradient(-90deg,#f0b05c 0%, #fff9b8 50%, #901011 100%)',
+            background: {
+              xs: 'linear-gradient(-90deg,#f0b05c 0%, #fff9b8 50%, #901011 100%)',
+              lg: 'linear-gradient(-90deg,#f0b05c 0%, #fff9b8 30%, #901011 100%)',
+            },
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
           }}
         >

@@ -13,7 +13,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-import { fCurrency } from 'src/utils/format-number';
+import { fNumber } from 'src/utils/format-number';
 
 import { useAppSelector } from 'src/lib/hooks';
 
@@ -21,15 +21,9 @@ import { Logo } from 'src/components/logo';
 import { TableHeadCustom, type TableHeadCellProps } from 'src/components/table';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
-  { id: 'name', label: 'SẢN PHẨM', align: 'center', width: '40%' },
-  { id: 'buy', label: 'GIÁ MUA VÀO', align: 'right', width: '30%' },
-  { id: 'sell', label: 'GIÁ BÁN RA', align: 'right', width: '30%' },
-];
-
-const TABLE_HEAD_MIN: TableHeadCellProps[] = [
-  { id: 'name', label: 'SẢN PHẨM', align: 'center', width: '35%' },
-  { id: 'buy', label: 'GIÁ MUA VÀO', align: 'right', width: '25%' },
-  { id: 'sell', label: 'GIÁ BÁN RA', align: 'right', width: '25%' },
+  { id: 'name', label: 'SẢN PHẨM', align: 'left', width: '40%' },
+  { id: 'buy', label: 'GIÁ MUA', align: 'center', width: '30%' },
+  { id: 'sell', label: 'GIÁ BÁN', align: 'center', width: '30%' },
 ];
 
 export type TableData = {
@@ -115,16 +109,16 @@ export function Price({ group }: { group: PriceGroup }) {
         </TableCell>
       )} */}
 
-      <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
+      <TableCell align="center" sx={{ border: '1px #821818 solid !important' }}>
         <Typography variant="h5" color="#821818">
-          {fCurrency(item.buy)}
+          {fNumber(item.buy)}
         </Typography>
         {/* {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>} */}
       </TableCell>
 
-      <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
+      <TableCell align="center" sx={{ border: '1px #821818 solid !important' }}>
         <Typography variant="h5" color="#22c55e">
-          {item.sell ? fCurrency(item.sell) : <Logo />}
+          {item.sell ? fNumber(item.sell) : <Logo />}
         </Typography>
         {/* {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>} */}
       </TableCell>
@@ -169,7 +163,7 @@ export function Price({ group }: { group: PriceGroup }) {
                 fontSize: isSmallScreen ? 12 : 20,
                 fontWeight: 'bold',
               }}
-              headCells={isSmallScreen ? TABLE_HEAD_MIN : TABLE_HEAD}
+              headCells={TABLE_HEAD}
             />
 
             <TableBody sx={{ background: 'white' }}>

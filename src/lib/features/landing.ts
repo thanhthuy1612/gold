@@ -1,3 +1,5 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { endpoints, axiosInstance } from 'src/lib/axios';
@@ -23,6 +25,7 @@ interface LandingState {
   goldLastUpdate: string | null;
   silverLastUpdate: string | null;
   loading: boolean;
+  type?: 'gold' | 'silver';
 }
 
 const fetchGoldApi = async (): Promise<MetalResponse> => {
@@ -62,7 +65,11 @@ const initialState: LandingState = {
 const landingSlice = createSlice({
   name: 'landing',
   initialState,
-  reducers: {},
+  reducers: {
+    updateType: (state, action: PayloadAction<'gold' | 'silver'>) => {
+      state.type = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       /* ---------- FETCH BOTH ---------- */
@@ -105,3 +112,5 @@ const landingSlice = createSlice({
 });
 
 export default landingSlice.reducer;
+
+export const { updateType } = landingSlice.actions;

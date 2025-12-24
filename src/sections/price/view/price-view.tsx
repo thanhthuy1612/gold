@@ -2,7 +2,7 @@
 
 // ----------------------------------------------------------------------
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import {
   Tab,
@@ -31,7 +31,13 @@ export function PriceView() {
 
   const [tab, setTab] = useState<TabValue>('silver');
 
-  const { loading } = useAppSelector((state: any) => state.landing);
+  const { loading, type } = useAppSelector((state: any) => state.landing);
+
+  React.useEffect(() => {
+    if (type) {
+      setTab(type);
+    }
+  }, [type]);
 
   const renderHeader = (title: string) => (
     <Stack
@@ -42,7 +48,7 @@ export function PriceView() {
       alignItems="center"
       sx={{
         background: '#821818',
-        px: 5,
+        px: 2,
         py: 2,
         mb: 2,
         [theme.breakpoints.up('md')]: {
@@ -57,7 +63,7 @@ export function PriceView() {
         <Typography
           sx={{
             color: 'transparent',
-            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
+            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
           }}
@@ -71,11 +77,11 @@ export function PriceView() {
       <Typography
         sx={{
           color: 'transparent',
-          backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
+          backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
         }}
-        variant={isSmallScreen ? 'h3' : 'h2'}
+        variant="h3"
       >
         {title}
       </Typography>
@@ -93,11 +99,13 @@ export function PriceView() {
         <Typography
           sx={{
             color: 'transparent',
-            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
+            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
+            fontWeight: '700 !important',
+            width: 'fit-content',
           }}
-          variant="caption"
+          variant="subtitle2"
         >
           GIÁ NIÊM YẾT ĐƯỢC CẬP NHẬT LẦN CUỐI
         </Typography>
@@ -110,14 +118,14 @@ export function PriceView() {
           alignItems="center"
           sx={{
             color: 'transparent',
-            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
+            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
           }}
         >
-          <Typography variant="h5">{fTime(new Date())}</Typography>
+          <Typography variant="h4">{fTime(new Date(), 'HH:MM')}</Typography>
           <Logo sx={{ width: 22, height: 'auto' }} />
-          <Typography variant="h5">{fDate(new Date(), 'DD/MM/YYYY')}</Typography>
+          <Typography variant="h4">{fDate(new Date(), 'DD/MM/YYYY')}</Typography>
         </Stack>
       </Card>
     </Stack>
@@ -126,28 +134,31 @@ export function PriceView() {
   return (
     <>
       {/* ================= TABS ================= */}
-      <Tabs
-        value={tab}
-        onChange={(_, value) => setTab(value)}
-        sx={{
-          mb: 3,
-          '& .MuiTab-root': {
-            fontWeight: 700,
-            fontSize: isSmallScreen ? 13 : 16,
-          },
-        }}
-      >
-        <Tab
-          sx={{ color: '#821818 !important', border: '#821818 !important' }}
-          value="silver"
-          label="GIÁ BẠC"
-        />
-        <Tab
-          sx={{ color: '#821818 !important', border: '#821818 !important' }}
-          value="gold"
-          label="GIÁ VÀNG"
-        />
-      </Tabs>
+      <Stack display="flex" justifyContent="center" alignItems="center">
+        <Tabs
+          value={tab}
+          onChange={(_, value) => setTab(value)}
+          sx={{
+            mb: 5,
+            color: '#821818 !important',
+            '& .MuiTab-root': {
+              fontWeight: 700,
+              fontSize: 22,
+            },
+          }}
+        >
+          <Tab
+            sx={{ color: '#821818 !important', border: '#821818 !important' }}
+            value="silver"
+            label="GIÁ BẠC"
+          />
+          <Tab
+            sx={{ color: '#821818 !important', border: '#821818 !important' }}
+            value="gold"
+            label="GIÁ VÀNG"
+          />
+        </Tabs>
+      </Stack>
 
       {renderHeader(tab === 'silver' ? 'GIÁ BẠC PHÚ QUÝ' : 'GIÁ VÀNG PHÚ QUÝ')}
 

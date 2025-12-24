@@ -97,30 +97,40 @@ export function MainLayout({
               sx={(theme) => ({
                 display: 'none',
                 [theme.breakpoints.up('lg')]: { display: 'flex', alignItems: 'center', gap: 1 },
-                color: '#cc8b1a',
-                backgroundImage: 'linear-gradient(90deg, #8c0d0d 0%, #b41717 50%, #8c0d0d 100%)',
+                color: 'transparent',
+                backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
+                width: 'fit-content',
               })}
               variant="subtitle2"
             >
-              <img src="/assets/background/map.png" width="auto" height="16" color='#cc8b1a'/>
+              <img src="/assets/background/map.png" width="auto" height="16" color="#cc8b1a" />
               187 Xã Đàn - Hà Nội
             </Typography>
-            <Logo />
-            <Typography
-              variant="h6"
-              sx={(theme) => ({
-                color: '#f7b142',
-                backgroundImage: 'linear-gradient(90deg, #8c0d0d 0%, #b41717 50%, #8c0d0d 100%)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                display: 'none',
-                [theme.breakpoints.up(layoutQuery)]: { display: 'block' },
-              })}
+            <Stack
+              display="flex"
+              gap={1}
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="center"
             >
-              TÀI LỘC
-            </Typography>
+              <Logo />
+              <Typography
+                variant="h6"
+                sx={(theme) => ({
+                  color: 'transparent',
+                  backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  width: 'fit-content',
+                  display: 'none',
+                  [theme.breakpoints.up(layoutQuery)]: { display: 'block' },
+                })}
+              >
+                TÀI LỘC
+              </Typography>
+            </Stack>
           </Stack>
         </>
       ),
@@ -230,12 +240,12 @@ export function MainLayout({
       sx={
         pathname === `${paths.auth.jwt.signIn}/`
           ? [
-            (theme) => ({
-              position: 'relative',
-              '&::before': backgroundStyles(theme),
-            }),
-            ...(Array.isArray(sx) ? sx : [sx]),
-          ]
+              (theme) => ({
+                position: 'relative',
+                '&::before': backgroundStyles(theme),
+              }),
+              ...(Array.isArray(sx) ? sx : [sx]),
+            ]
           : sx
       }
     >

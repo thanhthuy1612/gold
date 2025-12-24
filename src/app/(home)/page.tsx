@@ -5,7 +5,7 @@ import HomeClient from './home-client';
 // ----------------------------------------------------------------------
 
 export const metadata: Metadata = {
-  title: 'Trang chủ',
+  title: 'Vàng bạc Tài Lộc',
   description: 'Vàng bạc Tài Lộc',
 };
 
