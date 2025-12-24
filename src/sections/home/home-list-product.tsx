@@ -161,7 +161,7 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
                 gap: 3,
                 display: 'grid',
                 gridTemplateColumns: {
-                  xs: 'repeat(1, 1fr)',
+                  xs: 'repeat(2, 1fr)',
                   sm: 'repeat(3, 1fr)',
                   md: 'repeat(4, 1fr)',
                   lg: 'repeat(4, 1fr)',

@@ -75,7 +75,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             lineHeight: '1.5',
-            height: 'calc(3 * 1.5em)',
+            height: 'calc(2.25 * 1.5em)',
           }}
         >
           {name}
@@ -94,14 +94,14 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           wordBreak: 'break-all',
         }}
       >
-        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
+        <Stack direction="row" alignItems="center" spacing={0} sx={{ mb: 1 }}>
           <Iconify
-            sx={{ color: '#3ab163', width: 24, height: 24 }}
+            sx={{ color: '#3ab163', width: 20, height: 20 }}
             icon="solar:double-alt-arrow-right-bold-duotone"
           />
 
           <Typography
-            variant="h5"
+            variant="h6"
             sx={{
               color: '#3ab163',
               fontWeight: 700,
@@ -114,14 +114,14 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           </Typography>
         </Stack>
 
-        <Stack direction="row" alignItems="center" spacing={1}>
+        <Stack direction="row" alignItems="center" spacing={0}>
           <Iconify
-            sx={{ color: '#9a0f15', width: 24, height: 24, transform: 'rotate(180deg)' }}
+            sx={{ color: '#9a0f15', width: 20, height: 20, transform: 'rotate(180deg)' }}
             icon="solar:double-alt-arrow-right-bold-duotone"
           />
 
           <Typography
-            variant="h5"
+            variant="h6"
             sx={{
               color: '#9a0f15',
               fontWeight: 700,
