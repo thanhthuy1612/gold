@@ -124,11 +124,19 @@ export function PriceView() {
           }}
         >
           <Typography variant="h4">
-            {(tab === 'silver' ? silverLastUpdate : goldLastUpdate).split(' ')?.[0]}
+            {loading
+              ? '...'
+              : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
+                  ' '
+                )?.[0]}
           </Typography>
           <Logo sx={{ width: 22, height: 'auto' }} />
           <Typography variant="h4">
-            {(tab === 'silver' ? silverLastUpdate : goldLastUpdate).split(' ')?.[1]}
+            {loading
+              ? '...'
+              : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
+                  ' '
+                )?.[1]}
           </Typography>
         </Stack>
       </Card>
