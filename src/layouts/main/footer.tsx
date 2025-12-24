@@ -263,13 +263,13 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
           >
             <Grid size={{ xs: 12, md: 8 }} justifyItems="start">
               <Typography
+                component="span"
                 sx={{
                   color: 'transparent',
                   backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   fontSize: '700',
-                  mb: 4,
                 }}
                 variant="h4"
               >
@@ -281,7 +281,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   flexDirection="row"
                   alignItems="center"
                   gap={2}
-                  sx={{ mb: 3 }}
+                  sx={{ my: 3 }}
                   key={item.name}
                 >
                   <Logo sx={{ width: 20, height: 20 }} />
@@ -316,6 +316,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                 </Stack>
                 <Typography
                   variant="subtitle2"
+                  component="span"
                   sx={{
                     color: 'transparent',
                     backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',

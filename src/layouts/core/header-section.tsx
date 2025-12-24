@@ -71,6 +71,7 @@ export function HeaderSection({
           flexWrap="wrap"
         >
           <Typography
+            component="span"
             sx={{ width: 'fit-content', textAlign: 'center' }}
             variant={isSmallScreen ? 'body2' : 'h6'}
           >

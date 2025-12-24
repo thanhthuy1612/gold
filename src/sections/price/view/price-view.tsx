@@ -61,6 +61,7 @@ export function PriceView() {
       <Stack display="flex" gap={1} flexDirection="row" alignItems="center">
         <Logo sx={{ width: isSmallScreen ? 30 : 60, height: 'auto' }} />
         <Typography
+          component="span"
           sx={{
             color: 'transparent',
             backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
@@ -75,6 +76,7 @@ export function PriceView() {
 
       {/* TITLE */}
       <Typography
+        component="span"
         sx={{
           color: 'transparent',
           backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
@@ -97,6 +99,7 @@ export function PriceView() {
         }}
       >
         <Typography
+          component="span"
           sx={{
             color: 'transparent',
             backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
@@ -116,6 +119,7 @@ export function PriceView() {
           flexDirection="row"
           justifyContent="space-between"
           alignItems="center"
+          component="span"
           sx={{
             color: 'transparent',
             backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',

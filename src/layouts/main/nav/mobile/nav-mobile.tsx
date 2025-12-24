@@ -68,6 +68,7 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
           <Logo />
           <Typography
             variant="h6"
+            component="span"
             sx={{
               color: 'transparent',
               backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',

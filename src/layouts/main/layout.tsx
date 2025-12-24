@@ -94,6 +94,7 @@ export function MainLayout({
           {/** @slot Logo */}
           <Stack display="flex" gap={2} flexDirection="row" alignItems="center">
             <Typography
+              component="span"
               sx={(theme) => ({
                 display: 'none',
                 [theme.breakpoints.up('lg')]: { display: 'flex', alignItems: 'center', gap: 1 },
@@ -118,6 +119,7 @@ export function MainLayout({
               <Logo />
               <Typography
                 variant="h6"
+                component="span"
                 sx={(theme) => ({
                   color: 'transparent',
                   backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
