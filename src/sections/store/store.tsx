@@ -7,7 +7,7 @@ import { Card, Grid, Stack, useTheme, Typography, useMediaQuery } from '@mui/mat
 const listFooter = [
   {
     title: 'Chất lượng',
-    descrition: 'Gia công & sản xuất miếng bạc đạt chuẩn hàm lượng.',
+    descrition: 'Đầu tư chuẩn mực, dẫn lối thành công.',
     img: '/assets/background/1.png',
   },
   {
@@ -41,6 +41,24 @@ export function Store() {
       sx={{ textAlign: 'justify', mt: 3 }}
     >
       <Typography>
+        <strong>VÀNG BẠC TÀI LỘC</strong> là đối tác đại lý uỷ quyền của{' '}
+        <strong>TẬP ĐOÀN PHÚ QUÝ</strong>. Chúng tôi hoạt động dựa trên nền tảng{' '}
+        <strong>minh bạch – chuẩn mực – bền vững</strong>, mang đến cho nhà đầu tư các sản phẩm bạc
+        tích luỹ có giá trị thực, tính thanh khoản cao và khả năng sinh lời dài hạn.
+      </Typography>
+
+      <Typography>
+        Với <strong>tầm nhìn</strong> xây dựng một hệ sinh thái đầu tư bạc an toàn,{' '}
+        <strong>TÀI LỘC </strong>sẽ không ngừng mở rộng mạng lưới cửa hàng tại các đô thị lớn, từng
+        bước chuẩn hóa trải nghiệm <strong>đầu tư</strong> cho người Việt.
+      </Typography>
+
+      <Typography>
+        <strong>Sứ mệnh</strong> của chúng tôi là đồng hành cùng khách hàng trong hành trình bảo
+        toàn và gia tăng tài sản, thông qua các giải pháp tích sản phù hợp xu hướng tài chính hiện
+        đại.
+      </Typography>
+      {/* <Typography>
         Công ty <strong>Vàng Bạc Đá Quý Tài Lộc</strong> là thương hiệu uy tín chuyên về{' '}
         <strong>bạc miếng - bạc trang sức - bạc mỹ nghệ</strong>, được xây dựng trên nền tảng kinh
         nghiệm và giá trị vững bền của ngành kim hoàn Việt Nam. Với định hướng tập trung vào thị
@@ -59,7 +77,7 @@ export function Store() {
         trang thiết bị và mở rộng danh mục sản phẩm, nhàm đáp ứng nhu cầu ngày càng cao của khách
         hàng. Mỗi giao dịch tại Tài Lộc đều được thực hiện theo triết lý:{' '}
         <strong>Uy tín - Tận tâm - Giá trị thật.</strong>
-      </Typography>
+      </Typography> */}
     </Stack>
   );
   const renderFooter = () => (

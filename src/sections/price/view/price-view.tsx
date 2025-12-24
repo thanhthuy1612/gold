@@ -67,6 +67,7 @@ export function PriceView() {
             backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
+            visibility: 'visible',
           }}
           variant={isSmallScreen ? 'h5' : 'h4'}
         >
@@ -82,6 +83,7 @@ export function PriceView() {
           backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
+          visibility: 'visible',
         }}
         variant="h3"
       >
@@ -107,6 +109,7 @@ export function PriceView() {
             backgroundClip: 'text',
             fontWeight: '700 !important',
             width: 'fit-content',
+            visibility: 'visible',
           }}
           variant="subtitle2"
         >
@@ -125,6 +128,7 @@ export function PriceView() {
             backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
+            visibility: 'visible',
           }}
         >
           <Typography variant="h4">

@@ -102,6 +102,7 @@ export function MainLayout({
                 backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
+                visibility: 'visible',
                 width: 'fit-content',
               })}
               variant="subtitle2"
@@ -125,6 +126,7 @@ export function MainLayout({
                   backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
+                  visibility: 'visible',
                   width: 'fit-content',
                   display: 'none',
                   [theme.breakpoints.up(layoutQuery)]: { display: 'block' },
