@@ -21,10 +21,9 @@ import { Logo } from 'src/components/logo';
 import { TableHeadCustom, type TableHeadCellProps } from 'src/components/table';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
-  { id: 'name', label: 'SẢN PHẨM', align: 'center', width: '35%' },
-  { id: 'cost', label: 'ĐƠN VỊ', width: '15%' },
-  { id: 'buy', label: 'GIÁ MUA VÀO', align: 'right', width: '25%' },
-  { id: 'sell', label: 'GIÁ BÁN RA', align: 'right', width: '25%' },
+  { id: 'name', label: 'SẢN PHẨM', align: 'center', width: '40%' },
+  { id: 'buy', label: 'GIÁ MUA VÀO', align: 'right', width: '30%' },
+  { id: 'sell', label: 'GIÁ BÁN RA', align: 'right', width: '30%' },
 ];
 
 const TABLE_HEAD_MIN: TableHeadCellProps[] = [
@@ -110,24 +109,24 @@ export function Price({ group }: { group: PriceGroup }) {
         <Typography variant="h5">{item.name}</Typography>
         {item.description && <Typography variant="caption">({item.description})</Typography>}
       </TableCell>
-      {!isSmallScreen && (
+      {/* {!isSmallScreen && (
         <TableCell sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
           {item.cost}
         </TableCell>
-      )}
+      )} */}
 
       <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="h6" color="#821818">
+        <Typography variant="h5" color="#821818">
           {fCurrency(item.buy)}
         </Typography>
-        {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
+        {/* {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>} */}
       </TableCell>
 
       <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="h6" color="#22c55e">
+        <Typography variant="h5" color="#22c55e">
           {item.sell ? fCurrency(item.sell) : <Logo />}
         </Typography>
-        {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
+        {/* {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>} */}
       </TableCell>
     </TableRow>
   );
@@ -147,7 +146,7 @@ export function Price({ group }: { group: PriceGroup }) {
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
         }}
-        variant={isSmallScreen ? 'h6' : 'h4'}
+        variant="h5"
       >
         {title}
       </Typography>
@@ -158,7 +157,7 @@ export function Price({ group }: { group: PriceGroup }) {
     <>
       {TABLE_DATA.map((row) => (
         <Stack key={row.title}>
-          {renderHeader(row.title)}
+          {/* {renderHeader(row.title)} */}
           <Table sx={{ background: '#821818' }}>
             <TableHeadCustom
               sx={{

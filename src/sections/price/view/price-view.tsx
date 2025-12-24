@@ -44,7 +44,7 @@ export function PriceView() {
         background: '#821818',
         px: 5,
         py: 2,
-        mb: 5,
+        mb: 2,
         [theme.breakpoints.up('md')]: {
           flexDirection: 'row',
           justifyContent: 'space-between',
@@ -168,10 +168,10 @@ export function PriceView() {
         <Typography variant="subtitle2" color="#821818">
           Đơn giá đã bao gồm thuế GTGT
         </Typography>
-        <Typography variant="subtitle2" color="#821818">
+        {/* <Typography variant="subtitle2" color="#821818">
           Quý khách lưu ý: Giá trên chỉ mang tính chất tham khảo, vui lòng liên hệ trực tiếp để có
           giá mua bán chính xác nhất.
-        </Typography>
+        </Typography> */}
       </Stack>
     </>
   );
