@@ -30,7 +30,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
   const [data, setData] = React.useState<PriceResult>();
   const [type, setType] = React.useState<ProductType>(ProductType.SILVER);
   const [goldType, setGoldType] = React.useState<string>('Vàng Phú Quý');
-  const [timeRange, setTimeRange] = React.useState<ChartTimeRange>(ChartTimeRange._1D);
+  const [timeRange, setTimeRange] = React.useState<ChartTimeRange>(ChartTimeRange._7D);
   const [unit, setUnit] = React.useState<ChartUnit>(ChartUnit.BAC_LUONG);
   const [loading, setLoading] = React.useState<boolean>(true);
   const [loadingFirst, setLoadingFirst] = React.useState<boolean>(true);
