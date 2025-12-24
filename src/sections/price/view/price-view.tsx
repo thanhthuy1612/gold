@@ -141,6 +141,7 @@ export function PriceView() {
           sx={{
             mb: 5,
             color: '#821818 !important',
+            fontWeight: 700,
             '& .MuiTab-root': {
               fontWeight: 700,
               fontSize: 22,
