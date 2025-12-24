@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import { fabClasses } from '@mui/material/Fab';
-import { Tooltip, Typography } from '@mui/material';
+import { Tooltip, Typography, useMediaQuery } from '@mui/material';
 
 import { fNumber, fCurrency } from 'src/utils/format-number';
 
@@ -22,7 +22,7 @@ type Props = {
 
 export function ProductItemV2({ product, detailsHref, sx }: Props) {
   const { id, name, buy, sell, img } = product;
-
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
   const renderLabels = () => (
     <Box
       sx={{
@@ -68,7 +68,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           sx={{
             color: '#98130f',
             mb: 2,
-            p: 1,
+            p: 1.5,
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
@@ -84,7 +84,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
       <Box
         sx={{
           background: '#fff',
-          p: 1,
+          p: 1.5,
           borderTop: '2px solid #98130f',
           display: 'flex',
           flexDirection: 'column',
@@ -94,14 +94,14 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           wordBreak: 'break-all',
         }}
       >
-        <Stack direction="row" alignItems="center" spacing={0} sx={{ mb: 1 }}>
+        <Stack display="flex" flexDirection="row" alignItems="center" gap={{ xs: 0, md: 1 }}>
           <Iconify
             sx={{ color: '#3ab163', width: 20, height: 20 }}
             icon="solar:double-alt-arrow-right-bold-duotone"
           />
 
           <Typography
-            variant="h6"
+            variant={isSmallScreen ? 'h6' : 'h5'}
             sx={{
               color: '#3ab163',
               fontWeight: 700,
@@ -114,14 +114,14 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           </Typography>
         </Stack>
 
-        <Stack direction="row" alignItems="center" spacing={0}>
+        <Stack display="flex" flexDirection="row" alignItems="center" gap={{ xs: 0, md: 1 }}>
           <Iconify
             sx={{ color: '#9a0f15', width: 20, height: 20, transform: 'rotate(180deg)' }}
             icon="solar:double-alt-arrow-right-bold-duotone"
           />
 
           <Typography
-            variant="h6"
+            variant={isSmallScreen ? 'h6' : 'h5'}
             sx={{
               color: '#9a0f15',
               fontWeight: 700,

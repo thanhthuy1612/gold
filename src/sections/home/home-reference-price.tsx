@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import { Grid, Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 
+import { paths } from 'src/routes/paths';
+
 import { CONFIG } from 'src/global-config';
 import { useAppSelector } from 'src/lib/hooks';
 
@@ -101,7 +103,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
                 icon={<img src="/assets/background/b.png" width="30" />}
                 title="Giá bạc tham chiếu"
                 data={silverTableData}
-                href="/"
+                href={paths.price}
               />
             </Grid>
 
@@ -110,7 +112,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
                 icon={<img src="/assets/background/v.png" width="30" />}
                 title="Giá vàng tham chiếu"
                 data={goldTableData}
-                href="/"
+                href={paths.price}
               />
             </Grid>
           </Grid>

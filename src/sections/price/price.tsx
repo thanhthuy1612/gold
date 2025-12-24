@@ -55,21 +55,37 @@ export function Price({ group }: { group: PriceGroup }) {
   const { gold = [], silver = [] } = useAppSelector((state: any) => state.landing);
 
   /* ---------- MAP API DATA ---------- */
-  const silverPhuQuyData: TableData[] = silver.map((item: { productTypeName: any; priceIn: any; priceOut: any; unitOfMeasure: string; description: any; }) => ({
-    name: item.productTypeName,
-    buy: item.priceIn,
-    sell: item.priceOut,
-    cost: item.unitOfMeasure.toUpperCase(),
-    description: item.description ?? undefined,
-  }));
+  const silverPhuQuyData: TableData[] = silver.map(
+    (item: {
+      productTypeName: any;
+      priceIn: any;
+      priceOut: any;
+      unitOfMeasure: string;
+      description: any;
+    }) => ({
+      name: item.productTypeName,
+      buy: item.priceIn,
+      sell: item.priceOut,
+      cost: item.unitOfMeasure.toUpperCase(),
+      description: item.description ?? undefined,
+    })
+  );
 
-  const goldPhuQuyData: TableData[] = gold.map((item: { productTypeName: any; priceIn: any; priceOut: any; unitOfMeasure: string; description: any; }) => ({
-    name: item.productTypeName,
-    buy: item.priceIn,
-    sell: item.priceOut,
-    cost: item.unitOfMeasure.toUpperCase(),
-    description: item.description ?? undefined,
-  }));
+  const goldPhuQuyData: TableData[] = gold.map(
+    (item: {
+      productTypeName: any;
+      priceIn: any;
+      priceOut: any;
+      unitOfMeasure: string;
+      description: any;
+    }) => ({
+      name: item.productTypeName,
+      buy: item.priceIn,
+      sell: item.priceOut,
+      cost: item.unitOfMeasure.toUpperCase(),
+      description: item.description ?? undefined,
+    })
+  );
 
   const TABLE_DATA: PriceData[] =
     group === 'silver'
@@ -77,13 +93,13 @@ export function Price({ group }: { group: PriceGroup }) {
           {
             title: 'BẠC THƯƠNG HIỆU PHÚ QUÝ',
             data: silverPhuQuyData,
-          }
+          },
         ]
       : [
           {
             title: 'VÀNG THƯƠNG HIỆU PHÚ QUÝ',
             data: goldPhuQuyData,
-          }
+          },
         ];
 
   /* ---------- RENDER ---------- */
@@ -101,12 +117,16 @@ export function Price({ group }: { group: PriceGroup }) {
       )}
 
       <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="subtitle1" color="success.main">{fCurrency(item.buy)}</Typography>
+        <Typography variant="h6" color="#821818">
+          {fCurrency(item.buy)}
+        </Typography>
         {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
       </TableCell>
 
       <TableCell align="right" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="subtitle1" color="error">{item.sell ? fCurrency(item.sell) : <Logo />}</Typography>
+        <Typography variant="h6" color="#22c55e">
+          {item.sell ? fCurrency(item.sell) : <Logo />}
+        </Typography>
         {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>}
       </TableCell>
     </TableRow>
@@ -123,7 +143,7 @@ export function Price({ group }: { group: PriceGroup }) {
       <Typography
         sx={{
           color: 'transparent',
-          backgroundImage: 'linear-gradient(180deg, #f6ca68, #c18b49)',
+          backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
         }}
@@ -143,10 +163,10 @@ export function Price({ group }: { group: PriceGroup }) {
             <TableHeadCustom
               sx={{
                 color: 'transparent',
-                backgroundImage: 'linear-gradient(180deg, #f6ca68, #c18b49)',
+                backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
-                border: '1px #c18b49 solid !important',
+                border: '1px #d09f19 solid !important',
                 fontSize: isSmallScreen ? 12 : 20,
                 fontWeight: 'bold',
               }}

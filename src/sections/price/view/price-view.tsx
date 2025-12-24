@@ -57,7 +57,7 @@ export function PriceView() {
         <Typography
           sx={{
             color: 'transparent',
-            backgroundImage: 'linear-gradient(180deg, #f6ca68, #c18b49)',
+            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
           }}
@@ -71,7 +71,7 @@ export function PriceView() {
       <Typography
         sx={{
           color: 'transparent',
-          backgroundImage: 'linear-gradient(180deg, #f6ca68, #c18b49)',
+          backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
         }}
@@ -93,7 +93,7 @@ export function PriceView() {
         <Typography
           sx={{
             color: 'transparent',
-            backgroundImage: 'linear-gradient(180deg, #f6ca68, #c18b49)',
+            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
           }}
@@ -110,7 +110,7 @@ export function PriceView() {
           alignItems="center"
           sx={{
             color: 'transparent',
-            backgroundImage: 'linear-gradient(180deg, #f6ca68, #c18b49)',
+            backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19);',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
           }}
@@ -137,8 +137,16 @@ export function PriceView() {
           },
         }}
       >
-        <Tab value="silver" label="GIÁ BẠC" />
-        <Tab value="gold" label="GIÁ VÀNG" />
+        <Tab
+          sx={{ color: '#821818 !important', border: '#821818 !important' }}
+          value="silver"
+          label="GIÁ BẠC"
+        />
+        <Tab
+          sx={{ color: '#821818 !important', border: '#821818 !important' }}
+          value="gold"
+          label="GIÁ VÀNG"
+        />
       </Tabs>
 
       {renderHeader(tab === 'silver' ? 'GIÁ BẠC PHÚ QUÝ' : 'GIÁ VÀNG PHÚ QUÝ')}

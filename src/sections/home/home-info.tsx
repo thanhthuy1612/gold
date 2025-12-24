@@ -5,6 +5,8 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { Grid, Stack, Button } from '@mui/material';
 
+import { paths } from 'src/routes/paths';
+
 import { MotionViewport } from 'src/components/animate';
 
 import { FloatLine, FloatTriangleDownIcon } from './components/svg-elements';
@@ -79,7 +81,7 @@ export function HomeInfo({ sx, ...other }: BoxProps) {
             size="large"
             variant="outlined"
             sx={{ border: '2px #8c0302 solid', color: '#8c0302', my: 5 }}
-            href="/"
+            href={paths.price}
           >
             Xem tất cả
           </Button>

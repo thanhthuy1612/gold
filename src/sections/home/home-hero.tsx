@@ -8,8 +8,6 @@ import Container from '@mui/material/Container';
 
 import { MotionContainer } from 'src/components/animate';
 
-import { HeroBackground } from './components/hero-background';
-
 // ----------------------------------------------------------------------
 
 // const smKey: Breakpoint = 'sm';
@@ -41,7 +39,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
         {/* </m.div> */}
       </Container>
 
-      <HeroBackground />
+      {/* <HeroBackground /> */}
     </Box>
   );
 }

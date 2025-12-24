@@ -26,8 +26,8 @@ import { varFade } from 'src/components/animate';
 
 const listInfo = [
   { name: 'Mã số doanh nghiệp', value: '0111262522', href: '/' },
-  { name: 'Điện thoại', value: '0961228888', href: '/' },
-  { name: 'Thư điện tử', value: 'tdtailoc@gmail.com', href: '/' },
+  { name: 'Điện thoại', value: '0383599995', href: 'tel:0383599995' },
+  { name: 'Thư điện tử', value: 'tdtailoc@gmail.com', href: 'mailto:tdtailoc@gmail.com' },
 ];
 
 const LINKS = [
@@ -286,6 +286,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                 >
                   <Logo sx={{ width: 20, height: 20 }} />
                   <Link
+                    component="a"
                     href={item.href}
                     variant="h5"
                     sx={{

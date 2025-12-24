@@ -158,13 +158,13 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
           <Box
             sx={[
               () => ({
-                gap: 3,
+                gap: { xs: 0.5, md: 2 },
                 display: 'grid',
                 gridTemplateColumns: {
                   xs: 'repeat(2, 1fr)',
                   sm: 'repeat(3, 1fr)',
                   md: 'repeat(4, 1fr)',
-                  lg: 'repeat(4, 1fr)',
+                  lg: 'repeat(5, 1fr)',
                 },
               }),
             ]}
