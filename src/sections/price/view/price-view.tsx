@@ -15,8 +15,6 @@ import {
   CircularProgress,
 } from '@mui/material';
 
-import { fDate, fTime } from 'src/utils/format-time';
-
 import { useAppSelector } from 'src/lib/hooks';
 
 import { Logo } from 'src/components/logo';
@@ -31,7 +29,9 @@ export function PriceView() {
 
   const [tab, setTab] = useState<TabValue>('silver');
 
-  const { loading, type } = useAppSelector((state: any) => state.landing);
+  const { loading, type, goldLastUpdate, silverLastUpdate } = useAppSelector(
+    (state: any) => state.landing
+  );
 
   React.useEffect(() => {
     if (type) {
@@ -123,9 +123,13 @@ export function PriceView() {
             backgroundClip: 'text',
           }}
         >
-          <Typography variant="h4">{fTime(new Date(), 'HH:MM')}</Typography>
+          <Typography variant="h4">
+            {(tab === 'silver' ? silverLastUpdate : goldLastUpdate).split(' ')?.[0]}
+          </Typography>
           <Logo sx={{ width: 22, height: 'auto' }} />
-          <Typography variant="h4">{fDate(new Date(), 'DD/MM/YYYY')}</Typography>
+          <Typography variant="h4">
+            {(tab === 'silver' ? silverLastUpdate : goldLastUpdate).split(' ')?.[1]}
+          </Typography>
         </Stack>
       </Card>
     </Stack>
