@@ -7,9 +7,10 @@ import Stack from '@mui/material/Stack';
 import { fabClasses } from '@mui/material/Fab';
 import { Tooltip, Typography } from '@mui/material';
 
-import { fNumber } from 'src/utils/format-number';
+import { fNumber, fCurrency } from 'src/utils/format-number';
 
 import { Image } from 'src/components/image';
+import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -67,7 +68,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           sx={{
             color: '#98130f',
             mb: 2,
-            p: 3,
+            p: 1,
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
@@ -80,26 +81,24 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           {name}
         </Typography>
       </Tooltip>
-      <Box sx={{
-        background: '#fff',
-        p: 3,
-        borderTop: '2px solid #98130f',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+      <Box
+        sx={{
+          background: '#fff',
+          p: 1,
+          borderTop: '2px solid #98130f',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          whiteSpace: 'nowrap',
+          wordBreak: 'break-all',
+        }}
+      >
         <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
-          <Box
-            component="svg"
-            sx={{ width: 28, height: 28 }}
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M2,5 L10,12 L2,19 L7,19 L15,12 L7,5 Z M11,5 L19,12 L11,19 L16,19 L24,12 L16,5 Z"
-              fill="#3ab163"
-            />
-          </Box>
+          <Iconify
+            sx={{ color: '#3ab163', width: 24, height: 24 }}
+            icon="solar:double-alt-arrow-right-bold-duotone"
+          />
 
           <Typography
             variant="h5"
@@ -107,23 +106,19 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               color: '#3ab163',
               fontWeight: 700,
               fontFamily: 'serif',
+              whiteSpace: 'nowrap',
+              wordBreak: 'break-all',
             }}
           >
-            Bán {fNumber(buy)}đ
+            Bán {fCurrency(buy)}
           </Typography>
         </Stack>
 
         <Stack direction="row" alignItems="center" spacing={1}>
-          <Box
-            component="svg"
-            sx={{ width: 28, height: 28 }}
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M22,5 L14,12 L22,19 L17,19 L9,12 L17,5 Z M13,5 L5,12 L13,19 L8,19 L0,12 L8,5 Z"
-              fill="#9a0f15"
-            />
-          </Box>
+          <Iconify
+            sx={{ color: '#9a0f15', width: 24, height: 24, transform: 'rotate(180deg)' }}
+            icon="solar:double-alt-arrow-right-bold-duotone"
+          />
 
           <Typography
             variant="h5"
@@ -131,6 +126,8 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               color: '#9a0f15',
               fontWeight: 700,
               fontFamily: 'serif',
+              whiteSpace: 'nowrap',
+              wordBreak: 'break-all',
             }}
           >
             Mua {fNumber(sell)}đ

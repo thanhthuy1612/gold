@@ -242,7 +242,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
           alignItems="center"
           sx={(theme) => ({
             ...theme.mixins.bgGradient({
-              images: [`url(${CONFIG.assetsDir}/assets/background/footer.jpg)`],
+              images: [`url(${CONFIG.assetsDir}/assets/background/footer-bg.jpg)`],
             }),
             zIndex: 1,
             width: '100%',

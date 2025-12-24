@@ -80,7 +80,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
         position: 'relative',
         alignContent: 'center',
         ...theme.mixins.bgGradient({
-          images: [`url(${CONFIG.assetsDir}/assets/background/footer.jpg)`],
+          images: [`url(${CONFIG.assetsDir}/assets/background/footer-bg.jpg)`],
         }),
         zIndex: 1,
         width: '100%',

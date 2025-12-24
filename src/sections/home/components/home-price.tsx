@@ -7,10 +7,11 @@ import React from 'react';
 
 import { Box, Card, Grid, Stack, Button, Typography } from '@mui/material';
 
-import { fCurrency } from 'src/utils/format-number';
+import { fCurrency, fShortenNumber } from 'src/utils/format-number';
 
 import { homeService } from 'src/services/landing.services';
 
+import { Iconify } from 'src/components/iconify';
 import { ChartSelect } from 'src/components/chart';
 
 import { ChartUnit, ProductType, ChartTimeRange } from 'src/types/landing';
@@ -28,7 +29,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
   const [chart, setChart] = React.useState<PriceData>();
   const [data, setData] = React.useState<PriceResult>();
   const [type, setType] = React.useState<ProductType>(ProductType.SILVER);
-  const [goldType, setGoldType] = React.useState<string>('Vàng SJC');
+  const [goldType, setGoldType] = React.useState<string>('Vàng Phú Quý');
   const [timeRange, setTimeRange] = React.useState<ChartTimeRange>(ChartTimeRange._1D);
   const [unit, setUnit] = React.useState<ChartUnit>(ChartUnit.BAC_LUONG);
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -65,15 +66,6 @@ export function HomePrice({ sx, ...other }: BoxProps) {
       setChart(newData);
       if (loadingFirst) {
         setData(result.data);
-      } else {
-        setData((pre: any) => {
-          let key: string = 'silver';
-
-          if (newBody.type !== ProductType.GOLD) {
-            key = (typeChange ?? goldType) === 'Vàng SJC' ? 'sjcGold' : 'pqGold';
-          }
-          return { ...pre, [key]: newData };
-        });
       }
     } catch (err) {
       console.error(err);
@@ -103,7 +95,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
         Tỷ giá vàng bạc
       </Typography>
       <Grid container spacing={5}>
-        <Grid size={{ xs: 12, md: 5, lg: 4 }}>
+        <Grid size={{ xs: 12, md: 6, lg: 5 }}>
           <Card
             sx={{
               p: 3,
@@ -116,16 +108,29 @@ export function HomePrice({ sx, ...other }: BoxProps) {
           >
             <Box>
               <CardPrice
+                loading={loadingFirst}
                 title="Giá bạc Phú Quý"
-                buy={data?.silver?.infoList?.[1]?.priceOut ?? 0}
-                sell={data?.silver?.infoList?.[1]?.priceIn ?? 0}
-                isIncreaseBuy={
-                  (data?.silver?.infoList?.[1]?.priceOut ?? 0) -
-                  (data?.silver?.infoList?.[0]?.priceOut ?? 0)
+                buy={data?.silver?.infoList?.[1]?.priceIn ?? 0}
+                sell={data?.silver?.infoList?.[1]?.priceOut ?? 0}
+                persentBuy={
+                  (((data?.silver?.infoList?.[1]?.priceIn ?? 0) -
+                    (data?.silver?.infoList?.[0]?.priceIn ?? 0)) /
+                    (data?.silver?.infoList?.[0]?.priceIn ?? 0)) *
+                  100
                 }
-                isIncreaseSell={
+                persentSell={
+                  (((data?.silver?.infoList?.[1]?.priceOut ?? 0) -
+                    (data?.silver?.infoList?.[0]?.priceOut ?? 0)) /
+                    (data?.silver?.infoList?.[0]?.priceOut ?? 0)) *
+                  100
+                }
+                isIncreaseBuy={
                   (data?.silver?.infoList?.[1]?.priceIn ?? 0) -
                   (data?.silver?.infoList?.[0]?.priceIn ?? 0)
+                }
+                isIncreaseSell={
+                  (data?.silver?.infoList?.[1]?.priceOut ?? 0) -
+                  (data?.silver?.infoList?.[0]?.priceOut ?? 0)
                 }
                 sx={{
                   p: 2,
@@ -135,16 +140,29 @@ export function HomePrice({ sx, ...other }: BoxProps) {
               />
               {goldType === 'Vàng SJC' ? (
                 <CardPrice
+                  loading={loadingFirst}
                   title="Giá vàng SJC"
-                  buy={data?.sjcGold?.infoList?.[1]?.priceOut ?? 0}
-                  sell={data?.sjcGold?.infoList?.[1]?.priceIn ?? 0}
-                  isIncreaseBuy={
-                    (data?.sjcGold?.infoList?.[1]?.priceOut ?? 0) -
-                    (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)
+                  buy={data?.sjcGold?.infoList?.[1]?.priceIn ?? 0}
+                  sell={data?.sjcGold?.infoList?.[1]?.priceOut ?? 0}
+                  persentBuy={
+                    (((data?.sjcGold?.infoList?.[1]?.priceIn ?? 0) -
+                      (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)) /
+                      (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)) *
+                    100
                   }
-                  isIncreaseSell={
+                  persentSell={
+                    (((data?.sjcGold?.infoList?.[1]?.priceOut ?? 0) -
+                      (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)) /
+                      (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)) *
+                    100
+                  }
+                  isIncreaseBuy={
                     (data?.sjcGold?.infoList?.[1]?.priceIn ?? 0) -
                     (data?.sjcGold?.infoList?.[0]?.priceIn ?? 0)
+                  }
+                  isIncreaseSell={
+                    (data?.sjcGold?.infoList?.[1]?.priceOut ?? 0) -
+                    (data?.sjcGold?.infoList?.[0]?.priceOut ?? 0)
                   }
                   sx={{
                     p: 2,
@@ -154,16 +172,29 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                 />
               ) : (
                 <CardPrice
+                  loading={loadingFirst}
                   title="Giá vàng Phú Quý"
-                  buy={data?.pqGold?.infoList?.[1]?.priceOut ?? 0}
-                  sell={data?.pqGold?.infoList?.[1]?.priceIn ?? 0}
-                  isIncreaseBuy={
-                    (data?.pqGold?.infoList?.[1]?.priceOut ?? 0) -
-                    (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)
+                  buy={data?.pqGold?.infoList?.[1]?.priceIn ?? 0}
+                  sell={data?.pqGold?.infoList?.[1]?.priceOut ?? 0}
+                  persentBuy={
+                    (((data?.pqGold?.infoList?.[1]?.priceIn ?? 0) -
+                      (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)) /
+                      (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)) *
+                    100
                   }
-                  isIncreaseSell={
+                  persentSell={
+                    (((data?.pqGold?.infoList?.[1]?.priceOut ?? 0) -
+                      (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)) /
+                      (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)) *
+                    100
+                  }
+                  isIncreaseBuy={
                     (data?.pqGold?.infoList?.[1]?.priceIn ?? 0) -
                     (data?.pqGold?.infoList?.[0]?.priceIn ?? 0)
+                  }
+                  isIncreaseSell={
+                    (data?.pqGold?.infoList?.[1]?.priceOut ?? 0) -
+                    (data?.pqGold?.infoList?.[0]?.priceOut ?? 0)
                   }
                   sx={{
                     p: 2,
@@ -215,7 +246,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
             </Grid>
           </Card>
         </Grid>
-        <Grid size={{ xs: 12, md: 7, lg: 8 }}>
+        <Grid size={{ xs: 12, md: 6, lg: 7 }}>
           <HomeChart
             timeRange={timeRange}
             loading={loading}
@@ -291,8 +322,21 @@ type CardPriceProps = {
   isIncreaseBuy: number;
   isIncreaseSell: number;
   sx?: SxProps<Theme>;
+  loading: boolean;
+  persentBuy: number;
+  persentSell: number;
 };
-export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell }: CardPriceProps) {
+export function CardPrice({
+  sx,
+  loading,
+  title,
+  buy,
+  sell,
+  isIncreaseBuy,
+  isIncreaseSell,
+  persentBuy,
+  persentSell,
+}: CardPriceProps) {
   return (
     <Card sx={sx}>
       <Typography variant="h6" sx={{ mb: 2, color: '#8c0302' }}>
@@ -303,10 +347,10 @@ export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell 
           <Typography variant="h5" sx={{ mb: 1 }}>
             Giá mua
           </Typography>
-          <Typography variant="h6" color="success">
-            {fCurrency(buy)}
+          <Typography variant="h6" color="error">
+            {loading ? '...' : fCurrency(buy)}
           </Typography>
-          {/* <Typography
+          <Typography
             sx={{ display: 'flex', alignItems: 'center' }}
             variant="caption"
             color={isIncreaseBuy > 0 ? 'success' : 'error'}
@@ -318,17 +362,17 @@ export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell 
                   : 'solar:double-alt-arrow-down-bold-duotone'
               }
             />
-            {fNumber(isIncreaseBuy)}
-          </Typography> */}
+            {loading ? '...' : `${fCurrency(isIncreaseBuy)} (${fShortenNumber(persentBuy)})%`}
+          </Typography>
         </Grid>
         <Grid size={6}>
           <Typography variant="h5" sx={{ mb: 1 }}>
             Giá bán
           </Typography>
           <Typography variant="h6" color="success">
-            {fCurrency(sell)}
+            {loading ? '...' : fCurrency(sell)}
           </Typography>
-          {/* <Typography
+          <Typography
             sx={{ display: 'flex', alignItems: 'center' }}
             variant="caption"
             color={isIncreaseSell > 0 ? 'success' : 'error'}
@@ -340,8 +384,8 @@ export function CardPrice({ sx, title, buy, sell, isIncreaseBuy, isIncreaseSell 
                   : 'solar:double-alt-arrow-down-bold-duotone'
               }
             />
-            {fNumber(isIncreaseSell)}
-          </Typography> */}
+            {loading ? '...' : `${fCurrency(isIncreaseSell)} (${fShortenNumber(persentSell)})%`}
+          </Typography>
         </Grid>
       </Grid>
     </Card>

@@ -3,12 +3,14 @@ import type { ChartOptions } from 'src/components/chart';
 import type { Theme, SxProps } from '@mui/material/styles';
 
 import Card from '@mui/material/Card';
+import { Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import CardHeader from '@mui/material/CardHeader';
 
 import { fCurrency } from 'src/utils/format-number';
 import { fDate, fTime } from 'src/utils/format-time';
 
+import { AnimateLogoZoom } from 'src/components/animate';
 import { Chart, useChart, ChartLegends } from 'src/components/chart';
 
 import { ChartTimeRange } from 'src/types/landing';
@@ -91,27 +93,49 @@ export function HomeChart({
 
   return (
     <Card sx={sx}>
-      <CardHeader title={title} subheader={subheader} action={action} sx={{ mb: 3 }} />
-
-      <ChartLegends
-        colors={chartOptions?.colors}
-        labels={(chart.series[0] ?? [])?.data.map((item) => item.name)}
-        values={[fCurrency(changePriceIn ?? 0), fCurrency(changePriceOut ?? 0)]}
-        sx={{ px: 3, gap: 3 }}
+      <CardHeader
+        title={title}
+        subheader={subheader}
+        action={action}
+        sx={{ mb: 3, height: '100%' }}
       />
 
-      <Chart
-        type="area"
-        series={chart?.series[0]?.data}
-        options={chartOptions}
-        slotProps={{ loading: { p: 2.5 } }}
-        sx={{
-          pl: 1,
-          py: 2.5,
-          pr: 2.5,
-          height: 320,
-        }}
-      />
+      <>
+        {loading ? (
+          <Stack
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="row"
+            sx={{ minHeight: '347.5px' }}
+          >
+            <AnimateLogoZoom />
+          </Stack>
+        ) : (
+          <>
+            <Chart
+              type="area"
+              series={chart?.series[0]?.data}
+              options={chartOptions}
+              slotProps={{ loading: { p: 2.5 } }}
+              sx={{
+                pl: 1,
+                py: 2.5,
+                pr: 2.5,
+                height: 320,
+              }}
+            />
+            <Stack display="flex" justifyContent="center" flexDirection="row">
+              <ChartLegends
+                colors={chartOptions?.colors}
+                labels={(chart.series[0] ?? [])?.data.map((item) => item.name)}
+                // values={[fCurrency(changePriceIn ?? 0), fCurrency(changePriceOut ?? 0)]}
+                sx={{ px: 3, gap: 3, mb: 5 }}
+              />
+            </Stack>
+          </>
+        )}
+      </>
     </Card>
   );
 }

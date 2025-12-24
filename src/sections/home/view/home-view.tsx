@@ -7,7 +7,6 @@ import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll
 
 import { HomeInfo } from '../home-info';
 import { HomeHero } from '../home-hero';
-import { HomeBestSeller } from '../home-best-seller';
 import { HomeListProduct } from '../home-list-product';
 import { HomePriceContainer } from '../home-price-container';
 import { HomeReferencePrice } from '../home-reference-price';
