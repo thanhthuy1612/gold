@@ -49,7 +49,7 @@ const listSocial = [
   {
     icon: <img src="/assets/background/fb.png" width="30" height="auto" />,
     name: 'Facebook',
-    href: '/',
+    href: 'https://www.facebook.com/profile.php?id=61583709022271',
   },
   {
     icon: <img src="/assets/background/tt.png" width="30" height="auto" />,
