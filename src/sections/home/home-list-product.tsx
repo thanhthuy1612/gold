@@ -144,7 +144,7 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
 
         <Container sx={{ textAlign: 'center' }}>
           {/* <m.div variants={varFade('inUp')}> */}
-          <img src="/assets/background/landing3.jpg" width="100%" height="auto" />
+          <img src="/assets/background/landing4.jpg" width="100%" height="auto" />
           {/* </m.div> */}
           <Typography
             // component={m.div}

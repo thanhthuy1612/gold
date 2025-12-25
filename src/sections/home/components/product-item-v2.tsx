@@ -94,11 +94,23 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           wordBreak: 'break-all',
         }}
       >
-        <Stack display="flex" flexDirection="row" alignItems="center" gap={{ xs: 0, md: 1 }}>
+        <Stack direction="row" alignItems="center" gap={0} spacing={1}>
           <Iconify
             sx={{ color: '#3ab163', width: 20, height: 20 }}
             icon="solar:double-alt-arrow-right-bold-duotone"
           />
+
+          <Typography
+            sx={{
+              minWidth: 48,
+              color: '#3ab163',
+              fontWeight: 700,
+              fontFamily: 'serif',
+              fontSize: isSmallScreen ? 16 : 18,
+            }}
+          >
+            Bán
+          </Typography>
 
           <Typography
             variant={isSmallScreen ? 'h6' : 'h5'}
@@ -110,15 +122,27 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               wordBreak: 'break-all',
             }}
           >
-            Bán {fCurrency(buy)}
+            {fCurrency(buy)}
           </Typography>
         </Stack>
 
-        <Stack display="flex" flexDirection="row" alignItems="center" gap={{ xs: 0, md: 1 }}>
+        <Stack direction="row" alignItems="center" gap={0} spacing={1}>
           <Iconify
             sx={{ color: '#9a0f15', width: 20, height: 20, transform: 'rotate(180deg)' }}
             icon="solar:double-alt-arrow-right-bold-duotone"
           />
+
+          <Typography
+            sx={{
+              minWidth: 48,
+              color: '#9a0f15',
+              fontWeight: 700,
+              fontFamily: 'serif',
+              fontSize: isSmallScreen ? 16 : 18,
+            }}
+          >
+            Mua
+          </Typography>
 
           <Typography
             variant={isSmallScreen ? 'h6' : 'h5'}
@@ -130,7 +154,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               wordBreak: 'break-all',
             }}
           >
-            Mua {fCurrency(sell)}
+            {fCurrency(sell)}
           </Typography>
         </Stack>
       </Box>

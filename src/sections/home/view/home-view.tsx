@@ -30,9 +30,9 @@ export function HomeView() {
 
       <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
         <HomePriceContainer />
+        <HomeReferencePrice />
         {/* <HomeBestSeller /> */}
         <HomeListProduct />
-        <HomeReferencePrice />
         <HomeInfo />
         <HomeHero />
       </Stack>
