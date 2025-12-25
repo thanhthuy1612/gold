@@ -295,7 +295,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   key={item.name}
                 >
                   <Logo sx={{ width: 20, height: 20 }} />
-                  <a href={item.href}>
+                  <Link href={item.href}>
                     <Link
                       component="span"
                       variant={isSmallScreen ? 'caption' : 'h5'}
@@ -311,7 +311,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                     >
                       {item.name}: {item.value}
                     </Link>
-                  </a>
+                  </Link>
                 </Stack>
               ))}
             </Grid>
