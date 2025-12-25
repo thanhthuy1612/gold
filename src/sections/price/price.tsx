@@ -21,9 +21,9 @@ import { Logo } from 'src/components/logo';
 import { TableHeadCustom, type TableHeadCellProps } from 'src/components/table';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
-  { id: 'name', label: 'SẢN PHẨM', align: 'left', width: '40%' },
-  { id: 'buy', label: 'GIÁ MUA', align: 'center', width: '30%' },
-  { id: 'sell', label: 'GIÁ BÁN', align: 'center', width: '30%' },
+  { id: 'name', label: 'SẢN PHẨM', align: 'left', width: '50%', sx: {whiteSpace: 'nowrap', wordBreak: 'break-all',} },
+  { id: 'buy', label: 'GIÁ MUA', align: 'center', width: '25%'},
+  { id: 'sell', label: 'GIÁ BÁN', align: 'center', width: '25%' },
 ];
 
 export type TableData = {

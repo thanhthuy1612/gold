@@ -51,10 +51,15 @@ const listSocial = [
     name: 'Facebook',
     href: 'https://www.facebook.com/profile.php?id=61583709022271',
   },
+  // {
+  //   icon: <img src="/assets/background/tt.png" width="30" height="auto" />,
+  //   name: 'Tiktok',
+  //   href: '/',
+  // },
   {
-    icon: <img src="/assets/background/tt.png" width="30" height="auto" />,
-    name: 'Tiktok',
-    href: '/',
+    icon: <img src="/assets/background/zl.png" width="30" height="auto" />,
+    name: 'Zalo',
+    href: 'https://zalo.me/g/acdmkl802',
   },
 ];
 
