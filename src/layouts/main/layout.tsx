@@ -104,6 +104,10 @@ export function MainLayout({
                 backgroundClip: 'text',
                 visibility: 'visible',
                 width: 'fit-content',
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Adjust for shadow effect
+                [theme.breakpoints.down(layoutQuery)]: {
+                  color: '#d09f19', // Fallback color for low configurations
+                },
               })}
               variant="subtitle2"
             >
@@ -130,6 +134,10 @@ export function MainLayout({
                   width: 'fit-content',
                   display: 'none',
                   [theme.breakpoints.up(layoutQuery)]: { display: 'block' },
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Adjust for shadow effect
+                  [theme.breakpoints.down(layoutQuery)]: {
+                    color: '#d09f19', // Fallback color for low configurations
+                  },
                 })}
               >
                 TÀI LỘC

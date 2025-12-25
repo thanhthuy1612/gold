@@ -9,8 +9,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-import { Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
+import { Typography, useMediaQuery } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { usePathname } from 'src/routes/hooks';
@@ -48,6 +48,7 @@ export function JwtSignInView() {
   const showPassword = useBoolean();
 
   const { checkUserSession } = useAuthContext();
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   const methods = useForm<SignInSchemaType>({
     resolver: zodResolver(SignInSchema),
@@ -140,7 +141,7 @@ export function JwtSignInView() {
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
           }}
-          variant="h5"
+          variant={isSmallScreen ? 'subtitle2' : 'h6'}
         >
           ĐĂNG NHẬP
         </Typography>

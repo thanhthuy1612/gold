@@ -6,7 +6,7 @@ import type { PriceType, PriceData, PriceResult } from 'src/types/landing';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
-import { Box, Card, Grid, Stack, Button, Typography } from '@mui/material';
+import { Box, Card, Grid, Stack, Button, Typography, useMediaQuery } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 
@@ -42,6 +42,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
 
   const dispath = useAppDispatch();
   const router = useRouter();
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   React.useEffect(() => {
     if (loadingFirst) {
@@ -275,7 +276,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
             title={renderTitle()}
             subheader=""
             action={
-              <Stack display="flex" flexDirection="row" gap={0.5}>
+              <Stack display="flex" flexDirection="row" justifyContent="center" gap={0.5}>
                 <ChartSelect
                   options={listTimeRange}
                   value={listTimeRange[timeRange - 1]}
@@ -359,6 +360,8 @@ export function CardPrice({
   persentBuy,
   persentSell,
 }: CardPriceProps) {
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
+
   return (
     <Card sx={sx}>
       <Typography variant="h6" sx={{ mb: 2, color: '#8c0302' }}>
@@ -366,14 +369,18 @@ export function CardPrice({
       </Typography>
       <Grid container spacing={1}>
         <Grid size={6}>
-          <Typography variant="h5" sx={{ mb: 1 }}>
+          <Typography variant={isSmallScreen ? 'subtitle1' : 'h5'} sx={{ mb: 1 }}>
             Giá mua
           </Typography>
-          <Typography variant="h6" color="error">
+          <Typography variant={isSmallScreen ? 'subtitle2' : 'h5'} color="error">
             {loading ? '...' : fCurrency(buy)}
           </Typography>
           <Typography
-            sx={{ display: 'flex', alignItems: 'center' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: isSmallScreen ? '0.7rem' : '0.75rem',
+            }}
             variant="caption"
             color={isIncreaseBuy > 0 ? 'success' : 'error'}
           >
@@ -383,19 +390,24 @@ export function CardPrice({
                   ? 'solar:double-alt-arrow-up-bold-duotone'
                   : 'solar:double-alt-arrow-down-bold-duotone'
               }
+              sx={{ width: isSmallScreen ? 16 : 20, height: isSmallScreen ? 16 : 20 }}
             />
             {loading ? '...' : `${fCurrency(isIncreaseBuy)} (${fShortenNumber(persentBuy)})%`}
           </Typography>
         </Grid>
         <Grid size={6}>
-          <Typography variant="h5" sx={{ mb: 1 }}>
+          <Typography variant={isSmallScreen ? 'subtitle1' : 'h5'} sx={{ mb: 1 }}>
             Giá bán
           </Typography>
-          <Typography variant="h6" color="success">
+          <Typography variant={isSmallScreen ? 'subtitle2' : 'h5'} color="success">
             {loading ? '...' : fCurrency(sell)}
           </Typography>
           <Typography
-            sx={{ display: 'flex', alignItems: 'center' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: isSmallScreen ? '0.7rem' : '0.75rem',
+            }}
             variant="caption"
             color={isIncreaseSell > 0 ? 'success' : 'error'}
           >
@@ -405,6 +417,7 @@ export function CardPrice({
                   ? 'solar:double-alt-arrow-up-bold-duotone'
                   : 'solar:double-alt-arrow-down-bold-duotone'
               }
+              sx={{ width: isSmallScreen ? 16 : 20, height: isSmallScreen ? 16 : 20 }}
             />
             {loading ? '...' : `${fCurrency(isIncreaseSell)} (${fShortenNumber(persentSell)})%`}
           </Typography>

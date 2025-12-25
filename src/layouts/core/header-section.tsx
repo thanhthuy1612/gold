@@ -74,14 +74,14 @@ export function HeaderSection({
           <Typography
             component="span"
             sx={{ width: 'fit-content', textAlign: 'center', visibility: 'visible' }}
-            variant={isSmallScreen ? 'body2' : 'h6'}
+            variant={isSmallScreen ? 'caption' : 'h6'}
           >
             Chào mừng đến với TÀI LỘC
           </Typography>
           <Logo />
           <Typography
             sx={{ width: 'fit-content', textAlign: 'center', visibility: 'visible' }}
-            variant={isSmallScreen ? 'body2' : 'h6'}
+            variant={isSmallScreen ? 'caption' : 'h6'}
           >
             Ưu đãi 0.5% áp dụng cho tất cả các sản phẩm vàng bạc.
           </Typography>

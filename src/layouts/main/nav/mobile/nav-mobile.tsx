@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import { Typography } from '@mui/material';
+import { Typography, useMediaQuery } from '@mui/material';
 
 import { usePathname } from 'src/routes/hooks';
 
@@ -28,6 +28,7 @@ export type NavMobileProps = NavMainProps & {
 
 export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
   const pathname = usePathname();
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   useEffect(() => {
     if (open) {
@@ -67,7 +68,7 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
         >
           <Logo />
           <Typography
-            variant="h6"
+            variant={isSmallScreen ? 'subtitle2' : 'h6'}
             component="span"
             sx={{
               color: 'transparent',

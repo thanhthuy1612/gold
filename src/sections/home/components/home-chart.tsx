@@ -3,9 +3,9 @@ import type { ChartOptions } from 'src/components/chart';
 import type { Theme, SxProps } from '@mui/material/styles';
 
 import Card from '@mui/material/Card';
-import { Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import CardHeader from '@mui/material/CardHeader';
+import { Stack, useMediaQuery } from '@mui/material';
 
 import { fCurrency } from 'src/utils/format-number';
 import { fDate, fTime } from 'src/utils/format-time';
@@ -91,13 +91,22 @@ export function HomeChart({
     ...chart.options,
   });
 
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Card sx={sx}>
       <CardHeader
         title={title}
         subheader={subheader}
         action={action}
-        sx={{ mb: 3, height: '100%' }}
+        sx={{
+          mb: 3,
+          height: '100%',
+          display: 'flex',
+          flexDirection: isSmallScreen ? 'column' : 'row',
+          gap: 3,
+          flexWrap: 'wrap',
+        }}
       />
 
       <>

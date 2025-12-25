@@ -12,15 +12,33 @@ import {
   useMediaQuery,
 } from '@mui/material';
 
-import { fCurrency } from 'src/utils/format-number';
+import { fNumber, fCurrency } from 'src/utils/format-number';
 
 import { Iconify } from 'src/components/iconify';
 import { TableHeadCustom } from 'src/components/table';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
-  { id: 'name', label: 'Tên' },
-  { id: 'buy', label: 'Giá bán', align: 'center' },
-  { id: 'sell', label: 'Giá mua', align: 'center' },
+  {
+    id: 'name',
+    label: 'SẢN PHẨM',
+    align: 'left',
+    width: '50%',
+    sx: { whiteSpace: 'nowrap', wordBreak: 'break-all' },
+  },
+  { id: 'buy', label: 'GIÁ MUA', align: 'center', width: '25%' },
+  { id: 'sell', label: 'GIÁ BÁN', align: 'center', width: '25%' },
+];
+
+const TABLE_HEAD_MIN: TableHeadCellProps[] = [
+  {
+    id: 'name',
+    label: 'SẢN PHẨM',
+    align: 'left',
+    width: '60%',
+    sx: { whiteSpace: 'nowrap', wordBreak: 'break-all' },
+  },
+  { id: 'buy', label: 'GIÁ MUA', align: 'center', width: '20%' },
+  { id: 'sell', label: 'GIÁ BÁN', align: 'center', width: '20%' },
 ];
 
 // ----------------------------------------------------------------------
@@ -73,7 +91,7 @@ export function TablePrice({ icon, title, onClick, data }: Props) {
       <Table sx={{ background: 'white', mt: 2 }}>
         <TableHeadCustom
           sx={{ background: '#971519', color: 'white', border: '2px solid white' }}
-          headCells={TABLE_HEAD}
+          headCells={isSmallScreen ? TABLE_HEAD_MIN : TABLE_HEAD}
         />
 
         <TableBody>
@@ -94,8 +112,12 @@ export function TablePrice({ icon, title, onClick, data }: Props) {
                 }}
               >
                 <Box display="flex" alignItems="center" justifyContent="flex-end" height="100%">
-                  <Typography variant="subtitle2" color="success.main" fontSize={16}>
-                    {fCurrency(row.buy)}
+                  <Typography
+                    variant="subtitle2"
+                    color="success.main"
+                    fontSize={isSmallScreen ? 14 : 16}
+                  >
+                    {isSmallScreen ? fNumber(row.buy) : fCurrency(row.buy)}
                   </Typography>
                 </Box>
               </TableCell>
@@ -108,8 +130,8 @@ export function TablePrice({ icon, title, onClick, data }: Props) {
                 }}
               >
                 <Box display="flex" alignItems="center" justifyContent="flex-end" height="100%">
-                  <Typography variant="subtitle2" color="error" fontSize={16}>
-                    {fCurrency(row.sell)}
+                  <Typography variant="subtitle2" color="error" fontSize={isSmallScreen ? 14 : 16}>
+                    {isSmallScreen ? fNumber(row.sell) : fCurrency(row.sell)}
                   </Typography>
                 </Box>
               </TableCell>

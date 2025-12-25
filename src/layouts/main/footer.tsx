@@ -5,11 +5,11 @@ import { m } from 'framer-motion';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
-import { Stack } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import { Stack, useMediaQuery } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
@@ -54,7 +54,7 @@ const listSocial = [
   //   href: '/',
   // },
   {
-    icon: <img src="/assets/background/zl.png" width="30" height="auto" />,
+    icon: <img src="/assets/background/zalo-icon.png" width="30" height="auto" />,
     name: 'Zalo',
     href: 'https://zalo.me/g/acdmkl802',
   },
@@ -184,6 +184,8 @@ export function Footer({
 // ----------------------------------------------------------------------
 
 export function HomeFooter({ sx, ...other }: FooterProps) {
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
+
   return (
     <FooterRoot
       sx={[
@@ -233,8 +235,10 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
               </Box>
             </m.div>
             <m.div variants={varFade('inUp')}>
-              <Typography variant="h6">Hotline của chúng tôi luôn đón chào quý khách!</Typography>
-              <Typography variant="h2">0383.599.995</Typography>
+              <Typography sx={{ fontWeight: 700 }} variant={isSmallScreen ? 'caption' : 'h6'}>
+                Hotline của chúng tôi luôn đón chào quý khách!
+              </Typography>
+              <Typography variant={isSmallScreen ? 'h5' : 'h2'}>0383.599.995</Typography>
             </m.div>
           </Stack>
         </Box>
@@ -273,7 +277,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   backgroundClip: 'text',
                   fontSize: '700',
                 }}
-                variant="h4"
+                variant={isSmallScreen ? 'subtitle2' : 'h4'}
               >
                 CÔNG TY TNHH VÀNG BẠC ĐÁ QUÝ TÀI LỘC
               </Typography>
@@ -290,7 +294,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   <Link
                     component="a"
                     href={item.href}
-                    variant="h5"
+                    variant={isSmallScreen ? 'caption' : 'h5'}
                     sx={{
                       color: 'transparent',
                       backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
@@ -308,8 +312,14 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
             </Grid>
             <Grid size={{ xs: 12, md: 4 }}>
               <Stack display="flex" flexDirection="column" alignItems="center">
-                <img src="/logo/logo.png" width="150" height="auto" />
-                <Stack display="flex" flexDirection="row" gap={1} alignItems="center">
+                <img src="/logo/logo.png" width={isSmallScreen ? '80' : '150'} height="auto" />
+                <Stack
+                  display="flex"
+                  flexDirection="row"
+                  sx={{ mt: 1 }}
+                  gap={1}
+                  alignItems="center"
+                >
                   {listSocial.map((item) => (
                     <Link href={item.href} key={item.name}>
                       {item.icon}
@@ -317,7 +327,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   ))}
                 </Stack>
                 <Typography
-                  variant="subtitle2"
+                  variant={isSmallScreen ? 'caption' : 'subtitle2'}
                   component="span"
                   sx={{
                     color: 'transparent',

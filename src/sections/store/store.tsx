@@ -94,7 +94,7 @@ export function Store() {
                 backgroundClip: 'text',
                 mt: 0.5,
               }}
-              variant="h6"
+              variant={isSmallScreen ? 'subtitle2' : 'h4'}
             >
               {item.title}
             </Typography>

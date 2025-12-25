@@ -21,9 +21,27 @@ import { Logo } from 'src/components/logo';
 import { TableHeadCustom, type TableHeadCellProps } from 'src/components/table';
 
 const TABLE_HEAD: TableHeadCellProps[] = [
-  { id: 'name', label: 'SẢN PHẨM', align: 'left', width: '50%', sx: {whiteSpace: 'nowrap', wordBreak: 'break-all',} },
-  { id: 'buy', label: 'GIÁ MUA', align: 'center', width: '25%'},
+  {
+    id: 'name',
+    label: 'SẢN PHẨM',
+    align: 'left',
+    width: '50%',
+    sx: { whiteSpace: 'nowrap', wordBreak: 'break-all' },
+  },
+  { id: 'buy', label: 'GIÁ MUA', align: 'center', width: '25%' },
   { id: 'sell', label: 'GIÁ BÁN', align: 'center', width: '25%' },
+];
+
+const TABLE_HEAD_MIN: TableHeadCellProps[] = [
+  {
+    id: 'name',
+    label: 'SẢN PHẨM',
+    align: 'left',
+    width: '60%',
+    sx: { whiteSpace: 'nowrap', wordBreak: 'break-all' },
+  },
+  { id: 'buy', label: 'GIÁ MUA', align: 'center', width: '20%' },
+  { id: 'sell', label: 'GIÁ BÁN', align: 'center', width: '20%' },
 ];
 
 export type TableData = {
@@ -100,7 +118,7 @@ export function Price({ group }: { group: PriceGroup }) {
   const renderTableRow = (item: TableData) => (
     <TableRow key={item.name}>
       <TableCell sx={{ border: '1px #821818 solid !important', color: '#821818' }}>
-        <Typography variant="h5">{item.name}</Typography>
+        <Typography variant={isSmallScreen ? 'subtitle1' : 'h5'}>{item.name}</Typography>
         {item.description && <Typography variant="caption">({item.description})</Typography>}
       </TableCell>
       {/* {!isSmallScreen && (
@@ -110,14 +128,14 @@ export function Price({ group }: { group: PriceGroup }) {
       )} */}
 
       <TableCell align="center" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="h5" color="#821818">
+        <Typography variant={isSmallScreen ? 'subtitle2' : 'h5'} color="#821818">
           {fNumber(item.buy)}
         </Typography>
         {/* {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>} */}
       </TableCell>
 
       <TableCell align="center" sx={{ border: '1px #821818 solid !important' }}>
-        <Typography variant="h5" color="#22c55e">
+        <Typography variant={isSmallScreen ? 'subtitle2' : 'h5'} color="#22c55e">
           {item.sell ? fNumber(item.sell) : <Logo />}
         </Typography>
         {/* {isSmallScreen && <Typography variant="caption">({item.cost})</Typography>} */}
@@ -140,7 +158,7 @@ export function Price({ group }: { group: PriceGroup }) {
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
         }}
-        variant="h5"
+        variant={isSmallScreen ? 'subtitle2' : 'h5'}
       >
         {title}
       </Typography>
@@ -160,10 +178,10 @@ export function Price({ group }: { group: PriceGroup }) {
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
                 border: '1px #d09f19 solid !important',
-                fontSize: 20,
+                fontSize: isSmallScreen ? 14 : 20,
                 fontWeight: 'bold',
               }}
-              headCells={TABLE_HEAD}
+              headCells={isSmallScreen ? TABLE_HEAD_MIN : TABLE_HEAD}
             />
 
             <TableBody sx={{ background: 'white' }}>

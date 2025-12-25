@@ -4,9 +4,9 @@ import type { IProductItem } from 'src/types/product';
 import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
-import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import { Stack, useMediaQuery } from '@mui/material';
 
 import { mapProductApiToItem } from 'src/utils/map-products';
 
@@ -97,6 +97,8 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
   const [products, setProducts] = useState<IProductItem[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -132,7 +134,7 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
       component="section"
       sx={[
         () => ({
-          // pt: 5,
+          pt: 3,
           position: 'relative',
         }),
         ...(Array.isArray(sx) ? sx : [sx]),
@@ -149,7 +151,7 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
           <Typography
             // component={m.div}
             // variants={varFade('inUp')}
-            variant="h2"
+            variant={isSmallScreen ? 'h3' : 'h2'}
             sx={{ color: '#8c0302', pb: 3, mt: 5, height: 'fit-content', textAlign: 'center' }}
           >
             Danh sách sản phẩm

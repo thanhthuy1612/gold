@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import { fabClasses } from '@mui/material/Fab';
 import { Tooltip, Typography, useMediaQuery } from '@mui/material';
 
-import { fCurrency } from 'src/utils/format-number';
+import { fNumber, fCurrency } from 'src/utils/format-number';
 
 import { Image } from 'src/components/image';
 import { Iconify } from 'src/components/iconify';
@@ -64,18 +64,19 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
     <Stack>
       <Tooltip title={name}>
         <Typography
-          variant="h5"
+          variant={isSmallScreen ? 'subtitle1' : 'h5'}
           sx={{
             color: '#98130f',
             mb: 2,
-            p: 1.5,
+            p: isSmallScreen ? 1 : 1.5,
+            pt: isSmallScreen ? 0 : 1.5,
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             lineHeight: '1.5',
-            height: 'calc(2.25 * 1.5em)',
+            height: isSmallScreen ? 'calc(2 * 1.5em)' : 'calc(2.25 * 1.5em)',
           }}
         >
           {name}
@@ -106,14 +107,14 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               color: '#3ab163',
               fontWeight: 700,
               fontFamily: 'serif',
-              fontSize: isSmallScreen ? 16 : 18,
             }}
+            variant={isSmallScreen ? 'subtitle2' : 'h5'}
           >
             Bán
           </Typography>
 
           <Typography
-            variant={isSmallScreen ? 'h6' : 'h5'}
+            variant={isSmallScreen ? 'subtitle2' : 'h5'}
             sx={{
               color: '#3ab163',
               fontWeight: 700,
@@ -122,7 +123,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               wordBreak: 'break-all',
             }}
           >
-            {fCurrency(buy)}
+            {isSmallScreen ? fNumber(buy) : fCurrency(buy)}
           </Typography>
         </Stack>
 
@@ -138,14 +139,14 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               color: '#9a0f15',
               fontWeight: 700,
               fontFamily: 'serif',
-              fontSize: isSmallScreen ? 16 : 18,
             }}
+            variant={isSmallScreen ? 'subtitle2' : 'h5'}
           >
             Mua
           </Typography>
 
           <Typography
-            variant={isSmallScreen ? 'h6' : 'h5'}
+            variant={isSmallScreen ? 'subtitle2' : 'h5'}
             sx={{
               color: '#9a0f15',
               fontWeight: 700,
@@ -154,7 +155,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
               wordBreak: 'break-all',
             }}
           >
-            {fCurrency(sell)}
+            {isSmallScreen ? fNumber(sell) : fCurrency(sell)}
           </Typography>
         </Stack>
       </Box>

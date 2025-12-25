@@ -69,7 +69,7 @@ export function PriceView() {
             backgroundClip: 'text',
             visibility: 'visible',
           }}
-          variant={isSmallScreen ? 'h5' : 'h4'}
+          variant={isSmallScreen ? 'h6' : 'h4'}
         >
           TÀI LỘC
         </Typography>
@@ -85,7 +85,7 @@ export function PriceView() {
           backgroundClip: 'text',
           visibility: 'visible',
         }}
-        variant="h3"
+        variant={isSmallScreen ? 'h5' : 'h3'}
       >
         {title}
       </Typography>
@@ -111,7 +111,7 @@ export function PriceView() {
             width: 'fit-content',
             visibility: 'visible',
           }}
-          variant="subtitle2"
+          variant={isSmallScreen ? 'caption' : 'subtitle2'}
         >
           GIÁ NIÊM YẾT ĐƯỢC CẬP NHẬT LẦN CUỐI
         </Typography>
@@ -164,7 +164,7 @@ export function PriceView() {
             fontWeight: 700,
             '& .MuiTab-root': {
               fontWeight: 700,
-              fontSize: 22,
+              fontSize: isSmallScreen ? 14 : 22,
             },
           }}
         >
