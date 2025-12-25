@@ -9,17 +9,14 @@ import { Stack } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
-import { _socials } from 'src/_mock';
 import { CONFIG } from 'src/global-config';
 
 import { Logo } from 'src/components/logo';
-import { Iconify } from 'src/components/iconify';
 import { varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -123,14 +120,14 @@ export function Footer({
                 [theme.breakpoints.up(layoutQuery)]: { mb: 0, justifyContent: 'flex-start' },
               })}
             >
-              {_socials.map((social) => (
+              {/* {listSocial.map((social) => (
                 <IconButton key={social.label}>
                   {social.value === 'twitter' && <Iconify icon="socials:twitter" />}
                   {social.value === 'facebook' && <Iconify icon="socials:facebook" />}
                   {social.value === 'instagram' && <Iconify icon="socials:instagram" />}
                   {social.value === 'linkedin' && <Iconify icon="socials:linkedin" />}
                 </IconButton>
-              ))}
+              ))} */}
             </Box>
           </Grid>
 
