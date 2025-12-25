@@ -97,7 +97,11 @@ export function MainLayout({
               component="span"
               sx={(theme) => ({
                 display: 'none',
-                [theme.breakpoints.up('lg')]: { display: 'flex', alignItems: 'center', gap: 1 },
+                [theme.breakpoints.up('lg')]: {
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                },
                 color: 'transparent',
                 backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
                 WebkitBackgroundClip: 'text',
@@ -133,7 +137,7 @@ export function MainLayout({
                   visibility: 'visible',
                   width: 'fit-content',
                   display: 'none',
-                  [theme.breakpoints.up(layoutQuery)]: { display: 'block' },
+                  [theme.breakpoints.up(layoutQuery)]: { display: 'inline-block' },
                   textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Adjust for shadow effect
                   [theme.breakpoints.down(layoutQuery)]: {
                     color: '#d09f19', // Fallback color for low configurations

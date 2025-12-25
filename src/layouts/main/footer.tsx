@@ -268,19 +268,22 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
             }}
           >
             <Grid size={{ xs: 12, md: 8 }} justifyItems="start">
-              <Typography
-                component="span"
-                sx={{
-                  color: 'transparent',
-                  backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  fontSize: '700',
-                }}
-                variant={isSmallScreen ? 'subtitle2' : 'h4'}
-              >
-                CÔNG TY TNHH VÀNG BẠC ĐÁ QUÝ TÀI LỘC
-              </Typography>
+              <div>
+                <Typography
+                  component="span"
+                  sx={{
+                    color: 'transparent',
+                    backgroundImage: 'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    fontSize: '700',
+                    display: 'inline-block',
+                  }}
+                  variant={isSmallScreen ? 'subtitle2' : 'h4'}
+                >
+                  CÔNG TY TNHH VÀNG BẠC ĐÁ QUÝ TÀI LỘC
+                </Typography>
+              </div>
               {listInfo.map((item) => (
                 <Stack
                   display="flex"
@@ -297,7 +300,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                     variant={isSmallScreen ? 'caption' : 'h5'}
                     sx={{
                       color: 'transparent',
-                      backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                      backgroundImage: 'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
                       WebkitBackgroundClip: 'text',
                       backgroundClip: 'text',
                       fontSize: '700',
@@ -331,10 +334,11 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   component="span"
                   sx={{
                     color: 'transparent',
-                    backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                    backgroundImage: 'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
                     width: '125px',
+                    display: 'inline-block',
                     mt: 1,
                   }}
                 >

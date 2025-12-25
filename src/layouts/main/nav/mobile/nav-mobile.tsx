@@ -75,6 +75,7 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
               backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
+              display: 'inline-block',
             }}
           >
             TÀI LỘC

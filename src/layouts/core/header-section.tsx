@@ -64,6 +64,7 @@ export function HeaderSection({
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             visibility: 'visible',
+            display: 'inline-block',
           }}
           display="flex"
           alignItems="center"
@@ -73,7 +74,12 @@ export function HeaderSection({
         >
           <Typography
             component="span"
-            sx={{ width: 'fit-content', textAlign: 'center', visibility: 'visible' }}
+            sx={{
+              width: 'fit-content',
+              textAlign: 'center',
+              visibility: 'visible',
+              display: 'inline-block',
+            }}
             variant={isSmallScreen ? 'caption' : 'h6'}
           >
             Chào mừng đến với TÀI LỘC

@@ -68,6 +68,7 @@ export function PriceView() {
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             visibility: 'visible',
+            display: 'inline-block',
           }}
           variant={isSmallScreen ? 'h6' : 'h4'}
         >
@@ -84,6 +85,7 @@ export function PriceView() {
           WebkitBackgroundClip: 'text',
           backgroundClip: 'text',
           visibility: 'visible',
+          display: 'inline-block',
         }}
         variant={isSmallScreen ? 'h5' : 'h3'}
       >
@@ -110,6 +112,7 @@ export function PriceView() {
             fontWeight: '700 !important',
             width: 'fit-content',
             visibility: 'visible',
+            display: 'inline-block',
           }}
           variant={isSmallScreen ? 'caption' : 'subtitle2'}
         >
@@ -129,6 +132,7 @@ export function PriceView() {
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             visibility: 'visible',
+            display: 'inline-block',
           }}
         >
           <Typography variant="h4">

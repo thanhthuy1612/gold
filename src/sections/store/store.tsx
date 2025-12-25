@@ -7,7 +7,7 @@ import { Card, Grid, Stack, useTheme, Typography, useMediaQuery } from '@mui/mat
 const listFooter = [
   {
     title: 'Chất lượng',
-    descrition: 'Đầu tư chuẩn mực, dẫn lối thành công.',
+    descrition: 'Gia công & sản xuất miếng vàng đạt chuẩn hàm lượng.',
     img: '/assets/background/1.png',
   },
   {
