@@ -267,10 +267,9 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
               maxWidth: '1200px',
             }}
           >
-            <Grid size={{ xs: 12, md: 8 }} justifyItems="start">
+            <Grid size={{ xs: 12, md: 7 }} justifyItems="start">
               <div>
                 <Typography
-                  component="span"
                   sx={{
                     color: 'transparent',
                     backgroundImage: 'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
@@ -281,7 +280,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   }}
                   variant={isSmallScreen ? 'subtitle2' : 'h4'}
                 >
-                  CÔNG TY TNHH VÀNG BẠC ĐÁ QUÝ TÀI LỘC
+                  <span>CÔNG TY TNHH VÀNG BẠC ĐÁ QUÝ TÀI LỘC</span>
                 </Typography>
               </div>
               {listInfo.map((item) => (
@@ -294,26 +293,27 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   key={item.name}
                 >
                   <Logo sx={{ width: 20, height: 20 }} />
-                  <Link
-                    component="a"
-                    href={item.href}
-                    variant={isSmallScreen ? 'caption' : 'h5'}
-                    sx={{
-                      color: 'transparent',
-                      backgroundImage: 'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
-                      WebkitBackgroundClip: 'text',
-                      backgroundClip: 'text',
-                      fontSize: '700',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                  >
-                    {item.name}: {item.value}
-                  </Link>
+                  <a href={item.href}>
+                    <Link
+                      component="span"
+                      variant={isSmallScreen ? 'caption' : 'h5'}
+                      sx={{
+                        color: 'transparent',
+                        backgroundImage: 'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
+                        WebkitBackgroundClip: 'text',
+                        backgroundClip: 'text',
+                        fontSize: '700',
+                        display: isSmallScreen ? 'inline-block' : 'flex',
+                        alignItems: 'center',
+                      }}
+                    >
+                      {item.name}: {item.value}
+                    </Link>
+                  </a>
                 </Stack>
               ))}
             </Grid>
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 5 }}>
               <Stack display="flex" flexDirection="column" alignItems="center">
                 <img src="/logo/logo.png" width={isSmallScreen ? '80' : '150'} height="auto" />
                 <Stack

@@ -59,7 +59,7 @@ type Props = {
 export function TablePrice({ icon, title, onClick, data }: Props) {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
   return (
-    <Stack sx={{ my: 8 }}>
+    <Stack sx={{ my: 3 }}>
       <Stack
         display="flex"
         flexDirection="row"

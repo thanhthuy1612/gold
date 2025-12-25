@@ -114,7 +114,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
               <AnimateLogoZoom />
             </Stack>
           ) : (
-            <Grid container spacing={3}>
+            <Grid container columnSpacing={3} sx={{ my: 5 }}>
               <Grid size={{ xs: 12, md: 6 }}>
                 <TablePrice
                   icon={<img src="/assets/background/b.png" width="30" />}

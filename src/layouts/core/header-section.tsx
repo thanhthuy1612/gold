@@ -56,6 +56,10 @@ export function HeaderSection({
           padding: 1.5,
           background: '#901011',
         }}
+        alignItems="center"
+        justifyContent="center"
+        alignContent="center"
+        display="flex"
       >
         <Box
           sx={{
@@ -64,21 +68,19 @@ export function HeaderSection({
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             visibility: 'visible',
-            display: 'inline-block',
           }}
-          display="flex"
+          display={isSmallScreen ? 'inline-block' : 'flex'}
           alignItems="center"
           justifyContent="center"
+          alignContent="center"
           columnGap={1}
           flexWrap="wrap"
         >
           <Typography
-            component="span"
             sx={{
               width: 'fit-content',
               textAlign: 'center',
               visibility: 'visible',
-              display: 'inline-block',
             }}
             variant={isSmallScreen ? 'caption' : 'h6'}
           >
