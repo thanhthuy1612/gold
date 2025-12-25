@@ -1,3 +1,5 @@
+'use client';
+
 import type { Theme, SxProps } from '@mui/material';
 import type { IProductItem } from 'src/types/product';
 

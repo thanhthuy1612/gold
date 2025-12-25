@@ -1,3 +1,5 @@
+'use client';
+
 import type { JSX } from 'react';
 import type { ChartOptions } from 'src/components/chart';
 import type { Theme, SxProps } from '@mui/material/styles';
