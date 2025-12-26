@@ -63,13 +63,13 @@ export function HomeChart({
       if (!item) return '';
       switch (timeRange) {
         case ChartTimeRange._1D:
-          return fTime(item, 'HH:MM');
+          return fTime(item, 'HH:mm');
         case ChartTimeRange._1M:
         case ChartTimeRange._7D:
-          return fDate(item, 'DD/MM/YYYY HH:MM:ss');
+          return fDate(item, 'DD/MM/YYYY HH:mm:ss');
         case ChartTimeRange._3M:
         case ChartTimeRange._1Y:
-          return `${fDate(item, 'DD/MM/YYYY HH:MM:ss')}`;
+          return `${fDate(item, 'DD/MM/YYYY HH:mm:ss')}`;
         default:
           return '';
       }
