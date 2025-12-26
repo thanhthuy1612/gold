@@ -57,7 +57,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
     if (loadingFirst || loading) {
       fetchDataInterval();
     }
-    const intervalId = loading ? null : setInterval(fetchDataInterval, 120000);
+    const intervalId = loading ? null : setInterval(fetchDataInterval, 60000);
     return () => {
       if (intervalId) clearInterval(intervalId);
     };

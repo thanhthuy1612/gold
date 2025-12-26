@@ -121,7 +121,7 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
 
   useEffect(() => {
     fetchProducts();
-    const intervalId = setInterval(fetchProducts, 120000);
+    const intervalId = setInterval(fetchProducts, 60000);
     return () => clearInterval(intervalId);
   }, []);
   const renderList = () => {
