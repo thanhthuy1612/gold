@@ -134,24 +134,44 @@ export function PriceView() {
             visibility: 'visible',
           }}
         >
-          <Typography variant="h4" sx={{ display: 'inline-block' }}>
-            <span>
+          <div>
+            <Typography
+              component="span"
+              variant="h4"
+              sx={{
+                color: 'transparent',
+                backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                visibility: 'visible',
+                display: 'inline-block',
+              }}
+            >
               {loading
                 ? '...'
                 : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
                     ' '
                   )?.[0]}
-            </span>
-          </Typography>
+            </Typography>
+          </div>
           <Logo sx={{ width: 22, height: 'auto' }} />
-          <Typography variant="h4" sx={{ display: 'inline-block' }}>
-            <span>
-              {loading
-                ? '...'
-                : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
-                    ' '
-                  )?.[1]}
-            </span>
+          <Typography
+            component="span"
+            variant="h4"
+            sx={{
+              color: 'transparent',
+              backgroundImage: 'linear-gradient(90deg, #d09f19, #ffdc2b, #ffdc2b, #d09f19)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              visibility: 'visible',
+              display: 'inline-block',
+            }}
+          >
+            {loading
+              ? '...'
+              : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
+                  ' '
+                )?.[1]}
           </Typography>
         </Stack>
       </Card>
