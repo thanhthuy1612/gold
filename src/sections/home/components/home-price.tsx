@@ -44,22 +44,28 @@ export function HomePrice({ sx, ...other }: BoxProps) {
   const router = useRouter();
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
+  const fetchDataInterval = () => {
+    fetchData({
+      type: null,
+      unit: null,
+      timeRange: null,
+    });
+    fetchData({ type, unit, timeRange });
+  };
+
   React.useEffect(() => {
-    if (loadingFirst) {
-      fetchData({
-        type: null,
-        unit: null,
-        timeRange: null,
-      });
-    } else {
-      fetchData();
+    if (loadingFirst || loading) {
+      fetchDataInterval();
     }
+    const intervalId = loading ? null : setInterval(fetchDataInterval, 120000);
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loadingFirst]);
+  }, [loading]);
 
   const fetchData = async (body?: PriceType, typeChange?: string) => {
     try {
-      setLoading(true);
       const newBody = body ?? {
         type,
         unit,
@@ -72,9 +78,10 @@ export function HomePrice({ sx, ...other }: BoxProps) {
           : (typeChange ?? goldType) === 'Vàng SJC'
             ? result.data?.sjcGold
             : result.data?.pqGold;
-      setChart(newData);
-      if (loadingFirst) {
+      if (body?.type === null) {
         setData(result.data);
+      } else {
+        setChart(newData);
       }
     } catch (err) {
       console.error(err);
@@ -92,8 +99,8 @@ export function HomePrice({ sx, ...other }: BoxProps) {
         options={gold}
         value={goldType}
         onChange={(value) => {
+          setLoading(true);
           setGoldType(value);
-          fetchData({ type, unit, timeRange }, value);
         }}
       />
     );
@@ -235,13 +242,9 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                   size="large"
                   sx={{ background: '#b4292d !important', fontSize: 12 }}
                   onClick={async () => {
+                    setLoading(true);
                     setType(ProductType.SILVER);
                     setUnit(ChartUnit.BAC_LUONG);
-                    await fetchData({
-                      type: ProductType.SILVER,
-                      unit: ChartUnit.BAC_LUONG,
-                      timeRange,
-                    });
                   }}
                 >
                   XEM BẢNG GIÁ BẠC
@@ -254,13 +257,9 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                   size="large"
                   sx={{ background: '#ff8c1c !important', fontSize: 12 }}
                   onClick={async () => {
+                    setLoading(true);
                     setType(ProductType.GOLD);
                     setUnit(ChartUnit.VANG_CHI);
-                    await fetchData({
-                      type: ProductType.GOLD,
-                      unit: ChartUnit.VANG_CHI,
-                      timeRange,
-                    });
                   }}
                 >
                   XEM BẢNG GIÁ VÀNG
@@ -281,13 +280,9 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                   options={listTimeRange}
                   value={listTimeRange[timeRange - 1]}
                   onChange={async (value) => {
+                    setLoading(true);
                     const target = listTimeRange.indexOf(value) + 1;
                     setTimeRange(target);
-                    await fetchData({
-                      type,
-                      unit,
-                      timeRange: target,
-                    });
                   }}
                 />
                 <ChartSelect
@@ -296,22 +291,16 @@ export function HomePrice({ sx, ...other }: BoxProps) {
                     type === ProductType.SILVER ? listUnitSilver[unit - 1] : listUnitGold[unit - 3]
                   }
                   onChange={async (value) => {
+                    setLoading(true);
                     const target =
                       type === ProductType.SILVER
                         ? listUnitSilver.indexOf(value) + 1
                         : listUnitGold.indexOf(value) + 3;
                     setUnit(target);
-                    await fetchData({
-                      type,
-                      unit: target,
-                      timeRange,
-                    });
                   }}
                 />
               </Stack>
             }
-            changePriceIn={chart?.changePriceIn}
-            changePriceOut={chart?.changePriceOut}
             chart={{
               categories: (chart?.infoList ?? []).map((item) => item.lastUpdate),
               series: [

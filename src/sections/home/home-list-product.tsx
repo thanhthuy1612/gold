@@ -101,26 +101,28 @@ export function HomeListProduct({ sx, ...other }: BoxProps) {
 
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
+  const fetchProducts = async () => {
+    try {
+      const res = await homeService.products();
+
+      const raw = res.data;
+
+      const merged = [...(raw?.bacTichLuy || []), ...(raw?.bacMyNghe || [])].map(
+        mapProductApiToItem
+      );
+
+      setProducts(merged);
+    } catch (error) {
+      console.error('Fetch products failed:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await homeService.products();
-
-        const raw = res.data;
-
-        const merged = [...(raw?.bacTichLuy || []), ...(raw?.bacMyNghe || [])].map(
-          mapProductApiToItem
-        );
-
-        setProducts(merged);
-      } catch (error) {
-        console.error('Fetch products failed:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchProducts();
+    const intervalId = setInterval(fetchProducts, 120000);
+    return () => clearInterval(intervalId);
   }, []);
   const renderList = () => {
     if (loading) {

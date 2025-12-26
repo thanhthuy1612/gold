@@ -12,7 +12,7 @@ import { CONFIG } from 'src/global-config';
 import { updateType } from 'src/lib/features/landing';
 import { useAppDispatch, useAppSelector } from 'src/lib/hooks';
 
-import { MotionViewport, AnimateLogoZoom } from 'src/components/animate';
+import { MotionViewport } from 'src/components/animate';
 
 import { TablePrice } from './components/table-price';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
@@ -72,7 +72,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
       sell: item.priceOut,
     }));
 
-  const { gold, silver, loading } = useAppSelector((state) => state.landing);
+  const { gold, silver } = useAppSelector((state) => state.landing);
 
   const silverTableData = mapToTableData(silver);
   const goldTableData = mapToTableData(gold);
@@ -103,43 +103,31 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
         {/* {renderLines()} */}
 
         <Container>
-          {loading ? (
-            <Stack
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              flexDirection="row"
-              sx={{ minHeight: '347.5px' }}
-            >
-              <AnimateLogoZoom />
-            </Stack>
-          ) : (
-            <Grid container columnSpacing={3} sx={{ my: 5 }}>
-              <Grid size={{ xs: 12, md: 6 }}>
-                <TablePrice
-                  icon={<img src="/assets/background/b.png" width="30" />}
-                  title="Giá bạc tham chiếu"
-                  data={silverTableData}
-                  onClick={() => {
-                    dispath(updateType('silver'));
-                    router.push(paths.price);
-                  }}
-                />
-              </Grid>
-
-              <Grid size={{ xs: 12, md: 6 }}>
-                <TablePrice
-                  icon={<img src="/assets/background/v.png" width="30" />}
-                  title="Giá vàng tham chiếu"
-                  data={goldTableData}
-                  onClick={() => {
-                    dispath(updateType('gold'));
-                    router.push(paths.price);
-                  }}
-                />
-              </Grid>
+          <Grid container columnSpacing={3} sx={{ my: 5 }}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TablePrice
+                icon={<img src="/assets/background/b.png" width="30" />}
+                title="Giá bạc tham chiếu"
+                data={silverTableData}
+                onClick={() => {
+                  dispath(updateType('silver'));
+                  router.push(paths.price);
+                }}
+              />
             </Grid>
-          )}
+
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TablePrice
+                icon={<img src="/assets/background/v.png" width="30" />}
+                title="Giá vàng tham chiếu"
+                data={goldTableData}
+                onClick={() => {
+                  dispath(updateType('gold'));
+                  router.push(paths.price);
+                }}
+              />
+            </Grid>
+          </Grid>
           {/* </m.div> */}
         </Container>
       </MotionViewport>

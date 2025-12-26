@@ -22,8 +22,6 @@ import { ChartTimeRange } from 'src/types/landing';
 type Props = {
   title?: React.ReactNode;
   action?: JSX.Element;
-  changePriceIn?: number;
-  changePriceOut?: number;
 
   subheader?: string;
   timeRange?: ChartTimeRange;
@@ -42,17 +40,7 @@ type Props = {
   loading: boolean;
 };
 
-export function HomeChart({
-  action,
-  loading,
-  changePriceIn,
-  changePriceOut,
-  title,
-  subheader,
-  chart,
-  sx,
-  timeRange,
-}: Props) {
+export function HomeChart({ action, loading, title, subheader, chart, sx, timeRange }: Props) {
   const theme = useTheme();
 
   const chartColors = chart.colors ?? [theme.palette.error.main, theme.palette.success.main];
@@ -119,7 +107,7 @@ export function HomeChart({
             justifyContent="center"
             alignItems="center"
             flexDirection="row"
-            sx={{ minHeight: '347.5px' }}
+            sx={{ minHeight: '387.5px' }}
           >
             <AnimateLogoZoom />
           </Stack>
