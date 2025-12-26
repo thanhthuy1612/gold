@@ -59,16 +59,17 @@ export function HomeChart({
 
   const getLable = () =>
     (chart.categories ?? []).map((item) => {
+      console.log(item);
       if (!item) return '';
       switch (timeRange) {
         case ChartTimeRange._1D:
           return fTime(item, 'HH:MM');
         case ChartTimeRange._1M:
         case ChartTimeRange._7D:
-          return fDate(item, 'HH:MM DD/MM/YYYY');
+          return fDate(item, 'DD/MM/YYYY HH:MM:ss');
         case ChartTimeRange._3M:
         case ChartTimeRange._1Y:
-          return `${fDate(item, 'HH:MM DD/MM/YYYY')}`;
+          return `${fDate(item, 'DD/MM/YYYY HH:MM:ss')}`;
         default:
           return '';
       }
