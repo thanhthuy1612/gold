@@ -107,7 +107,7 @@ export function HomePrice({ sx, ...other }: BoxProps) {
         <Grid size={{ xs: 12, md: 6, lg: 5 }}>
           <Card
             sx={{
-              p: 3,
+              p: isSmallScreen ? 2 : 3,
               backgroundColor: '#e1ecff',
               height: '100%',
               display: 'flex',
