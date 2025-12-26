@@ -100,6 +100,8 @@ export function PriceView() {
           background: '#821818',
           backgroundClip: 'padding-box',
           border: 'solid 2px #c18b49',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <Typography
@@ -117,7 +119,6 @@ export function PriceView() {
         >
           GIÁ NIÊM YẾT ĐƯỢC CẬP NHẬT LẦN CUỐI
         </Typography>
-
         <Stack
           display="flex"
           gap={1}
@@ -133,20 +134,24 @@ export function PriceView() {
             visibility: 'visible',
           }}
         >
-          <Typography variant="h4">
-            {loading
-              ? '...'
-              : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
-                  ' '
-                )?.[0]}
+          <Typography variant="h4" sx={{ display: 'inline-block' }}>
+            <span>
+              {loading
+                ? '...'
+                : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
+                    ' '
+                  )?.[0]}
+            </span>
           </Typography>
           <Logo sx={{ width: 22, height: 'auto' }} />
-          <Typography variant="h4">
-            {loading
-              ? '...'
-              : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
-                  ' '
-                )?.[1]}
+          <Typography variant="h4" sx={{ display: 'inline-block' }}>
+            <span>
+              {loading
+                ? '...'
+                : (tab === 'silver' ? (silverLastUpdate ?? '') : (goldLastUpdate ?? '')).split(
+                    ' '
+                  )?.[1]}
+            </span>
           </Typography>
         </Stack>
       </Card>

@@ -132,7 +132,7 @@ export function HomeChart({
               sx={{
                 pl: 1,
                 py: 2.5,
-                pr: 2.5,
+                pr: 1,
                 height: 320,
               }}
             />
