@@ -129,7 +129,7 @@ export function HomeChart({ action, loading, title, subheader, chart, sx, timeRa
                 colors={chartOptions?.colors}
                 labels={(chart.series[0] ?? [])?.data.map((item) => item.name)}
                 // values={[fCurrency(changePriceIn ?? 0), fCurrency(changePriceOut ?? 0)]}
-                sx={{ px: 3, gap: 3, mb: 5 }}
+                sx={{ px: 3, gap: 3, mt: 2, mb: 3 }}
               />
             </Stack>
           </>

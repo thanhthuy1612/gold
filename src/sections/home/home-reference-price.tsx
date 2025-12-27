@@ -107,14 +107,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
         <Container
           sx={{
             m: 0,
-            paddingLeft: {
-              xs: 0,
-              sm: 'calc(3 * var(--spacing))',
-            },
-            paddingRight: {
-              xs: 0,
-              sm: 'calc(3 * var(--spacing))',
-            },
+            px: isSmallScreen ? 1 : 3,
           }}
         >
           <Grid container columnSpacing={3} sx={{ my: 5 }}>
