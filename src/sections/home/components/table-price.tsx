@@ -116,7 +116,7 @@ export function TablePrice({ icon, title, onClick, data }: Props) {
                 <Box display="flex" alignItems="center" justifyContent="flex-end" height="100%">
                   <Typography
                     variant="subtitle2"
-                    color="success.main"
+                    color="#821818"
                     fontSize={isSmallScreen ? 14 : 16}
                   >
                     {isSmallScreen ? fNumber(row.buy) : fCurrency(row.buy)}
@@ -132,7 +132,11 @@ export function TablePrice({ icon, title, onClick, data }: Props) {
                 }}
               >
                 <Box display="flex" alignItems="center" justifyContent="flex-end" height="100%">
-                  <Typography variant="subtitle2" color="error" fontSize={isSmallScreen ? 14 : 16}>
+                  <Typography
+                    variant="subtitle2"
+                    color="#22c55e"
+                    fontSize={isSmallScreen ? 14 : 16}
+                  >
                     {isSmallScreen ? fNumber(row.sell) : fCurrency(row.sell)}
                   </Typography>
                 </Box>

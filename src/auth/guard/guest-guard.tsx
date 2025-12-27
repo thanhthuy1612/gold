@@ -22,7 +22,6 @@ export function GuestGuard({ children }: GuestGuardProps) {
 
   const searchParams = useSearchParams();
   const returnTo = searchParams.get('returnTo') || paths.dashboard.root;
-  console.log(returnTo, authenticated);
   const [isChecking, setIsChecking] = useState(true);
 
   const checkPermissions = React.useCallback(async (): Promise<void> => {

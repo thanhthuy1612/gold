@@ -47,7 +47,6 @@ export function HomeChart({ action, loading, title, subheader, chart, sx, timeRa
 
   const getLable = () =>
     (chart.categories ?? []).map((item) => {
-      console.log(item);
       if (!item) return '';
       switch (timeRange) {
         case ChartTimeRange._1D:
