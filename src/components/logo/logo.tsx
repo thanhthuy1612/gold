@@ -124,7 +124,7 @@ export function Logo({
   const fullLogo = (
     <svg
       width="100%"
-      height="100%"
+      height="auto"
       viewBox="0 0 360 128"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +199,7 @@ export function Logo({
       sx={[
         {
           width: 40,
-          height: 40,
+          height: 'auto',
           ...(!isSingle && { width: 102, height: 36 }),
           ...(disabled && { pointerEvents: 'none' }),
         },

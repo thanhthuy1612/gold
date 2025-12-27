@@ -294,7 +294,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
                   sx={{ my: 3 }}
                   key={item.name}
                 >
-                  <Logo sx={{ width: 20, height: 20 }} />
+                  <Logo sx={{ width: 20, height: 'auto' }} />
                   <Link href={item.href}>
                     <Link
                       component="span"

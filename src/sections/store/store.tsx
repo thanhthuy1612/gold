@@ -41,7 +41,7 @@ export function Store() {
       sx={{ textAlign: 'justify', mt: 3 }}
     >
       <Typography>
-        <strong>VÀNG BẠC TÀI LỘC</strong> là đối tác đại lý uỷ quyền của{' '}
+        <strong>CÔNG TY TNHH VÀNG BẠC ĐÁ QUÝ TÀI LỘC</strong> là Đại lý uỷ quyền chính thức của{' '}
         <strong>TẬP ĐOÀN PHÚ QUÝ</strong>. Chúng tôi hoạt động dựa trên nền tảng{' '}
         <strong>minh bạch – chuẩn mực – bền vững</strong>, mang đến cho nhà đầu tư các sản phẩm bạc
         tích luỹ có giá trị thực, tính thanh khoản cao và khả năng sinh lời dài hạn.
