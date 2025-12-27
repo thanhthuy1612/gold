@@ -12,6 +12,14 @@ export default function GiaVangBacClient() {
 
   useEffect(() => {
     dispatch(fetchLandingMetals());
+
+    // Set an interval to fetch every 5 seconds
+    const intervalId = setInterval(() => {
+      dispatch(fetchLandingMetals());
+    }, 60000);
+
+    // Return a function to clear the interval
+    return () => clearInterval(intervalId);
   }, [dispatch]);
 
   return <PriceView />;

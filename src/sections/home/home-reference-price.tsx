@@ -3,8 +3,8 @@ import type { BoxProps } from '@mui/material/Box';
 import { useRouter } from 'next/navigation';
 
 import Box from '@mui/material/Box';
-import { Grid, Stack } from '@mui/material';
 import Container from '@mui/material/Container';
+import { Grid, Stack, useMediaQuery } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 
@@ -65,6 +65,8 @@ const renderLines = () => (
 );
 
 export function HomeReferencePrice({ sx, ...other }: BoxProps) {
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
+
   const mapToTableData = (items: any[]): TableData[] =>
     items.map((item) => ({
       name: item.productTypeName,
@@ -102,7 +104,19 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
       <MotionViewport>
         {/* {renderLines()} */}
 
-        <Container>
+        <Container
+          sx={{
+            m: 0,
+            paddingLeft: {
+              xs: 0,
+              sm: 'calc(3 * var(--spacing))',
+            },
+            paddingRight: {
+              xs: 0,
+              sm: 'calc(3 * var(--spacing))',
+            },
+          }}
+        >
           <Grid container columnSpacing={3} sx={{ my: 5 }}>
             <Grid size={{ xs: 12, md: 6 }}>
               <TablePrice
