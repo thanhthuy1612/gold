@@ -113,7 +113,7 @@ export function TablePrice({ icon, title, onClick, data }: Props) {
                   verticalAlign: 'middle',
                 }}
               >
-                <Box display="flex" alignItems="center" justifyContent="flex-end" height="100%">
+                <Box display="flex" alignItems="center" justifyContent="center" height="100%">
                   <Typography
                     variant="subtitle2"
                     color="#821818"
@@ -131,7 +131,7 @@ export function TablePrice({ icon, title, onClick, data }: Props) {
                   verticalAlign: 'middle',
                 }}
               >
-                <Box display="flex" alignItems="center" justifyContent="flex-end" height="100%">
+                <Box display="flex" alignItems="center" justifyContent="center" height="100%">
                   <Typography
                     variant="subtitle2"
                     color="#22c55e"
