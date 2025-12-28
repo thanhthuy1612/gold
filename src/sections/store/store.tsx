@@ -26,7 +26,7 @@ export function Store() {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
   const renderHeader = () => (
     <Stack display="flex" flexDirection="row" gap={2} flexWrap="wrap" alignItems="center">
-      <img src="/logo/logo.png" width="100" height="auto" />
+      <img src="/logo/logo.webp" width="100" height="auto" />
       <Typography variant={isSmallScreen ? 'h3' : 'h2'} sx={{ color: '#991113' }}>
         THƯƠNG HIỆU TÀI LỘC
       </Typography>

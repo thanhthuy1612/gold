@@ -38,7 +38,7 @@ export function HomePriceContainer({ sx, ...other }: BoxProps) {
       <MotionViewport>
         {/* {renderLines()} */}
         {/* <m.div variants={varFade('inUp')}> */}
-        <img src="/assets/background/landing1.jpg" width="100%" height="auto" />
+        <img src="/assets/background/webp/landing1.webp" width="100%" height="auto" />
         {/* </m.div> */}
         <Container sx={{ position: 'relative' }}>
           {/* <CircleSvg variants={varFade('in')} sx={{ display: { xs: 'none', md: 'block' } }} /> */}

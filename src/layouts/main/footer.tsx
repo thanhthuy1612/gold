@@ -317,7 +317,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
             </Grid>
             <Grid size={{ xs: 12, md: 5 }}>
               <Stack display="flex" flexDirection="column" alignItems="center">
-                <img src="/logo/logo.png" width={isSmallScreen ? '80' : '150'} height="auto" />
+                <img src="/logo/logo.webp" width={isSmallScreen ? '80' : '150'} height="auto" />
                 <Stack
                   display="flex"
                   flexDirection="row"

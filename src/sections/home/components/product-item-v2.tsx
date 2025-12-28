@@ -39,7 +39,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
       }}
     >
       <Stack display="flex" flexDirection="column" alignItems="center">
-        <img src="/logo/logo.png" width="80" height="auto" />
+        <img src="/logo/logo.webp" width="80" height="auto" />
       </Stack>
     </Box>
   );

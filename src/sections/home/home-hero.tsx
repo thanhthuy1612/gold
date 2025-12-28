@@ -35,7 +35,7 @@ export function HomeHero({ sx, ...other }: BoxProps) {
     >
       <Container component={MotionContainer} sx={{ textAlign: 'center' }}>
         {/* <m.div variants={varFade('inUp')}> */}
-        <img src="/assets/background/info4.jpg" width="100%" height="auto" />
+        <img src="/assets/background/webp/info4.webp" width="100%" height="auto" />
         {/* </m.div> */}
       </Container>
 

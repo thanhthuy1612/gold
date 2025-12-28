@@ -207,7 +207,7 @@ export function Logo({
       ]}
       {...other}
     >
-      <img src="/assets/background/logo.png" width="100%" height="auto" />
+      <img src="/assets/background/webp/logo.webp" width="100%" height="auto" />
     </LogoRoot>
   );
 }
