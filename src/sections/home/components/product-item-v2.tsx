@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import { fabClasses } from '@mui/material/Fab';
-import { Tooltip, Typography, useMediaQuery } from '@mui/material';
+import { Button, Tooltip, Typography, useMediaQuery } from '@mui/material';
 
 import { fNumber, fCurrency } from 'src/utils/format-number';
 
@@ -69,7 +69,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           variant={isSmallScreen ? 'subtitle1' : 'h5'}
           sx={{
             color: '#98130f',
-            mb: 2,
+            mb: 1,
             p: isSmallScreen ? 1 : 1.5,
             pt: isSmallScreen ? 0 : 1.5,
             display: '-webkit-box',
@@ -87,7 +87,7 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
       <Box
         sx={{
           background: '#fff',
-          p: 1.5,
+          p: 1,
           borderTop: '2px solid #98130f',
           display: 'flex',
           flexDirection: 'column',
@@ -161,6 +161,13 @@ export function ProductItemV2({ product, detailsHref, sx }: Props) {
           </Typography>
         </Stack>
       </Box>
+      <Button
+        sx={{ mx: 1.5, mb: 1.5, background: '#98130f !important', color: '#ffdc2b !important' }}
+        variant="contained"
+        href="https://zalo.me/g/acdmkl802"
+      >
+        ĐẶT HÀNG
+      </Button>
     </Stack>
   );
 
