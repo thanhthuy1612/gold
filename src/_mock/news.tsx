@@ -4,7 +4,7 @@ import WeeklyEvents from 'src/sections/phan-tich-thi-truong-vang/WeeklyEvents';
 import GoldMarketSummary from 'src/sections/phan-tich-thi-truong-vang/GoldMarketSummary';
 import GoldInventoryData from 'src/sections/phan-tich-thi-truong-vang/GoldInventoryData';
 import TechnicalAnalysis from 'src/sections/phan-tich-thi-truong-vang/TechnicalAnalysis';
-import DisclaimerSection from 'src/sections/phan-tich-thi-truong-vang/DisclaimerSection';
+import DisclaimerSection from 'src/layouts/main/DisclaimerSection';
 import WeeklyEconomicData from 'src/sections/phan-tich-thi-truong-vang/WeeklyEconomicData';
 
 export type ImagesItem = {
@@ -19,6 +19,7 @@ export type NewsItem = {
   image: string;
   slug: string;
   content: ReactNode;
+  hasDisclaim?: boolean;
 };
 
 export const IMAGES: ImagesItem[] = [
@@ -47,7 +48,7 @@ export const NEWS: NewsItem[] = [
     desc: 'Tết sinh lộc vàng mang niềm tin khởi sắc, mở ra năm mới an khang thịnh vượng. Gia đình sum vầy, kinh doanh hanh thông, tài lộc gõ cửa, đón ngàn điều may, gửi trọn hy vọng ...',
     image: '/assets/background/news-1.jpg',
     slug: 'tet-rinh-loc-vang',
-    content: 'Nội dung chi tiết bài viết Tết rinh lộc vàng...',
+    content: '',
   },
   {
     id: 2,
@@ -62,9 +63,9 @@ export const NEWS: NewsItem[] = [
         <WeeklyEconomicData />
         <GoldInventoryData />
         <TechnicalAnalysis />
-        <DisclaimerSection />
       </>
     ),
+    hasDisclaim: true,
   },
   {
     id: 3,
@@ -72,7 +73,7 @@ export const NEWS: NewsItem[] = [
     desc: 'Giá vàng Bạc thỏi Phú Quý kết thúc tuần vừa qua quanh mức: 62,1 triệu đồng/ Kg - Mua vào và 64 triều đồng/ Kg - Bán ra. Tăng 6.05% so với tuần trước đó. Giá bạc trong nước tiếp ...',
     image: '/assets/background/news-3.jpg',
     slug: 'phan-tich-thi-truong-bac',
-    content: 'Nội dung phân tích thị trường bạc...',
+    content: '',
   },
   {
     id: 4,
@@ -80,7 +81,7 @@ export const NEWS: NewsItem[] = [
     desc: 'Giá vàng SJC tại Phú Quý bật tăng trong tuần qua, giao dịch trên mức 153 triệu/lượng mua vào, 156 triệu/lượng bán ra.\n Giá vàng trong nước tăng nhẹ cùng với giá ...',
     image: '/assets/background/news-4.jpg',
     slug: 'gia-bac-vuot-muc',
-    content: 'Nội dung chi tiết bài viết Tết rinh lộc vàng...',
+    content: '',
   },
   {
     id: 5,
@@ -88,7 +89,7 @@ export const NEWS: NewsItem[] = [
     desc: 'Cập nhật xu hướng giá vàng mới nhất...',
     image: '/assets/background/news-1.jpg',
     slug: 'phan-tich-thi-truong-vang',
-    content: 'Nội dung phân tích thị trường vàng chi tiết...',
+    content: '',
   },
   {
     id: 6,
@@ -96,6 +97,6 @@ export const NEWS: NewsItem[] = [
     desc: 'Nhận định biến động giá bạc...',
     image: '/assets/background/news-2.jpg',
     slug: 'phan-tich-thi-truong-bac',
-    content: 'Nội dung phân tích thị trường bạc...',
+    content: '',
   },
 ];

@@ -81,7 +81,7 @@ export function HomeInfo({ sx, ...other }: BoxProps) {
             size="large"
             variant="outlined"
             sx={{ border: '2px #8c0302 solid', color: '#8c0302', my: 5 }}
-            href={paths.price}
+            href={paths.news}
           >
             Xem tất cả
           </Button>
