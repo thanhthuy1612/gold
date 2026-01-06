@@ -38,9 +38,10 @@ export default function NewsClient() {
                 component="img"
                 src={item.image}
                 sx={{
-                  height: BIG_H,
+                  height: { md: 'auto', lg: BIG_H },
                   borderRadius: 1.5,
                   boxShadow: 2,
+                  objectFit: 'cover',
                 }}
               />
             ))}
@@ -51,18 +52,32 @@ export default function NewsClient() {
         <Grid size={{ xs: 12, md: 7 }}>
           <Stack spacing={3}>
             {pageData.map((item) => (
-              <Grid key={item.id} container spacing={2} sx={{ height: ROW_H }}>
-                <Grid size={6}>
+              <Grid key={item.id} container spacing={2} sx={{ height: { xs: 'auto', md: ROW_H } }}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <Box
                     component="img"
                     src={item.image}
-                    sx={{ width: '100%', height: '100%', borderRadius: 1 }}
+                    sx={{
+                      width: '100%',
+                      height: { xs: 'auto', md: '100%' },
+                      objectFit: 'cover',
+                      borderRadius: 1,
+                    }}
                   />
                 </Grid>
 
-                <Grid size={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <Stack spacing={1}>
-                    <Typography fontWeight={700} sx={{ color: '#8c0302' }}>
+                    <Typography
+                      fontWeight={700}
+                      sx={{
+                        color: '#8c0302',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}
+                    >
                       {item.title}
                     </Typography>
 
@@ -83,7 +98,7 @@ export default function NewsClient() {
                       href={`/tin-tuc/${item.slug}`}
                       size="small"
                       sx={{
-                        alignSelf: 'flex-start',
+                        alignSelf: { xs: 'center', md: 'flex-start' },
                         bgcolor: '#8c0302',
                         color: '#e8ab6a',
                         borderRadius: '4px',

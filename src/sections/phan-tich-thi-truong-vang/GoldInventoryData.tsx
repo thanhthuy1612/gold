@@ -72,7 +72,7 @@ export default function GoldInventoryData() {
             Tồn kho vàng Comex và trạng thái đầu tư của quỹ đầu cơ
           </Box>
 
-          <Box component="img" src="/assets/background/chart-comex.jpg" sx={{ width: '100%' }} />
+          <Box component="img" src="/assets/background/chart-comex.webp" sx={{ width: '100%' }} />
         </Grid>
       </Grid>
 

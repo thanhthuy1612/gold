@@ -8,17 +8,17 @@ const listFooter = [
   {
     title: 'Chất lượng',
     descrition: 'Gia công & sản xuất miếng vàng đạt chuẩn hàm lượng.',
-    img: '/assets/background/1.png',
+    img: '/assets/background/1.webp',
   },
   {
     title: 'Uy tín',
     descrition: 'Giao dịch & mua bán bạc miếng minh bạch.',
-    img: '/assets/background/2.png',
+    img: '/assets/background/2.webp',
   },
   {
     title: 'Giá trị bền vững',
     descrition: 'Mang lại giá trị tích luỹ, đầu tư an toàn & hiệu quả.',
-    img: '/assets/background/3.png',
+    img: '/assets/background/3.webp',
   },
 ];
 export function Store() {

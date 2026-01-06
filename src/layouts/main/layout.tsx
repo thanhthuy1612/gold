@@ -66,7 +66,6 @@ export function MainLayout({
     return !!news?.hasDisclaim;
   })();
 
-
   const { value: open, onFalse: onClose, onTrue: onOpen } = useBoolean();
 
   const navData = slotProps?.nav?.data ?? mainNavData;
@@ -240,10 +239,7 @@ export function MainLayout({
 
   const renderFooter = () =>
     isHomePage ? (
-      <HomeFooter
-        sx={slotProps?.footer?.sx}
-        showDisclaimer={showDisclaimer}
-      />
+      <HomeFooter sx={slotProps?.footer?.sx} showDisclaimer={showDisclaimer} />
     ) : (
       <Footer sx={slotProps?.footer?.sx} layoutQuery={layoutQuery} />
     );
@@ -271,12 +267,12 @@ export function MainLayout({
       sx={
         pathname === `${paths.auth.jwt.signIn}/`
           ? [
-            (theme) => ({
-              position: 'relative',
-              '&::before': backgroundStyles(theme),
-            }),
-            ...(Array.isArray(sx) ? sx : [sx]),
-          ]
+              (theme) => ({
+                position: 'relative',
+                '&::before': backgroundStyles(theme),
+              }),
+              ...(Array.isArray(sx) ? sx : [sx]),
+            ]
           : sx
       }
     >
@@ -287,7 +283,7 @@ export function MainLayout({
 
 const backgroundStyles = (theme: Theme): CSSObject => ({
   // ...theme.mixins.bgGradient({
-  //   images: [`url(${CONFIG.assetsDir}/assets/background/background-3-blur.webp)`],
+  //   images: [`url(${CONFIG.assetsDir}/assets/background/background-3.webp)`],
   // }),
   zIndex: 1,
   opacity: 0.24,

@@ -114,7 +114,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
         <Grid container columnSpacing={3} sx={{ my: 5 }}>
           <Grid size={{ xs: 12, md: 6 }}>
             <TablePrice
-              icon={<img src="/assets/background/b.png" width="30" />}
+              icon={<img src="/assets/background/b.webp" width="30" />}
               title="Giá bạc tham chiếu"
               data={silverTableData}
               onClick={() => {
@@ -126,7 +126,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
 
           <Grid size={{ xs: 12, md: 6 }}>
             <TablePrice
-              icon={<img src="/assets/background/v.png" width="30" />}
+              icon={<img src="/assets/background/v.webp" width="30" />}
               title="Giá vàng tham chiếu"
               data={goldTableData}
               onClick={() => {

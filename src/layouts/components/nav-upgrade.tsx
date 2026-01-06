@@ -84,7 +84,7 @@ export function UpgradeBlock({ sx, ...other }: BoxProps) {
           ...theme.mixins.bgGradient({
             images: [
               `linear-gradient(135deg, ${varAlpha(theme.vars.palette.error.lightChannel, 0.92)}, ${varAlpha(theme.vars.palette.secondary.darkChannel, 0.92)})`,
-              `url(${CONFIG.assetsDir}/assets/background/background-7.webp)`,
+              `url(${CONFIG.assetsDir}/assets/background/3.webp)`,
             ],
           }),
           px: 3,
