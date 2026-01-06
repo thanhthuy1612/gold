@@ -1,5 +1,7 @@
-import { Box, Stack, Container, Typography } from '@mui/material';
 import Image from 'next/image';
+
+import { Box, Stack, Container, Typography } from '@mui/material';
+
 const contentStyle = {
   fontSize: 16,
   lineHeight: 1.7,

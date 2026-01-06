@@ -1,9 +1,10 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Box, Button, Container, Grid, Link, Pagination, Stack, Typography } from '@mui/material';
 
-import { IMAGES, NEWS } from 'src/_mock/news';
+import { Box, Grid, Link, Stack, Button, Container, Pagination, Typography } from '@mui/material';
+
+import { NEWS, IMAGES } from 'src/_mock/news';
 
 const PER_PAGE = 4;
 const GAP = 24;

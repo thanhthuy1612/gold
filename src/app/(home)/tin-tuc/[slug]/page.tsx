@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 
-import { Container, Stack, Typography } from '@mui/material';
+import { Stack, Container, Typography } from '@mui/material';
 
 import { NEWS } from 'src/_mock/news';
-import { CONFIG } from 'src/global-config';
-import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
+
 import { ComingSoonView } from 'src/components/coming-soon/view';
+import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 export async function generateMetadata({
   params,

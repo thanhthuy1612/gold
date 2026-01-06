@@ -1,4 +1,4 @@
-import { Card, Stack, Skeleton, Box } from '@mui/material';
+import { Box, Card, Stack, Skeleton } from '@mui/material';
 
 export function TablePriceSkeleton() {
   return (

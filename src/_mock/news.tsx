@@ -4,7 +4,6 @@ import WeeklyEvents from 'src/sections/phan-tich-thi-truong-vang/WeeklyEvents';
 import GoldMarketSummary from 'src/sections/phan-tich-thi-truong-vang/GoldMarketSummary';
 import GoldInventoryData from 'src/sections/phan-tich-thi-truong-vang/GoldInventoryData';
 import TechnicalAnalysis from 'src/sections/phan-tich-thi-truong-vang/TechnicalAnalysis';
-import DisclaimerSection from 'src/layouts/main/DisclaimerSection';
 import WeeklyEconomicData from 'src/sections/phan-tich-thi-truong-vang/WeeklyEconomicData';
 
 export type ImagesItem = {

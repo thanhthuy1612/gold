@@ -17,10 +17,10 @@ import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { CONFIG } from 'src/global-config';
+import DisclaimerSection from 'src/layouts/main/DisclaimerSection';
 
 import { Logo } from 'src/components/logo';
 import { varFade } from 'src/components/animate';
-import DisclaimerSection from 'src/layouts/main/DisclaimerSection';
 
 // ----------------------------------------------------------------------
 

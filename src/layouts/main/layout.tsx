@@ -12,6 +12,8 @@ import { Stack, Typography } from '@mui/material';
 import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
 
+import { NEWS } from 'src/_mock/news';
+
 import { Logo } from 'src/components/logo';
 
 import { NavMobile } from './nav/mobile';
@@ -29,7 +31,6 @@ import type { NavMainProps } from './nav/types';
 import type { MainSectionProps } from '../core/main-section';
 import type { HeaderSectionProps } from '../core/header-section';
 import type { LayoutSectionProps } from '../core/layout-section';
-import { NEWS } from 'src/_mock/news';
 
 // ----------------------------------------------------------------------
 

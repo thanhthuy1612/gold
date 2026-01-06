@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+
 import { Container } from '@mui/material';
 
 import { CONFIG } from 'src/global-config';
+
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 
 import NewsClient from './news-client';
