@@ -20,6 +20,7 @@ import { CONFIG } from 'src/global-config';
 
 import { Logo } from 'src/components/logo';
 import { varFade } from 'src/components/animate';
+import DisclaimerSection from 'src/layouts/main/DisclaimerSection';
 
 // ----------------------------------------------------------------------
 
@@ -185,7 +186,11 @@ export function Footer({
 
 // ----------------------------------------------------------------------
 
-export function HomeFooter({ sx, ...other }: FooterProps) {
+export function HomeFooter({
+  sx,
+  showDisclaimer = false,
+  ...other
+}: FooterProps & { showDisclaimer?: boolean }) {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   return (
@@ -200,6 +205,7 @@ export function HomeFooter({ sx, ...other }: FooterProps) {
       {...other}
     >
       <Container maxWidth={false} sx={{ p: '0 !important', m: '0 !important' }}>
+        {showDisclaimer && <DisclaimerSection />}
         <Box
           sx={{
             background: 'linear-gradient(90deg,#d8a45b 0%, #fcf0ad 50%, #d8a45b 100%)',

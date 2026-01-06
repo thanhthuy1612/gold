@@ -29,6 +29,7 @@ import type { NavMainProps } from './nav/types';
 import type { MainSectionProps } from '../core/main-section';
 import type { HeaderSectionProps } from '../core/header-section';
 import type { LayoutSectionProps } from '../core/layout-section';
+import { NEWS } from 'src/_mock/news';
 
 // ----------------------------------------------------------------------
 
@@ -54,6 +55,16 @@ export function MainLayout({
   layoutQuery = 'md',
 }: MainLayoutProps) {
   const pathname = usePathname();
+  const showDisclaimer = (() => {
+    if (!pathname.startsWith('/tin-tuc/')) return false;
+
+    const slug = pathname.replace('/tin-tuc/', '').replace(/\/$/, '');
+
+    const news = NEWS.find((n) => n.slug === slug);
+
+    return !!news?.hasDisclaim;
+  })();
+
 
   const { value: open, onFalse: onClose, onTrue: onOpen } = useBoolean();
 
@@ -228,7 +239,10 @@ export function MainLayout({
 
   const renderFooter = () =>
     isHomePage ? (
-      <HomeFooter sx={slotProps?.footer?.sx} />
+      <HomeFooter
+        sx={slotProps?.footer?.sx}
+        showDisclaimer={showDisclaimer}
+      />
     ) : (
       <Footer sx={slotProps?.footer?.sx} layoutQuery={layoutQuery} />
     );
@@ -256,12 +270,12 @@ export function MainLayout({
       sx={
         pathname === `${paths.auth.jwt.signIn}/`
           ? [
-              (theme) => ({
-                position: 'relative',
-                '&::before': backgroundStyles(theme),
-              }),
-              ...(Array.isArray(sx) ? sx : [sx]),
-            ]
+            (theme) => ({
+              position: 'relative',
+              '&::before': backgroundStyles(theme),
+            }),
+            ...(Array.isArray(sx) ? sx : [sx]),
+          ]
           : sx
       }
     >
