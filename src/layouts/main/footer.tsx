@@ -189,8 +189,9 @@ export function Footer({
 export function HomeFooter({
   sx,
   showDisclaimer = false,
+  disclaimerType,
   ...other
-}: FooterProps & { showDisclaimer?: boolean }) {
+}: FooterProps & { showDisclaimer?: boolean; disclaimerType?: 'gold' | 'silver'; }) {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   return (
@@ -205,7 +206,9 @@ export function HomeFooter({
       {...other}
     >
       <Container maxWidth={false} sx={{ p: '0 !important', m: '0 !important' }}>
-        {showDisclaimer && <DisclaimerSection />}
+        {showDisclaimer && disclaimerType && (
+          <DisclaimerSection type={disclaimerType} />
+        )}
         <Box
           sx={{
             background: 'linear-gradient(90deg,#d8a45b 0%, #fcf0ad 50%, #d8a45b 100%)',

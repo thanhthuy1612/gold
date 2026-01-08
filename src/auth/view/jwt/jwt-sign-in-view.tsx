@@ -82,8 +82,8 @@ export function JwtSignInView() {
     <Box sx={{ gap: 3, display: 'flex', flexDirection: 'column' }}>
       <Field.Text
         name="email"
-        label="Enail"
-        placeholder="Enail"
+        label="Email"
+        placeholder="Email"
         slotProps={{ inputLabel: { shrink: true } }}
       />
 

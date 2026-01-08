@@ -10,11 +10,20 @@ import { HomeHero } from '../home-hero';
 import { HomeListProduct } from '../home-list-product';
 import { HomePriceContainer } from '../home-price-container';
 import { HomeReferencePrice } from '../home-reference-price';
+import { useEffect, useRef } from 'react';
 
 // ----------------------------------------------------------------------
 
 export function HomeView() {
   const pageProgress = useScrollProgress();
+  const referencePriceRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    referencePriceRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }, []);
 
   return (
     <>
@@ -30,7 +39,9 @@ export function HomeView() {
 
       <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
         <HomePriceContainer />
-        <HomeReferencePrice />
+        <div ref={referencePriceRef}>
+          <HomeReferencePrice />
+        </div>
         {/* <HomeBestSeller /> */}
         <HomeListProduct />
         <HomeInfo />
