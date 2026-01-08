@@ -76,6 +76,7 @@ export function HeaderSection({
           columnGap={1}
           flexWrap="wrap"
         >
+          <Logo sx={{ width: isSmallScreen ? 18 : 24, height: 'auto', mx: 1 }} />
           <Typography
             sx={{
               width: 'fit-content',
@@ -87,12 +88,6 @@ export function HeaderSection({
             Chào mừng đến với TÀI LỘC
           </Typography>
           <Logo sx={{ width: isSmallScreen ? 18 : 24, height: 'auto', mx: 1 }} />
-          <Typography
-            sx={{ width: 'fit-content', textAlign: 'center', visibility: 'visible' }}
-            variant={isSmallScreen ? 'caption' : 'h6'}
-          >
-            Ưu đãi 0.5% áp dụng cho tất cả các sản phẩm vàng bạc.
-          </Typography>
         </Box>
       </Stack>
       <HeaderRoot
