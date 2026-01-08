@@ -1,15 +1,15 @@
 import type { ReactNode } from 'react';
 
+import GoldWeeklyEvents from 'src/sections/phan-tich-thi-truong-vang/GoldWeeklyEvents';
 import GoldMarketSummary from 'src/sections/phan-tich-thi-truong-vang/GoldMarketSummary';
 import GoldInventoryData from 'src/sections/phan-tich-thi-truong-vang/GoldInventoryData';
-import GoldWeeklyEvents from 'src/sections/phan-tich-thi-truong-vang/GoldWeeklyEvents';
-import GoldWeeklyEconomicData from 'src/sections/phan-tich-thi-truong-vang/GoldWeeklyEconomicData';
-import GoldTechnicalAnalysis from 'src/sections/phan-tich-thi-truong-vang/GoldTechnicalAnalysis';
+import SilverWeeklyEvents from 'src/sections/phan-tich-thi-truong-bac/SilverWeeklyEvents';
 import SilverMarketSummary from 'src/sections/phan-tich-thi-truong-bac/SilverMarketSummary';
 import SilverInventoryData from 'src/sections/phan-tich-thi-truong-bac/SilverInventoryData';
+import GoldTechnicalAnalysis from 'src/sections/phan-tich-thi-truong-vang/GoldTechnicalAnalysis';
+import GoldWeeklyEconomicData from 'src/sections/phan-tich-thi-truong-vang/GoldWeeklyEconomicData';
 import SilverTechnicalAnalysis from 'src/sections/phan-tich-thi-truong-bac/SilverTechnicalAnalysis';
 import SilverWeeklyEconomicData from 'src/sections/phan-tich-thi-truong-bac/SilverWeeklyEconomicData';
-import SilverWeeklyEvents from 'src/sections/phan-tich-thi-truong-bac/SilverWeeklyEvents';
 
 export type ImagesItem = {
   id: number;

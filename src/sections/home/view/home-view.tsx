@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
+
 import Stack from '@mui/material/Stack';
 
 import { BackToTopButton } from 'src/components/animate/back-to-top-button';
@@ -10,7 +12,6 @@ import { HomeHero } from '../home-hero';
 import { HomeListProduct } from '../home-list-product';
 import { HomePriceContainer } from '../home-price-container';
 import { HomeReferencePrice } from '../home-reference-price';
-import { useEffect, useRef } from 'react';
 
 // ----------------------------------------------------------------------
 
