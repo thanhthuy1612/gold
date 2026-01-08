@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
+
 import Stack from '@mui/material/Stack';
 
 import { BackToTopButton } from 'src/components/animate/back-to-top-button';
@@ -15,6 +17,14 @@ import { HomeReferencePrice } from '../home-reference-price';
 
 export function HomeView() {
   const pageProgress = useScrollProgress();
+  const referencePriceRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    referencePriceRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }, []);
 
   return (
     <>
@@ -30,7 +40,9 @@ export function HomeView() {
 
       <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
         <HomePriceContainer />
-        <HomeReferencePrice />
+        <div ref={referencePriceRef}>
+          <HomeReferencePrice />
+        </div>
         {/* <HomeBestSeller /> */}
         <HomeListProduct />
         <HomeInfo />

@@ -56,14 +56,11 @@ export function MainLayout({
   layoutQuery = 'md',
 }: MainLayoutProps) {
   const pathname = usePathname();
-  const showDisclaimer = (() => {
-    if (!pathname.startsWith('/tin-tuc/')) return false;
+  const disclaimerType = (() => {
+    if (!pathname.startsWith('/tin-tuc/')) return undefined;
 
     const slug = pathname.replace('/tin-tuc/', '').replace(/\/$/, '');
-
-    const news = NEWS.find((n) => n.slug === slug);
-
-    return !!news?.hasDisclaim;
+    return NEWS.find((n) => n.slug === slug)?.disclaimerType;
   })();
 
   const { value: open, onFalse: onClose, onTrue: onOpen } = useBoolean();
@@ -239,7 +236,7 @@ export function MainLayout({
 
   const renderFooter = () =>
     isHomePage ? (
-      <HomeFooter sx={slotProps?.footer?.sx} showDisclaimer={showDisclaimer} />
+      <HomeFooter sx={slotProps?.footer?.sx} showDisclaimer={!!disclaimerType} disclaimerType={disclaimerType} />
     ) : (
       <Footer sx={slotProps?.footer?.sx} layoutQuery={layoutQuery} />
     );
@@ -267,12 +264,12 @@ export function MainLayout({
       sx={
         pathname === `${paths.auth.jwt.signIn}/`
           ? [
-              (theme) => ({
-                position: 'relative',
-                '&::before': backgroundStyles(theme),
-              }),
-              ...(Array.isArray(sx) ? sx : [sx]),
-            ]
+            (theme) => ({
+              position: 'relative',
+              '&::before': backgroundStyles(theme),
+            }),
+            ...(Array.isArray(sx) ? sx : [sx]),
+          ]
           : sx
       }
     >

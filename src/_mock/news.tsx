@@ -1,10 +1,15 @@
 import type { ReactNode } from 'react';
 
-import WeeklyEvents from 'src/sections/phan-tich-thi-truong-vang/WeeklyEvents';
+import GoldWeeklyEvents from 'src/sections/phan-tich-thi-truong-vang/GoldWeeklyEvents';
 import GoldMarketSummary from 'src/sections/phan-tich-thi-truong-vang/GoldMarketSummary';
 import GoldInventoryData from 'src/sections/phan-tich-thi-truong-vang/GoldInventoryData';
-import TechnicalAnalysis from 'src/sections/phan-tich-thi-truong-vang/TechnicalAnalysis';
-import WeeklyEconomicData from 'src/sections/phan-tich-thi-truong-vang/WeeklyEconomicData';
+import SilverWeeklyEvents from 'src/sections/phan-tich-thi-truong-bac/SilverWeeklyEvents';
+import SilverMarketSummary from 'src/sections/phan-tich-thi-truong-bac/SilverMarketSummary';
+import SilverInventoryData from 'src/sections/phan-tich-thi-truong-bac/SilverInventoryData';
+import GoldTechnicalAnalysis from 'src/sections/phan-tich-thi-truong-vang/GoldTechnicalAnalysis';
+import GoldWeeklyEconomicData from 'src/sections/phan-tich-thi-truong-vang/GoldWeeklyEconomicData';
+import SilverTechnicalAnalysis from 'src/sections/phan-tich-thi-truong-bac/SilverTechnicalAnalysis';
+import SilverWeeklyEconomicData from 'src/sections/phan-tich-thi-truong-bac/SilverWeeklyEconomicData';
 
 export type ImagesItem = {
   id: number;
@@ -18,8 +23,13 @@ export type NewsItem = {
   image: string;
   slug: string;
   content: ReactNode;
-  hasDisclaim?: boolean;
+  disclaimerType?: DisclaimerType;
 };
+
+export enum DisclaimerType {
+  GOLD = 'gold',
+  SILVER = 'silver',
+}
 
 export const IMAGES: ImagesItem[] = [
   {
@@ -58,13 +68,13 @@ export const NEWS: NewsItem[] = [
     content: (
       <>
         <GoldMarketSummary />
-        <WeeklyEvents />
-        <WeeklyEconomicData />
+        <GoldWeeklyEvents />
+        <GoldWeeklyEconomicData />
         <GoldInventoryData />
-        <TechnicalAnalysis />
+        <GoldTechnicalAnalysis />
       </>
     ),
-    hasDisclaim: true,
+    disclaimerType: DisclaimerType.GOLD,
   },
   {
     id: 3,
@@ -72,7 +82,16 @@ export const NEWS: NewsItem[] = [
     desc: 'Giá vàng Bạc thỏi Phú Quý kết thúc tuần vừa qua quanh mức: 62,1 triệu đồng/ Kg - Mua vào và 64 triều đồng/ Kg - Bán ra. Tăng 6.05% so với tuần trước đó. Giá bạc trong nước tiếp ...',
     image: '/assets/background/news-3.jpg',
     slug: 'phan-tich-thi-truong-bac',
-    content: '',
+    content: (
+      <>
+        <SilverMarketSummary />
+        <SilverWeeklyEvents />
+        <SilverInventoryData />
+        <SilverWeeklyEconomicData />
+        <SilverTechnicalAnalysis />
+      </>
+    ),
+    disclaimerType: DisclaimerType.SILVER,
   },
   {
     id: 4,
@@ -80,22 +99,6 @@ export const NEWS: NewsItem[] = [
     desc: 'Giá vàng SJC tại Phú Quý bật tăng trong tuần qua, giao dịch trên mức 153 triệu/lượng mua vào, 156 triệu/lượng bán ra.\n Giá vàng trong nước tăng nhẹ cùng với giá ...',
     image: '/assets/background/news-4.jpg',
     slug: 'gia-bac-vuot-muc',
-    content: '',
-  },
-  {
-    id: 5,
-    title: 'Phân tích thị trường vàng',
-    desc: 'Cập nhật xu hướng giá vàng mới nhất...',
-    image: '/assets/background/news-1.jpg',
-    slug: 'phan-tich-thi-truong-vang',
-    content: '',
-  },
-  {
-    id: 6,
-    title: 'Phân tích thị trường bạc',
-    desc: 'Nhận định biến động giá bạc...',
-    image: '/assets/background/news-2.jpg',
-    slug: 'phan-tich-thi-truong-bac',
     content: '',
   },
 ];

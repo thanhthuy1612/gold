@@ -8,12 +8,34 @@ const contentStyle = {
   textAlign: 'justify',
 };
 
-export default function DisclaimerSection() {
+type DisclaimerSectionProps = {
+  type: 'gold' | 'silver';
+};
+
+
+const DISCLAIMER_CONFIG = {
+  gold: {
+    bg: '#921b17',
+    title: 'Báo cáo phân tích thị trường vàng',
+    textColor: 'rgba(255,255,255,0.9)',
+    icon: '/assets/background/footer-icon-gold.jpg'
+  },
+  silver: {
+    bg: '#021f61',
+    title: 'Báo cáo phân tích thị trường bạc',
+    textColor: 'rgba(255,255,255,0.9)',
+    icon: '/assets/background/footer-icon-silver.jpg'
+  },
+};
+
+
+export default function DisclaimerSection({ type }: DisclaimerSectionProps) {
+  const config = DISCLAIMER_CONFIG[type];
   return (
     <Box
       sx={{
-        bgcolor: '#921b17',
-        color: 'rgba(255,255,255,0.9)',
+        bgcolor: config.bg,
+        color: config.textColor,
         py: 6,
       }}
     >
@@ -34,7 +56,7 @@ export default function DisclaimerSection() {
             sx={{ mb: 2 }}
           >
             <Image
-              src="/assets/background/footer-icon.jpg"
+              src= {config.icon}
               alt=""
               width={96}
               height={96}
@@ -56,7 +78,7 @@ export default function DisclaimerSection() {
           {/* CONTENT */}
           <Stack spacing={2}>
             <Typography sx={contentStyle}>
-              Báo cáo phân tích thị trường vàng này được thực hiện và phát hành độc quyền bởi Tập đoàn
+              {config.title} này được thực hiện và phát hành độc quyền bởi Tập đoàn
               Vàng bạc Đá quý Phú Quý. Mọi quyền sở hữu trí tuệ liên quan đến nội dung báo cáo, bao gồm
               nhưng không giới hạn dữ liệu, biểu đồ, nhận định và phân tích, đều thuộc về Tập đoàn
               Vàng bạc Đá quý Phú Quý.
@@ -73,7 +95,8 @@ export default function DisclaimerSection() {
             <Typography sx={contentStyle}>
               Các dữ liệu và thông tin được sử dụng trong báo cáo này được thu thập từ các nguồn đáng
               tin cậy tại thời điểm thực hiện. Tuy nhiên, chúng tôi không đảm bảo tính chính xác,
-              đầy đủ và kịp thời của các thông tin này.
+              đầy đủ và kịp thời của các thông tin này. Dữ liệu thị trường có thể thay đổi nhanh chóng
+              và không lường trước được.
             </Typography>
 
             <Typography sx={contentStyle}>
@@ -87,7 +110,10 @@ export default function DisclaimerSection() {
 
             <Typography sx={contentStyle}>
               Việc đưa ra quyết định đầu tư là trách nhiệm cá nhân của mỗi nhà đầu tư. Nhà đầu tư cần
-              tự đánh giá và cân nhắc rủi ro trước khi đưa ra quyết định.
+              tự đánh giá và nghiên cứu kĩ lưỡng và cân nhắc các yếu tố rủi ro trước khi đưa ra quyết 
+              định đầu tư của . Tập đoàn vàng bạc đá quý Phú Quý không chịu trách nhiệm về bất kỳ tổn thất 
+              hay thiệt hại nào phát sinh từ việc sử dụng hoặc dựa vào các thông tin trong báo cáo này
+              để đưa ra quyết định đầu tư.
             </Typography>
 
             <Typography sx={{ ... contentStyle, fontWeight: 600 }}>
