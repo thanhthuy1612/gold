@@ -1,4 +1,3 @@
-import Image from 'next/image';
 
 import { Box, Stack, Container, Typography } from '@mui/material';
 
@@ -42,33 +41,38 @@ export default function DisclaimerSection({ type }: DisclaimerSectionProps) {
       <Container maxWidth="lg">
         <Box
           sx={{
-            width: 'fit-content',
+            width: '100%',
             maxWidth: 900,
             mx: 'auto',
+            px: { xs: 2, sm: 0 },
           }}
         >
           {/* HEADER */}
           <Stack
-            direction="row"
+            direction={{ xs: 'column', sm: 'row' }}
             spacing={2}
             alignItems="center"
             justifyContent="center"
+            textAlign={{ xs: 'center', sm: 'left' }}
             sx={{ mb: 2 }}
           >
-            <Image
-              src= {config.icon}
-              alt=""
-              width={96}
-              height={96}
+            <Box
+              component="img"
+              src={config.icon}
+              sx={{
+                width: { xs: 56, sm: 96 },
+                height: { xs: 56, sm: 96 },
+              }}
             />
 
             <Typography
               sx={{
-                fontSize: 30,
+                fontSize: { xs: 20, sm: 30 },
                 fontWeight: 700,
                 textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.85)',
-                whiteSpace: 'nowrap',
+                whiteSpace: { xs: 'normal', sm: 'nowrap' },
+                lineHeight: 1.3,
               }}
             >
               Điều khoản sử dụng và miễn trừ trách nhiệm
@@ -110,13 +114,13 @@ export default function DisclaimerSection({ type }: DisclaimerSectionProps) {
 
             <Typography sx={contentStyle}>
               Việc đưa ra quyết định đầu tư là trách nhiệm cá nhân của mỗi nhà đầu tư. Nhà đầu tư cần
-              tự đánh giá và nghiên cứu kĩ lưỡng và cân nhắc các yếu tố rủi ro trước khi đưa ra quyết 
-              định đầu tư của . Tập đoàn vàng bạc đá quý Phú Quý không chịu trách nhiệm về bất kỳ tổn thất 
+              tự đánh giá và nghiên cứu kĩ lưỡng và cân nhắc các yếu tố rủi ro trước khi đưa ra quyết
+              định đầu tư của . Tập đoàn vàng bạc đá quý Phú Quý không chịu trách nhiệm về bất kỳ tổn thất
               hay thiệt hại nào phát sinh từ việc sử dụng hoặc dựa vào các thông tin trong báo cáo này
               để đưa ra quyết định đầu tư.
             </Typography>
 
-            <Typography sx={{ ... contentStyle, fontWeight: 600 }}>
+            <Typography sx={{ ...contentStyle, fontWeight: 600 }}>
               Bằng việc truy cập và sử dụng báo cáo này, Quý vị xác nhận đã đọc, hiểu và đồng ý tuân
               thủ các Điều khoản sử dụng và Tuyên bố miễn trừ trách nhiệm này.
             </Typography>
@@ -135,6 +139,6 @@ export default function DisclaimerSection({ type }: DisclaimerSectionProps) {
         </Box>
       </Container>
     </Box>
-    
+
   );
 }

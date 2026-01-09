@@ -143,10 +143,11 @@ export function MainLayout({
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   visibility: 'visible',
-                  width: 'fit-content',
-                  display: 'none',
-                  [theme.breakpoints.up(layoutQuery)]: { display: 'inline-block' },
-                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Adjust for shadow effect
+                  display: 'inline-block',
+                  fontSize: { xs: 14, sm: 16, md: 20 },
+                  lineHeight: 1,
+                  ml: { xs: 0.5, sm: 1 },
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
                   [theme.breakpoints.down(layoutQuery)]: {
                     color: '#d09f19', // Fallback color for low configurations
                   },
@@ -171,16 +172,62 @@ export function MainLayout({
             })}
           />
 
+          {/** @slot Mobile contact / Desktop sign in button */}
+          <Box
+            component="a"
+            href="tel:0123456789"
+            sx={(theme) => ({
+              display: 'flex',
+              alignItems: 'center',
+              gap: 0.5,
+              px: 2,
+              py: 1,
+              height: '100%',
+              textDecoration: 'none',
+              color: '#901011',
+              [theme.breakpoints.up(layoutQuery)]: {
+                display: 'none',
+              },
+              '&:hover': {
+                backgroundColor: '#901011',
+                color: '#d8a45b',
+              },
+            })}
+          >
+            <Box
+              sx={(theme) => ({
+                zIndex: 9,
+                width: 20,
+                [theme.breakpoints.up('md')]: { width: 60, mr: -7, display: 'block' },
+                aspectRatio: '1/1',
+                position: 'relative',
+              })}
+            >
+              <img src="/assets/background/ddt2.png" width="80" height="auto" />
+            </Box>
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: 600,
+                whiteSpace: 'nowrap',
+              }}
+            >
+              0383.599.995
+            </Typography>
+          </Box>
+
           <Box
             sx={{
-              display: 'flex',
+              display: 'none',
               alignItems: 'center',
               gap: { xs: 1, sm: 1.5 },
               height: '100%',
               '&:hover': { backgroundColor: '#901011' },
+              [`@media (min-width: ${(theme: Theme) => theme.breakpoints.values[layoutQuery]}px)`]: {
+                display: 'flex',
+              },
             }}
           >
-            {/** @slot Sign in button */}
             <SignInButton
               sx={{
                 display: 'flex',
