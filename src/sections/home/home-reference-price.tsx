@@ -72,7 +72,35 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
       sell: item.priceOut,
     }));
 
-  const { gold, silver } = useAppSelector((state) => state.landing);
+  const { gold, silver, goldLastUpdate, silverLastUpdate, } = useAppSelector((state) => state.landing);
+
+  const formatLastUpdate = (value?: string | null) => {
+    if (!value) return '';
+    const [date, time] = value.split(' ');
+    return `${date} ${time ?? ''}`.trim();
+  };
+
+  const silverTitle: React.ReactNode = isSmallScreen ? (
+    <>
+      Giá bạc
+      <span style={{ marginLeft: '16px' }}>
+        {formatLastUpdate(silverLastUpdate)}
+      </span>
+    </>
+  ) : (
+    'Giá bạc tham chiếu'
+  );
+
+  const goldTitle: React.ReactNode = isSmallScreen ? (
+    <>
+      Giá vàng
+      <span style={{ marginLeft: '16px' }}>
+        {formatLastUpdate(goldLastUpdate)}
+      </span>
+    </>
+  ) : (
+    'Giá vàng tham chiếu'
+  );
 
   const silverTableData = mapToTableData(silver);
   const goldTableData = mapToTableData(gold);
@@ -115,7 +143,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
           <Grid size={{ xs: 12, md: 6 }}>
             <TablePrice
               icon={<img src="/assets/background/b.webp" width="30" />}
-              title="Giá bạc tham chiếu"
+              title={silverTitle}
               data={silverTableData}
               onClick={() => {
                 dispath(updateType('silver'));
@@ -127,7 +155,7 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
           <Grid size={{ xs: 12, md: 6 }}>
             <TablePrice
               icon={<img src="/assets/background/v.webp" width="30" />}
-              title="Giá vàng tham chiếu"
+              title={goldTitle}
               data={goldTableData}
               onClick={() => {
                 dispath(updateType('gold'));

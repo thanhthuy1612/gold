@@ -51,7 +51,7 @@ export type TableData = {
 };
 
 type Props = {
-  title: string;
+  title: React.ReactNode;
   onClick: () => void;
   data: TableData[];
   icon: any;
