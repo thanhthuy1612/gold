@@ -6,12 +6,25 @@ const thStyle = {
   fontWeight: 700,
   fontSize: 16,
   textAlign: 'center',
+  borderTop: 0,
+  '&:first-child': {
+    borderLeft: 'none', // Không có border trái cho phần tử đầu tiên
+  },
+  '&:last-child': {
+    borderRight: 'none', // Không có border phải cho phần tử cuối cùng
+  },
 };
 
 const tdStyle = {
   p: 1,
   border: '1px solid #999',
   fontSize: 16,
+  '&:first-child': {
+    borderLeft: 'none', // Không có border trái
+  },
+  '&:last-child': {
+    borderRight: 'none', // Không có border phải
+  },
 };
 
 export default function WeeklyEconomicData() {
@@ -54,20 +67,23 @@ export default function WeeklyEconomicData() {
             sx={{
               border: '1px solid',
               borderRadius: 1,
+              overflow: 'hidden',
             }}
           >
             {/* Table title */}
-            <Box
-              sx={{
-                bgcolor: '#eee',
-                textAlign: 'center',
-                fontWeight: 700,
-                border: '1px solid #000',
-                borderRadius: 1,
-                py: 1,
-              }}
-            >
-              Dữ liệu kinh tế
+            <Box sx={{ bgcolor: '#19f0f0' }}>
+              <Box
+                sx={{
+                  bgcolor: '#eee',
+                  textAlign: 'center',
+                  fontWeight: 700,
+                  border: '1px solid #000',
+                  borderRadius: 1,
+                  py: 1,
+                }}
+              >
+                Dữ liệu kinh tế
+              </Box>
             </Box>
 
             <Box
@@ -178,7 +194,7 @@ export default function WeeklyEconomicData() {
 
                 {/* ===== 19/12/2025 (rowSpan = 2) ===== */}
                 <Box component="tr">
-                  <Box component="td" sx={tdStyle} rowSpan={2}>
+                  <Box component="td" sx={{ ...tdStyle, borderBottom: 'none' }} rowSpan={2}>
                     19/12/2025
                   </Box>
                   <Box component="td" sx={tdStyle}>
@@ -193,13 +209,18 @@ export default function WeeklyEconomicData() {
                 </Box>
 
                 <Box component="tr">
-                  <Box component="td" sx={tdStyle}>
+                  <Box component="td" sx={{ ...tdStyle, borderBottom: 'none' }}>
                     PCE tháng 10 (YoY)
                   </Box>
-                  <Box component="td" sx={tdStyle} align="center">
+                  <Box component="td" sx={{ ...tdStyle, borderBottom: 'none' }} align="center">
                     Mỹ
                   </Box>
-                  <Box component="td" sx={tdStyle} align="right" fontWeight={700}>
+                  <Box
+                    component="td"
+                    sx={{ ...tdStyle, borderBottom: 'none' }}
+                    align="right"
+                    fontWeight={700}
+                  >
                     2,8%
                   </Box>
                 </Box>
