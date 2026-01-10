@@ -30,6 +30,7 @@ export function HomePriceContainer({ sx, ...other }: BoxProps) {
         {
           overflow: 'hidden',
           position: 'relative',
+          mb: 5,
         },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}

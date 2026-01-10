@@ -12,6 +12,8 @@ import { CONFIG } from 'src/global-config';
 import { updateType } from 'src/lib/features/landing';
 import { useAppDispatch, useAppSelector } from 'src/lib/hooks';
 
+import { Label } from 'src/components/label';
+
 import { TablePrice } from './components/table-price';
 import { FloatLine, FloatDotIcon } from './components/svg-elements';
 
@@ -72,7 +74,9 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
       sell: item.priceOut,
     }));
 
-  const { gold, silver, goldLastUpdate, silverLastUpdate, } = useAppSelector((state) => state.landing);
+  const { gold, silver, goldLastUpdate, silverLastUpdate } = useAppSelector(
+    (state) => state.landing
+  );
 
   const formatLastUpdate = (value?: string | null) => {
     if (!value) return '';
@@ -80,26 +84,22 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
     return `${date} ${time ?? ''}`.trim();
   };
 
-  const silverTitle: React.ReactNode = isSmallScreen ? (
+  const silverTitle: React.ReactNode = (
     <>
       Giá bạc
-      <span style={{ marginLeft: '16px' }}>
+      <Label variant="outlined" sx={{ color: '#d09f19', borderColor: '#d09f19', ml: 1 }}>
         {formatLastUpdate(silverLastUpdate)}
-      </span>
+      </Label>
     </>
-  ) : (
-    'Giá bạc tham chiếu'
   );
 
-  const goldTitle: React.ReactNode = isSmallScreen ? (
+  const goldTitle: React.ReactNode = (
     <>
       Giá vàng
-      <span style={{ marginLeft: '16px' }}>
+      <Label variant="outlined" sx={{ color: '#d09f19', borderColor: '#d09f19', ml: 1 }}>
         {formatLastUpdate(goldLastUpdate)}
-      </span>
+      </Label>
     </>
-  ) : (
-    'Giá vàng tham chiếu'
   );
 
   const silverTableData = mapToTableData(silver);
@@ -112,7 +112,6 @@ export function HomeReferencePrice({ sx, ...other }: BoxProps) {
     <Box
       component="section"
       sx={(theme) => ({
-        mt: 5,
         position: 'relative',
         alignContent: 'center',
         ...theme.mixins.bgGradient({

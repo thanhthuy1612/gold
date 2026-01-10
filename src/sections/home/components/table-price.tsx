@@ -72,7 +72,7 @@ export function TablePrice({ icon, title, onClick, data }: Props) {
       >
         <Stack display="flex" flexDirection="row" gap={1}>
           {icon}
-          <Typography variant="h5" sx={{ color: 'white', display: 'flex' }}>
+          <Typography variant="h5" sx={{ color: 'white', display: 'flex', alignItems: 'center' }}>
             {title}
           </Typography>
         </Stack>

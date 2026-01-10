@@ -7,7 +7,7 @@ import { useBoolean } from 'minimal-shared/hooks';
 
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import { Stack, Typography } from '@mui/material';
+import { Stack, Typography, useMediaQuery } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
@@ -62,6 +62,8 @@ export function MainLayout({
     const slug = pathname.replace('/tin-tuc/', '').replace(/\/$/, '');
     return NEWS.find((n) => n.slug === slug)?.disclaimerType;
   })();
+
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   const { value: open, onFalse: onClose, onTrue: onOpen } = useBoolean();
 
@@ -143,11 +145,10 @@ export function MainLayout({
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   visibility: 'visible',
-                  display: 'inline-block',
-                  fontSize: { xs: 14, sm: 16, md: 20 },
-                  lineHeight: 1,
-                  ml: { xs: 0.5, sm: 1 },
-                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                  width: 'fit-content',
+                  // display: 'none',
+                  // [theme.breakpoints.up(layoutQuery)]: { display: 'inline-block' },
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Adjust for shadow effect
                   [theme.breakpoints.down(layoutQuery)]: {
                     color: '#d09f19', // Fallback color for low configurations
                   },
@@ -173,99 +174,95 @@ export function MainLayout({
           />
 
           {/** @slot Mobile contact / Desktop sign in button */}
-          <Box
-            component="a"
-            href="tel:0123456789"
-            sx={(theme) => ({
-              display: 'flex',
-              alignItems: 'center',
-              gap: 0.5,
-              px: 2,
-              py: 1,
-              height: '100%',
-              textDecoration: 'none',
-              color: '#901011',
-              [theme.breakpoints.up(layoutQuery)]: {
-                display: 'none',
-              },
-              '&:hover': {
-                backgroundColor: '#901011',
-                color: '#d8a45b',
-              },
-            })}
-          >
+          {isSmallScreen ? (
             <Box
+              component="a"
+              href="tel:0123456789"
               sx={(theme) => ({
-                zIndex: 9,
-                width: 20,
-                [theme.breakpoints.up('md')]: { width: 60, mr: -7, display: 'block' },
-                aspectRatio: '1/1',
-                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0.5,
+                px: 2,
+                py: 1,
+                height: '100%',
+                textDecoration: 'none',
+                color: '#901011',
+                [theme.breakpoints.up(layoutQuery)]: {
+                  display: 'none',
+                },
               })}
             >
-              <img src="/assets/background/ddt2.png" width="80" height="auto" />
+              <Box
+                sx={(theme) => ({
+                  aspectRatio: '1/1',
+                  position: 'relative',
+                  mt: -0.25,
+                })}
+              >
+                <img src="/assets/background/ddt2.png" width="12" height="auto" />
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{
+                  fontWeight: 600,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                0383.599.995
+              </Typography>
             </Box>
-            <Typography
-              variant="body2"
+          ) : (
+            <Box
               sx={{
-                fontWeight: 600,
-                whiteSpace: 'nowrap',
-              }}
-            >
-              0383.599.995
-            </Typography>
-          </Box>
-
-          <Box
-            sx={{
-              display: 'none',
-              alignItems: 'center',
-              gap: { xs: 1, sm: 1.5 },
-              height: '100%',
-              '&:hover': { backgroundColor: '#901011' },
-              [`@media (min-width: ${(theme: Theme) => theme.breakpoints.values[layoutQuery]}px)`]: {
-                display: 'flex',
-              },
-            }}
-          >
-            <SignInButton
-              sx={{
-                display: 'flex',
                 alignItems: 'center',
                 gap: { xs: 1, sm: 1.5 },
                 height: '100%',
-                background: pathname === `${paths.auth.jwt.signIn}/` ? '#901011' : '',
-                borderRadius: 0,
-                color: pathname === `${paths.auth.jwt.signIn}/` ? 'transparent' : '#901011',
-                '& .icon': {
-                  color: pathname === `${paths.auth.jwt.signIn}/` ? '#d8a45b' : '#901011',
-                },
-                '& .text': {
-                  color: pathname === `${paths.auth.jwt.signIn}/` ? 'transparent' : '#901011',
-                  backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                },
-                '&:hover': {
-                  '& .text': { color: '#d8a45b !important' },
-                  '& .icon': {
-                    color: '#d8a45b !important',
+                '&:hover': { backgroundColor: '#901011' },
+                [`@media (min-width: ${(theme: Theme) => theme.breakpoints.values[layoutQuery]}px)`]:
+                  {
+                    display: 'flex',
                   },
-                },
-                '&.active': {
+              }}
+            >
+              <SignInButton
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: { xs: 1, sm: 1.5 },
+                  height: '100%',
+                  background: pathname === `${paths.auth.jwt.signIn}/` ? '#901011' : '',
+                  borderRadius: 0,
+                  color: pathname === `${paths.auth.jwt.signIn}/` ? 'transparent' : '#901011',
+                  '& .icon': {
+                    color: pathname === `${paths.auth.jwt.signIn}/` ? '#d8a45b' : '#901011',
+                  },
                   '& .text': {
-                    color: 'transparent',
+                    color: pathname === `${paths.auth.jwt.signIn}/` ? 'transparent' : '#901011',
                     backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
                   },
-                  '& .icon': {
-                    color: '#d8a45b',
+                  '&:hover': {
+                    '& .text': { color: '#d8a45b !important' },
+                    '& .icon': {
+                      color: '#d8a45b !important',
+                    },
                   },
-                },
-              }}
-            />
-          </Box>
+                  '&.active': {
+                    '& .text': {
+                      color: 'transparent',
+                      backgroundImage: 'linear-gradient(180deg, #fcf0ad, #d8a45b)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                    },
+                    '& .icon': {
+                      color: '#d8a45b',
+                    },
+                  },
+                }}
+              />
+            </Box>
+          )}
         </>
       ),
     };
@@ -283,7 +280,11 @@ export function MainLayout({
 
   const renderFooter = () =>
     isHomePage ? (
-      <HomeFooter sx={slotProps?.footer?.sx} showDisclaimer={!!disclaimerType} disclaimerType={disclaimerType} />
+      <HomeFooter
+        sx={slotProps?.footer?.sx}
+        showDisclaimer={!!disclaimerType}
+        disclaimerType={disclaimerType}
+      />
     ) : (
       <Footer sx={slotProps?.footer?.sx} layoutQuery={layoutQuery} />
     );
@@ -311,12 +312,12 @@ export function MainLayout({
       sx={
         pathname === `${paths.auth.jwt.signIn}/`
           ? [
-            (theme) => ({
-              position: 'relative',
-              '&::before': backgroundStyles(theme),
-            }),
-            ...(Array.isArray(sx) ? sx : [sx]),
-          ]
+              (theme) => ({
+                position: 'relative',
+                '&::before': backgroundStyles(theme),
+              }),
+              ...(Array.isArray(sx) ? sx : [sx]),
+            ]
           : sx
       }
     >

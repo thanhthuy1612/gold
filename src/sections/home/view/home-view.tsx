@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 
 import Stack from '@mui/material/Stack';
 
@@ -19,11 +19,13 @@ export function HomeView() {
   const pageProgress = useScrollProgress();
   const referencePriceRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    referencePriceRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+  React.useLayoutEffect(() => {
+    if (referencePriceRef.current) {
+      referencePriceRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   }, []);
 
   return (

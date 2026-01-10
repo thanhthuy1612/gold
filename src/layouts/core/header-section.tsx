@@ -112,7 +112,7 @@ export function HeaderSection({
         <Stack
           sx={{
             background: {
-              xs: 'linear-gradient(-90deg,#f0b05c 0%, #fff9b8 50%, #901011 100%)',
+              xs: 'linear-gradient(-90deg,#f0b05c 0%, #901011 100%)',
               lg: 'linear-gradient(-90deg,#f0b05c 0%, #fff9b8 30%, #901011 100%)',
             },
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
