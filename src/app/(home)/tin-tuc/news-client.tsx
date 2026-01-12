@@ -27,7 +27,7 @@ export default function NewsClient() {
   }, [page]);
 
   return (
-    <Container sx={{ py: 6 }}>
+    <Container sx={{ px: '0 !important', pb: 5, pt: 0 }}>
       <Grid container spacing={3}>
         {/* LEFT */}
         <Grid size={{ xs: 12, md: 5 }}>
@@ -66,8 +66,8 @@ export default function NewsClient() {
                   />
                 </Grid>
 
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <Stack spacing={1}>
+                <Grid size={{ xs: 12, md: 6 }} sx={{ height: '100%' }}>
+                  <Stack spacing={1} height="100%">
                     <Typography
                       fontWeight={700}
                       sx={{
@@ -93,22 +93,27 @@ export default function NewsClient() {
                       {item.desc}
                     </Typography>
 
-                    <Button
-                      component={Link}
-                      href={`/tin-tuc/${item.slug}`}
-                      size="small"
-                      sx={{
-                        alignSelf: { xs: 'center', md: 'flex-start' },
-                        bgcolor: '#8c0302',
-                        color: '#e8ab6a',
-                        borderRadius: '4px',
-                        fontSize: 14,
-                        textTransform: 'none',
-                        '&:hover': { bgcolor: '#a40404' },
-                      }}
-                    >
-                      Xem thêm
-                    </Button>
+                    {item.content !== '' && (
+                      <Stack direction="row" display="flex" alignItems="end" mt="auto">
+                        <Button
+                          component={Link}
+                          href={`/tin-tuc/${item.slug}`}
+                          size="small"
+                          sx={{
+                            alignSelf: { xs: 'center', md: 'flex-start' },
+                            bgcolor: '#8c0302',
+                            color: '#e8ab6a',
+                            borderRadius: '4px',
+                            fontSize: 14,
+                            textTransform: 'none',
+                            px: 1.5,
+                            '&:hover': { bgcolor: '#a40404' },
+                          }}
+                        >
+                          Xem thêm
+                        </Button>
+                      </Stack>
+                    )}
                   </Stack>
                 </Grid>
               </Grid>

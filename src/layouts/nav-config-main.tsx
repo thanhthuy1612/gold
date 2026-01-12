@@ -23,13 +23,13 @@ export const navData: NavMainProps['data'] = [
     icon: <Iconify width={16} icon="solar:point-on-map-bold" />,
   },
   {
-    title: 'Liên hệ',
-    path: paths.contact,
-    icon: <Iconify width={16} icon="solar:phone-bold" />,
-  },
-  {
     title: 'Tin tức',
     path: paths.news,
     icon: <Iconify width={16} icon="solar:notebook-bold-duotone" />,
+  },
+  {
+    title: 'Liên hệ',
+    path: 'https://zalo.me/g/acdmkl802',
+    icon: <Iconify width={16} icon="solar:phone-bold" />,
   },
 ];
