@@ -26,6 +26,11 @@ import { varFade } from 'src/components/animate';
 
 const listInfo = [
   { name: 'Mã số doanh nghiệp', value: '0111262522', href: '/' },
+  {
+    name: 'Địa chỉ',
+    value: '08 Nguyễn Xiển - Phường Thanh Liệt - Hà Nội',
+    href: 'https://www.google.com/maps/search/?api=1&query=08+Nguyễn+Xiển+Phường+Thanh+Liệt+Hà+Nội',
+  },
   { name: 'Điện thoại', value: '0383599995', href: 'tel:0383599995' },
   { name: 'Thư điện tử', value: 'tdtailoc@gmail.com', href: 'mailto:tdtailoc@gmail.com' },
 ];
@@ -191,7 +196,7 @@ export function HomeFooter({
   showDisclaimer = false,
   disclaimerType,
   ...other
-}: FooterProps & { showDisclaimer?: boolean; disclaimerType?: 'gold' | 'silver'; }) {
+}: FooterProps & { showDisclaimer?: boolean; disclaimerType?: 'gold' | 'silver' }) {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   return (
@@ -206,9 +211,7 @@ export function HomeFooter({
       {...other}
     >
       <Container maxWidth={false} sx={{ p: '0 !important', m: '0 !important' }}>
-        {showDisclaimer && disclaimerType && (
-          <DisclaimerSection type={disclaimerType} />
-        )}
+        {showDisclaimer && disclaimerType && <DisclaimerSection type={disclaimerType} />}
         <Box
           sx={{
             background: 'linear-gradient(90deg,#d8a45b 0%, #fcf0ad 50%, #d8a45b 100%)',
