@@ -125,8 +125,8 @@ export function MainLayout({
               })}
               variant="subtitle2"
             >
-              <img src="/assets/background/map.png" width="auto" height="16" color="#cc8b1a" />
-              187 Xã Đàn - Hà Nội
+              <img src="/assets/background/map.png" width="auto" height="16" color="#cc8b1a" />8
+              Nguyễn Xiển - Hà Nội
             </Typography>
             <Stack
               display="flex"

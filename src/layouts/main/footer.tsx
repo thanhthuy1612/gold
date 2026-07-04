@@ -28,10 +28,10 @@ const listInfo = [
   { name: 'Mã số doanh nghiệp', value: '0111262522', href: '/' },
   {
     name: 'Địa chỉ',
-    value: '08 Nguyễn Xiển - Phường Thanh Liệt - Hà Nội',
+    value: '8 Nguyễn Xiển - Phường Thanh Xuân - Hà Nội',
     href: 'https://www.google.com/maps/search/?api=1&query=08+Nguyễn+Xiển+Phường+Thanh+Liệt+Hà+Nội',
   },
-  { name: 'Điện thoại', value: '0383599995', href: 'tel:0383599995' },
+  { name: 'Điện thoại', value: '0363.996.936', href: 'tel:0363996936' },
   { name: 'Thư điện tử', value: 'tdtailoc@gmail.com', href: 'mailto:tdtailoc@gmail.com' },
 ];
 
