@@ -27,11 +27,32 @@ import { varFade } from 'src/components/animate';
 const listInfo = [
   { name: 'Mã số doanh nghiệp', value: '0111262522', href: '/' },
   {
-    name: 'Địa chỉ',
-    value: '8 Nguyễn Xiển - Phường Thanh Xuân - Hà Nội',
-    href: 'https://www.google.com/maps/search/?api=1&query=08+Nguyễn+Xiển+Phường+Thanh+Liệt+Hà+Nội',
+    name: 'Cơ sở 1',
+    value: '',
+    href: '/',
+    children: [
+      {
+        name: 'Địa chỉ',
+        value: '187 Xã Đàn - Phường Đống Đa - Hà Nội',
+        href: 'https://maps.app.goo.gl/7Ba54Nz8jb6WAxtWA?g_st=it',
+      },
+      { name: 'Điện thoại', value: '0383.599.995', href: 'tel:0383599995' },
+    ],
   },
-  { name: 'Điện thoại', value: '0363.996.936', href: 'tel:0363996936' },
+
+  {
+    name: 'Cơ sở 2',
+    value: '',
+    href: '/',
+    children: [
+      {
+        name: 'Địa chỉ',
+        value: '8 Nguyễn Xiển - Phường Thanh Xuân - Hà Nội',
+        href: 'https://maps.app.goo.gl/BeN9QEWAxvkQ4J4c8?g_st=it',
+      },
+      { name: 'Điện thoại', value: '0363.996.936', href: 'tel:0363996936' },
+    ],
+  },
   { name: 'Thư điện tử', value: 'tdtailoc@gmail.com', href: 'mailto:tdtailoc@gmail.com' },
 ];
 
@@ -298,32 +319,65 @@ export function HomeFooter({
                 </Typography>
               </div>
               {listInfo.map((item) => (
-                <Stack
-                  display="flex"
-                  flexDirection="row"
-                  alignItems="center"
-                  gap={2}
-                  sx={{ my: 3 }}
-                  key={item.name}
-                >
-                  <Logo sx={{ width: 20, height: 'auto' }} />
-                  <Link href={item.href}>
-                    <Link
-                      component="span"
-                      variant={isSmallScreen ? 'caption' : 'h5'}
-                      sx={{
-                        color: 'transparent',
-                        backgroundImage: 'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
-                        WebkitBackgroundClip: 'text',
-                        backgroundClip: 'text',
-                        fontSize: '700',
-                        display: isSmallScreen ? 'inline-block' : 'flex',
-                        alignItems: 'center',
-                      }}
-                    >
-                      {item.name}: {item.value}
+                <Stack display="flex" flexDirection="column" gap={0} alignItems="start">
+                  <Stack
+                    display="flex"
+                    flexDirection="row"
+                    alignItems="center"
+                    gap={2}
+                    sx={{ my: isSmallScreen ? 1 : 1.5 }}
+                    key={item.name}
+                  >
+                    <Logo sx={{ width: 20, height: 'auto' }} />
+                    <Link href={item.href}>
+                      <Link
+                        component="span"
+                        variant={isSmallScreen ? 'caption' : 'h5'}
+                        sx={{
+                          color: 'transparent',
+                          backgroundImage:
+                            'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
+                          WebkitBackgroundClip: 'text',
+                          backgroundClip: 'text',
+                          fontSize: '700',
+                          display: isSmallScreen ? 'inline-block' : 'flex',
+                          alignItems: 'center',
+                        }}
+                      >
+                        {item.name}: {item.value}
+                      </Link>
                     </Link>
-                  </Link>
+                  </Stack>
+                  {item.children?.map((child) => (
+                    <Stack
+                      display="flex"
+                      flexDirection="row"
+                      alignItems="center"
+                      gap={2}
+                      sx={{ my: isSmallScreen ? 1 : 1.5, ml: isSmallScreen ? 3 : 5 }}
+                      key={child.name}
+                    >
+                      <Logo sx={{ width: 20, height: 'auto' }} />
+                      <Link href={child.href}>
+                        <Link
+                          component="span"
+                          variant={isSmallScreen ? 'caption' : 'h5'}
+                          sx={{
+                            color: 'transparent',
+                            backgroundImage:
+                              'linear-gradient(90deg,#d8a45b, #fcf0ad,#fcf0ad, #d8a45b)',
+                            WebkitBackgroundClip: 'text',
+                            backgroundClip: 'text',
+                            fontSize: '700',
+                            display: isSmallScreen ? 'inline-block' : 'flex',
+                            alignItems: 'center',
+                          }}
+                        >
+                          {child.name}: {child.value}
+                        </Link>
+                      </Link>
+                    </Stack>
+                  ))}
                 </Stack>
               ))}
             </Grid>
